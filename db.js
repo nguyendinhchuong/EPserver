@@ -1,8 +1,8 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 exports.load = sql => {
     return new Promise((resolve, reject) => {
-        var cn = mysql.createConnection({
+        const cn = mysql.createConnection({
             host: 'localhost',
             port: 3306,
             user: 'root',
@@ -28,7 +28,7 @@ exports.load = sql => {
 
 exports.save = sql => {
     return new Promise((resolve, reject) => {
-        var cn = mysql.createConnection({
+        const cn = mysql.createConnection({
             host: 'localhost',
             port: 3306,
             user: 'root',
