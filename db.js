@@ -6,16 +6,14 @@ exports.load = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: '',
-            database: 'educationprogram'            
+            password: '0965528621',
+            database: 'cdio'            
         });
-        cn.connect((err) => {
-            if (err) throw err;
-            console.log("Connected!!!")
-        });
+        cn.connect();
 
         cn.query(sql, function (error, rows, fields) {
             if (error) {
+                console.log('Err-------------');
                 reject(error);
             } else {
                 resolve(rows);
