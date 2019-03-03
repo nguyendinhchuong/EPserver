@@ -1,7 +1,7 @@
-const faculty = require('../service/outcomeStandard');
+const outcomeStandard = require('../service/outcomeStandardService');
 
-exports.getFaculties = (_, res) => {
-    faculty.getFaculties().then(data => {
+exports.getOutcomeStandards = (_, res) => {
+    outcomeStandard.getOutcomeStandards().then(data => {
         res.send(data);
     });
 }

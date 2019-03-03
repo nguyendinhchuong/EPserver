@@ -1,5 +1,5 @@
-const faculty = require('../controllers/outcomeStandardController');
+const outcomeStandard = require('../controllers/outcomeStandardController');
 
 module.exports = (app)=>{
-    app.route('/outcomeStandards').get(faculty.getFaculties);
+    app.route('/outcomeStandards').get(outcomeStandard.getOutcomeStandards);
 }
