@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
-
+app.use(cors());
 
 const routesOutcomes = require('./routes/outcomeStandardRoute');
 const routesPrograms = require('./routes/programRoute');

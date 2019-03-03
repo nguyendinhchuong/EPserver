@@ -6,7 +6,7 @@ exports.load = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: '0965528621',
+            password: '',
             database: 'cdio'            
         });
         cn.connect();
@@ -31,7 +31,7 @@ exports.save = sql => {
             port: 3306,
             user: 'root',
             password: '',
-            database: 'educationprogram'
+            database: 'cdio'
         });
 
         cn.connect();
