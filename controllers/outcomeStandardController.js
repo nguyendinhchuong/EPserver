@@ -1,8 +1,7 @@
-const outcomeStandard = require('../service/programService');
+const faculty = require('../service/outcomeStandard');
 
-exports.getAllOutcomeStandard = (req, res) => {
-    outcomeStandard.loadAll().then(data => {
-        console.log(data);
+exports.getFaculties = (_, res) => {
+    faculty.getFaculties().then(data => {
         res.send(data);
-    })
+    });
 }

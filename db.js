@@ -1,13 +1,14 @@
 const mysql = require('mysql');
+const dbConfig = require('./config/dbConfig');
 
 exports.load = sql => {
     return new Promise((resolve, reject) => {
         const cn = mysql.createConnection({
-            host: 'localhost',
-            port: 3306,
-            user: 'root',
-            password: '0965528621',
-            database: 'cdio'            
+            host: dbConfig.host,
+            port: dbConfig.port,
+            user: dbConfig.user,
+            password: dbConfig.password,
+            database: dbConfig.database    
         });
         cn.connect();
 
@@ -27,11 +28,11 @@ exports.load = sql => {
 exports.save = sql => {
     return new Promise((resolve, reject) => {
         const cn = mysql.createConnection({
-            host: 'localhost',
-            port: 3306,
-            user: 'root',
-            password: '',
-            database: 'educationprogram'
+            host: dbConfig.host,
+            port: dbConfig.port,
+            user: dbConfig.user,
+            password: dbConfig.password,
+            database: dbConfig.database  
         });
 
         cn.connect();

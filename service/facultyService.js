@@ -1,5 +1,5 @@
 const db = require('../db');
-const nameTable = require('./nameModel');
+const nameTable = require('../config/nameTable');
 
 exports.getFaculties = () =>{
     const sql = `select * from ${nameTable.Faculty}`;  

@@ -1,5 +1,5 @@
 const db = require('../db');
-const nameTable = require('./nameModel');
+const nameTable = require('../config/nameTable');
 
 exports.getPrograms = () =>{
     const sql = `select * from ${nameTable.Program}`;  
