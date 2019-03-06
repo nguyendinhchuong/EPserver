@@ -1,7 +1,2 @@
-const faculty = require('../service/facultyService');
+const faculty = require('../db/model/faculty');
 
-exports.getFaculties = (_, res) => {
-    faculty.getFaculties().then(data => {
-        res.send(data);
-    })
-}
