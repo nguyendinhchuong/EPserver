@@ -36,6 +36,34 @@ insert into cdio.outcomestandard(IdProgramFaculty) values(3);
 insert into cdio.outcomestandard(IdProgramFaculty) values(4);
 insert into cdio.outcomestandard(IdProgramFaculty) values(5);
 
+
+/* insert list item of outcomeStandard */
+insert into cdio.listoutcomestandard
+	(IdOutCome, KeyOutComeStandard, NameOutComeStandard)
+	VALUES 
+    (1,'1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT'),
+    (1,'1-1--','Kiến thức nền tảng về Khoa học'),
+    (1,'1-1-1-','Khối kiến thức về Toán'),
+    (1,'1-1-1-1', 'Kiến thức về Giải tích'),
+	(1,'1-1-1-2', 'Kiến thức Đại số'),
+	(1,'1-1-1-3', 'Kiến thức về Toán rời rạc'),
+	(1,'1-1-1-4', 'Kiến thức về Xác suất thống kê'),
+	(1,'1-1-2-', 'Khối kiến thức về Vật lý'),
+	(1,'1-1-2-1', 'Kiến thức Vật lý đại cương'),
+	(1,'1-1-2-2', 'Kiến thức thực hành vật lý'),
+	(1,'1-1-3', 'Khối kiến thức về điện - điện tử'),
+	(1,'1-1-3-1', 'Kiến thức về mạch số'),
+	(1,'1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử'),
+	(1,'1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT'),
+	(1,'1-2-1-', 'Khối kiến thức về lập trình '),
+	(1,'1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)'),
+	(1,'1-2-1-2', 'Các kỹ thuật lập trình'),
+	(1,'1-2-1-3', 'Kiến thức về lập trình hướng đối tượng'),
+	(1,'1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)');
+
+
+
+
 select * from cdio.outcomestandard;
 
 
