@@ -6,19 +6,20 @@ const bodyParser = require('body-parser');
 app.use(cors());
 app.use(bodyParser.json({ type: 'application/json' }));
 
-const routesOutcomes = require('./routes/outcomeStandardRoute');
 const routesPrograms = require('./routes/programRoute');
 const routesFaculties = require('./routes/facultyRoute');
-const routesListOutcome = require('./routes/listOutcomeStandardRoute');
-const routesProgramFaculty = require('./routes/programFacultyRoute');
-
+const routesOutcomes = require('./routes/outcomeStandardRoute');
+const routesDetailOutcomes = require('./routes/detailOutcomeStandardRoute');
+const routesRevisions = require('./routes/revisionRoute');
+const routesDetailRevisions = require('./routes/detailRevisionRoute');
 
 routesPrograms(app);
 routesFaculties(app);
 routesOutcomes(app);
-routesProgramFaculty(app);
-routesListOutcome(app);
+routesDetailOutcomes(app);
+routesRevisions(app);
+routesDetailRevisions(app);
 
-app.listen(3001,() => {
+app.listen(3001, () => {
     console.log('Node server running @ http://localhost:3001')
 });
