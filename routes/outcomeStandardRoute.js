@@ -1,7 +1,10 @@
 const outcomeStandard = require('../controllers/outcomeStandardController');
 
 module.exports = (app) => {
+    // tải thông tin của các chuẩn đầu ra trả về []
     app.route('/getOutcomeStandards/').get();
+    // tải thông tin chuẩn đầu ra với id
+    app.route('/getOutcomeStandards/:id').get();
     // xóa nên làm sau cùng (vì xóa chuẩn đầu ra này là phải xóa các phiên bản của nó)
     app.route('/deleteOutcomeStandard/:id').post();
     // thêm chuẩn đầu ra cần có tên chuẩn đầu ra, idFaculty, idProgram
