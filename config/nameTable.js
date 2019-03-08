@@ -1,7 +1,8 @@
-module.exports =  {
+module.exports = {
     'Program': 'cdio.program',
     'Faculty': 'cdio.faculty',
-    'ProgramFaculty': 'cdio.programfaculty',
-    'OutcomeStandard':'cdio.outcomestandard',
-    'ListOutcomeStandard':'cdio.listoutcomestandard'
+    'OutcomeStandard': 'cdio.outcomestandard',
+    'DetailOutcomeStandard': 'cdio.detailoutcomestandard',
+    'Revision': 'cdio.revision',
+    'DetailRevision': 'cdio.detailrevision',
 }

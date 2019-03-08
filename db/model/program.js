@@ -15,9 +15,16 @@ const program = db.sequelize.define('program', {
 
 
 exports.getProgram = () => {
-    db.sequelize.authenticate()
-        .then(() => {
-            db.sequelize.query("select * from program",{model: program})
-                .then(program => { console.log(JSON.stringify(program)) })
-        });
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.sequelize.query("select * from program",{model: program})
+                    .then(program => { 
+                        resolve(JSON.stringify(program)) 
+                    })
+            })
+            .catch(err=>{
+                reject(err);
+            })
+    })
 }

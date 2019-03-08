@@ -1,7 +1,7 @@
 var db = require('../../models/index');
 
 
-const outcomstandard = db.sequelize.define('outcomestandard', {
+const outcomestandard = db.sequelize.define('outcomestandard', {
     Id: {
         type: db.Sequelize.INTEGER,
         allowNull: false,
@@ -16,8 +16,16 @@ const outcomstandard = db.sequelize.define('outcomestandard', {
         type: db.Sequelize.INTEGER,
         allowNull: false
     },
-    Name: {
+    IdUser: {
+        type: db.Sequelize.INTEGER,
+        allowNull: false
+    },
+    NameOutcomeStandard: {
         type: db.Sequelize.STRING,
+        allowNull: false
+    },
+    SchoolYear: {
+        type: db.Sequelize.DATE,
         allowNull: false
     },
     createdAt: {
@@ -30,30 +38,33 @@ const outcomstandard = db.sequelize.define('outcomestandard', {
 
 
 exports.getOS = () => {
-    db.sequelize.authenticate()
-        .then(() => {
-            return new Promise((resolve, reject) => {
-                db.sequelize.query("select * from outcome_standard", { model: outcomstandard })
-                    .then(outcomstandard => {
-                        resolve(JSON.stringify(outcomstandard));
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.sequelize.query("select * from outcomestandard", { model: outcomestandard })
+                    .then(outcomestandard => {
+                        resolve(JSON.stringify(outcomestandard));
                     })
                     .catch(err => {
                         reject(err);
                     })
             })
+    })
 
-        })
 }
 exports.addOS = (data) => {
-    db.sequelize.authenticate()
-        .then(() => {
-            return new Promise((resolve, reject) => {
-                let os = outcomstandard.build({
-                    // IdFaculty: data.IdFaculty,
-                    // IdProgram: data.IdProgram,
-                    Name: data.Name
-                    // createdAt: data.createdAt,
-                    // updatedAt: data.updatedAt
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+
+                let os = outcomestandard.build({
+                    IdFaculty: data.IdFaculty,
+                    IdProgram: data.IdProgram,
+                    IdUser:data.IdUser,
+                    NameOutcomeStandard: data.NameOutcomeStandard,
+                    SchoolYear: data.SchoolYear,
+                    createdAt: data.createdAt,
+                    updatedAt: data.updatedAt
                 });
                 os.save(() => {
                     console.log("save success")
@@ -63,8 +74,10 @@ exports.addOS = (data) => {
                     })
                 });
             })
+            .catch(err => {
+                reject(err);
+            })
+    })
 
-        })
-        .catch(err => { throw err; })
 
 }

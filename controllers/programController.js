@@ -1,7 +1,9 @@
-const program = require('../service/programService');
+const program = require('../db/model/program');
 
-exports.getPrograms = (_, res) => {
-    program.getPrograms().then(data => {
-        res.send(data);
+exports.getProgram = (req, res) => {
+    program.getProgram().then(data => {
+        let response = {};
+        response.data = data;
+        res.send(JSON.stringify(response));
     })
 }

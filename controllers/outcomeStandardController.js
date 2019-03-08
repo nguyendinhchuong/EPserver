@@ -1,14 +1,19 @@
 const outcomeStandard = require('../db/model/outcomestandard');
 
 
-exports.getOutcomeStandards = (req, res) => {
+exports.getOutcomeStandard = (req, res) => {
     outcomeStandard.getOS().then(data => {
-        res.send(data);
+        let response = {};
+        response.data = data;
+        res.send(JSON.stringify(response));
     });
 }
 exports.addOutcomeStandard = (req, res) =>{
     let body = req.query;
-    outcomeStandard.addOutcomeStandard(body).then(mess =>{
-        res.send(mess);
-    })
+    let response = {};
+    response.data = body;
+    res.send(JSON.stringify(response));    
+    // outcomeStandard.addOutcomeStandard(body).then(mess =>{
+    //     res.send(mess);
+    // })
 }

@@ -1,6 +1,5 @@
 const faculty = require('../controllers/facultyController');
 
 module.exports = (app) => {
-    app.route('/faculties')
-        .get(faculty.getFaculties)
+    app.route('/getfaculty').get(faculty.getFaculty);
 }

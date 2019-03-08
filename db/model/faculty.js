@@ -15,9 +15,17 @@ const faculty = db.sequelize.define('faculty', {
 
 
 exports.getFaculty = () => {
-    db.sequelize.authenticate()
-        .then(() => {
-            db.sequelize.query("select * from faculty",{model: faculty})
-                .then(faculty => { console.log(JSON.stringify(faculty)) })
-        });
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.sequelize.query("select * from faculty", { model: faculty })
+                    .then(faculty => { 
+                        resolve(JSON.stringify(faculty)) 
+                    })
+            })
+            .catch(err=>{
+                reject(err);
+            })
+    })
+
 }
