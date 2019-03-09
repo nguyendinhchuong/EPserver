@@ -16,6 +16,17 @@ exports.getOS = () => {
       })
   })
 }
+exports.getOSInfo = () => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.authenticate()
+      .then(() => {
+        db.outcomestandard.findAll()
+          .then(info=>{
+            resolve(info);
+          })
+      })
+  })
+}
 exports.addOS = (data) => {
   return new Promise((resolve, reject) => {
     db.sequelize.authenticate()

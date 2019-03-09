@@ -4,6 +4,7 @@ module.exports = (app) => {
 
     // tải thông tin của các chuẩn đầu ra trả về []
     app.route('/getoutcomestandard').get(outcomeStandard.getOutcomeStandard);
+    app.route('/getoutcomestandardinfo').get(outcomeStandard.getOutcomeStandardInfo);
     // tải thông tin chuẩn đầu ra với id
     app.route('/getOutcomeStandards/:id').get();
     // xóa nên làm sau cùng (vì xóa chuẩn đầu ra này là phải xóa các phiên bản của nó)

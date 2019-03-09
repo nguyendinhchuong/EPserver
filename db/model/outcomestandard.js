@@ -33,7 +33,8 @@ module.exports = (sequelize, Sequelize) => {
         DateUpdated: {
             type: Sequelize.DATE
         },
-        underscore: false
+        underscore: false,
+        tableName: "outcomestandard"
     })
     return outcomestandard;
 }

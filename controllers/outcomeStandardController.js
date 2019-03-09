@@ -8,6 +8,11 @@ exports.getOutcomeStandard = (req, res) => {
         res.send(JSON.stringify(response));
     });
 }
+exports.getOutcomeStandardInfo=(req, res)=>{
+    outcomeStandard.getOSInfo().then(data=>{
+        console.log(data);
+    })
+}
 exports.addOutcomeStandard = (req, res) =>{
     let body = req.query;    
     console.log(body);

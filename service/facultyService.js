@@ -1,7 +1,17 @@
-const db = require('../db');
-const nameTable = require('../config/nameTable');
+const db = require('../models/index');
 
-exports.getFaculties = () =>{
-    const sql = `select * from ${nameTable.Faculty}`;  
-    return db.load(sql);
+
+exports.getFaculty = () => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.sequelize.query("select * from faculty", { model: db.faculty })
+                    .then(faculty => {
+                        resolve(faculty)
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
 }

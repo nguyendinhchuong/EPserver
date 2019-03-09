@@ -16,8 +16,8 @@ const routesOutcomes = require('./routes/outcomeStandardRoute');
 // const routesDetailRevisions = require('./routes/detailRevisionRoute');
 
 
-// routesPrograms(app);
-// routesFaculties(app);
+routesPrograms(app);
+routesFaculties(app);
 routesOutcomes(app);
 // routesDetailOutcomes(app);
 // routesRevisions(app);

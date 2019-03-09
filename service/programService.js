@@ -1,7 +1,31 @@
-const db = require('../db');
-const nameTable = require('../config/nameTable');
+const db = require('../models/index');
 
-exports.getPrograms = () =>{
-    const sql = `select * from ${nameTable.Program}`;  
-    return db.load(sql);
+exports.getProgram = () => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.sequelize.query("select * from program", { model: db.program })
+                    .then(program => {
+                        resolve(program)
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+exports.getProgramInfo = () => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.program.findAll()
+                    .then(info=>{
+                        resolve(info);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
 }

@@ -12,6 +12,10 @@ module.exports = (sequelize, Sequelize)=>{
             type: Sequelize.STRING,
             allowNull: false
         }
+        
+    },{
+        freezeTableName: true,
+        timestamps: false
     })
     return program;
 }
@@ -19,17 +23,3 @@ module.exports = (sequelize, Sequelize)=>{
 
 
 
-// exports.getProgram = () => {
-//     return new Promise((resolve, reject) => {
-//         db.sequelize.authenticate()
-//             .then(() => {
-//                 db.sequelize.query("select * from program",{model: program})
-//                     .then(program => { 
-//                         resolve(JSON.stringify(program)) 
-//                     })
-//             })
-//             .catch(err=>{
-//                 reject(err);
-//             })
-//     })
-// }
