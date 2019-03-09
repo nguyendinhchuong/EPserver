@@ -1,4 +1,4 @@
-DROP DATABASE [IF EXISTS] cdio;
+DROP DATABASE IF EXISTS cdio;
 
 CREATE DATABASE cdio;
 
@@ -31,7 +31,7 @@ CREATE TABLE `DetailOutcomeStandard` (
 	`Id` INT NOT NULL AUTO_INCREMENT,
 	`IdOutcomeStandard` INT NOT NULL,
 	`KeyRow` VARCHAR(63) NOT NULL,
-	`NameRow` VARCHAR(255) NOT NULL,
+	`NameRow` NVARCHAR(255) NOT NULL,
 	PRIMARY KEY (`Id`)
 );
 

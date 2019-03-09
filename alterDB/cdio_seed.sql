@@ -18,333 +18,328 @@ insert into cdio.User(NameUser, Password) value ('admin', 'admin');
 insert into cdio.User(NameUser, Password) value ('giao vu', 'giaovu');
 
 /*insert outcomestandard*/
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCareated,DateEdited) values('cntt2-15',1,1,1,'2015','2019/3/2','2019/3/2');
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCareated,DateEdited) values('cntt2-16',1,2,1,'2016','2019/3/2','2019/3/2');
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCareated,DateEdited) values('cntt2-17',2,3,1,'2017','2019/3/2','2019/3/2');
+insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCreated,DateEdited) values('cntt2-15',1,1,1,'2015','2019/3/2','2019/3/2');
+insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCreated,DateEdited) values('cntt2-16',1,2,1,'2016','2019/3/2','2019/3/2');
+insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCreated,DateEdited) values('cntt2-17',2,3,1,'2017','2019/3/2','2019/3/2');
 
 /*insert revision*/
 insert into  cdio.Revision(NameRevision,IdUser,IdOutcomeStandard,DateUpdated) values('cntt2-15 ver 1',1,1,'2019/3/2 7:00');
 insert into  cdio.Revision(NameRevision,IdUser,IdOutcomeStandard,DateUpdated) values('cntt2-15 ver 2',2,1,'2019/3/3 7:00');
 
 /*insert detailoutcomestandard*/
-insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) value
-(1, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT'),
-​​(1, '1-1--', 'Kiến thức nền tảng về Khoa học'),
-​​(1, '1-1-1-','Khối kiến thức về Toán'),
-​​(1, '1-1-1-1', 'Kiến thức về Giải tích'),
-(1, '1-1-1-2', 'Kiến thức Đại số'),
-(1, '1-1-1-3', 'Kiến thức về Toán rời rạc'),
-(1, '1-1-1-4', 'Kiến thức về Xác suất thống kê'),
-(1, '1-1-2-', 'Khối kiến thức về Vật lý'),
-(1, '1-1-2-1', 'Kiến thức Vật lý đại cương'),
-(1, '1-1-2-2', 'Kiến thức thực hành vật lý'),
-(1, '1-1-3-', 'Khối kiến thức về điện - điện tử'),
-(1, '1-1-3-1', 'Kiến thức về mạch số'),
-(1, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử'),
-(1, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT'),
-(1, '1-2-1-', 'Khối kiến thức về lập trình '),
-(1, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)'),
-(1, '1-2-1-2', 'Các kỹ thuật lập trình'),
-(1, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng'),
-(1, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)'),
-(1, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT'),
-(1, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT'),
-(1, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)'),
-(1, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT'),
-(1, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật'),
-(1, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)'),
-(1, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)'),
-(1, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file'),
-(1, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…'),
-(1, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán'),
-(1, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể'),
-(1, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…'),
-(1, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính'),
-(1, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành'),
-(1, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay'),
-(1, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành'),
-(1, '1-3-3-', 'Khối kiến thức kiến trúc máy tính'),
-​​(1, '1-3-3-1', 'Biết được các thành phần của máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1--', 'Kiến thức nền tảng về Khoa học');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-1-','Khối kiến thức về Toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-1-1', 'Kiến thức về Giải tích');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-1-2', 'Kiến thức Đại số');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-1-3', 'Kiến thức về Toán rời rạc');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-1-4', 'Kiến thức về Xác suất thống kê');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-2-', 'Khối kiến thức về Vật lý');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-2-1', 'Kiến thức Vật lý đại cương');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-2-2', 'Kiến thức thực hành vật lý');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-3-', 'Khối kiến thức về điện - điện tử');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-3-1', 'Kiến thức về mạch số');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-1-', 'Khối kiến thức về lập trình ');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-1-2', 'Các kỹ thuật lập trình');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-3-', 'Khối kiến thức kiến trúc máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1-3-3-1', 'Biết được các thành phần của máy tính');
 
-insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) value
-(2, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT 2'),
-​​(2, '1-1--', 'Kiến thức nền tảng về Khoa học 2'),
-​​(2, '1-1-1-','Khối kiến thức về Toán 2'),
-​​(2, '1-1-1-1', 'Kiến thức về Giải tích 2'),
-(2, '1-1-1-2', 'Kiến thức Đại số 2'),
-(2, '1-1-1-3', 'Kiến thức về Toán rời rạc 2'),
-(2, '1-1-1-4', 'Kiến thức về Xác suất thống kê 2'),
-(2, '1-1-2-', 'Khối kiến thức về Vật lý 2'),
-(2, '1-1-2-1', 'Kiến thức Vật lý đại cương 2'),
-(2, '1-1-2-2', 'Kiến thức thực hành vật lý 2'),
-(2, '1-1-3-', 'Khối kiến thức về điện - điện tử 2'),
-(2, '1-1-3-1', 'Kiến thức về mạch số 2'),
-(2, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử 2'),
-(2, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT 2'),
-(2, '1-2-1-', 'Khối kiến thức về lập trình  2'),
-(2, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn) 2'),
-(2, '1-2-1-2', 'Các kỹ thuật lập trình 2'),
-(2, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng 2'),
-(2, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…) 2'),
-(2, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT 2'),
-(2, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT 2'),
-(2, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot) 2'),
-(2, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT 2'),
-(2, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật 2'),
-(2, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…) 2'),
-(2, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...) 2'),
-(2, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file 2'),
-(2, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động… 2'),
-(2, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán 2'),
-(2, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể 2'),
-(2, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo… 2'),
-(2, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính 2'),
-(2, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành 2'),
-(2, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay 2'),
-(2, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành 2'),
-(2, '1-3-3-', 'Khối kiến thức kiến trúc máy tính 2'),
-​​(2, '1-3-3-1', 'Biết được các thành phần của máy tính 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1--', 'Kiến thức nền tảng về Khoa học 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-1-','Khối kiến thức về Toán 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-1-1', 'Kiến thức về Giải tích 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-1-2', 'Kiến thức Đại số 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-1-3', 'Kiến thức về Toán rời rạc 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-1-4', 'Kiến thức về Xác suất thống kê 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-2-', 'Khối kiến thức về Vật lý 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-2-1', 'Kiến thức Vật lý đại cương 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-2-2', 'Kiến thức thực hành vật lý 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-3-', 'Khối kiến thức về điện - điện tử 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-3-1', 'Kiến thức về mạch số 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-1-', 'Khối kiến thức về lập trình  2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn) 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-1-2', 'Các kỹ thuật lập trình 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…) 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot) 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…) 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...) 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động… 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo… 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-3-', 'Khối kiến thức kiến trúc máy tính 2');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(2, '1-3-3-1', 'Biết được các thành phần của máy tính 2');
 
-insert into cdio.detailtOutComeStandard(IdOutcomeStandard, KeyRow, NameRow) value
-(3, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT'),
-​​(3, '1-1--', 'Kiến thức nền tảng về Khoa học'),
-​​(3, '1-1-1-','Khối kiến thức về Toán'),
-​​(3, '1-1-1-1', 'Kiến thức về Giải tích'),
-(3, '1-1-1-2', 'Kiến thức Đại số'),
-(3, '1-1-1-3', 'Kiến thức về Toán rời rạc'),
-(3, '1-1-1-4', 'Kiến thức về Xác suất thống kê'),
-(3, '1-1-2-', 'Khối kiến thức về Vật lý'),
-(3, '1-1-2-1', 'Kiến thức Vật lý đại cương'),
-(3, '1-1-2-2', 'Kiến thức thực hành vật lý'),
-(3, '1-1-3-', 'Khối kiến thức về điện - điện tử'),
-(3, '1-1-3-1', 'Kiến thức về mạch số'),
-(3, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử'),
-(3, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT'),
-(3, '1-2-1-', 'Khối kiến thức về lập trình '),
-(3, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)'),
-(3, '1-2-1-2', 'Các kỹ thuật lập trình'),
-(3, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng'),
-(3, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)'),
-(3, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT'),
-(3, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT'),
-(3, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)'),
-(3, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT'),
-(3, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật'),
-(3, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)'),
-(3, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)'),
-(3, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file'),
-(3, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…'),
-(3, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán'),
-(3, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể'),
-(3, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…'),
-(3, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính'),
-(3, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành'),
-(3, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay'),
-(3, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành'),
-(3, '1-3-3-', 'Khối kiến thức kiến trúc máy tính'),
-​​(3, '1-3-3-1', 'Biết được các thành phần của máy tính'),
-​​(3, '1-3-3-2', 'Biết được lịch sử ra đời và quá trình phát triển của máy tính'),
-​​(3, '1-3-3-3', 'Hiểu được một số giao tiếp và tương tác giữa các thành phần chính trong máy tính'),
-​​(3, '1-3-3-4', 'Biết được cách vận hành và hoạt động của các thành phần chính trong máy tính'),
-​​(3, '1-3-4-', 'Khối kiến thức mạng máy tính'),
-​​(3, '1-3-4-1', 'Hiểu được các loại kết nối khác nhau để liên kết các máy tính (có dây, không dây...)'),
-​​(3, '1-3-4-2', 'Hiểu được các phương thức giao tiếp và ưu nhược điểm của chúng'),
-​​(3, '1-3-4-3', 'Có kiến thức về các mô hình mạng khác nhau'),
-​​(3, '1-3-4-4', 'Có kiến thức cơ bản về các thiết bị phần cứng dành cho mạng'),
-​​(3, '1-3-4-5', 'Có khả năng cấu hình và thiết lập một số mạng đơn giản'),
-​​(3, '1-3-5-', 'Khối kiến thức cơ sở dữ liệu'),
-​​(3, '1-3-5-1', 'Hiểu các mô hình cơ sở dữ liệu cơ bản'),
-​​(3, '1-3-5-2', 'Có khả năng sử dụng một số hệ QTCSDL phổ biến để xây dựng CSDL'),
-​​(3, '1-3-5-3', 'Có khả năng xây dựng một mô hình CSDL cho một bài toán thực tế đơn giản'),
-​​(3, '1-3-5-4', 'Có khả năng viết được các dòng lệnh truy vấn CSDL đơn giản bằng SQL'),
-​​(3, '1-3-6-', 'Các kiến thức nâng cao của từng chuyên ngành \n(xác định riêng cho từng ngành)'),
-​​(3, '1-3-6-1', 'Kiến thức nâng cao ngành Khoa học máy tính (KHMT+CNTT+TGMT&Robot)'),
-​​(3, '1-3-6-2', 'Kiến thức nâng cao ngành Công nghệ phần mềm'),
-​​(3, '1-3-6-3', 'Kiến thức nâng cao ngành Hệ thống thông tin'),
-​​(3, '1-3-6-4', 'Kiến thức nâng cao ngành Mạng máy tính và truyền thông'),
-​​(3, '2---', 'KỸ NĂNG CÁ NHÂN VÀ NGHỀ NGHIỆP VÀ CÁC TỐ CHẤT'),
-​​(3, '2-1--', 'Suy luận có phân tích và giải quyết vấn đề'),
-​​(3, '2-1-1-', 'Xác định và hình thành vấn đề'),
-​​(3, '2-1-1-1', '   Có khả năng xác định vấn đề'),
-​​(3, '2-1-1-2', 'Có khả năng phân tích các giả định của vấn đề'),
-​​(3, '2-1-1-3', 'Có khả năng phát biểu bài toán dựa trên dữ liệu và quan sát'),
-​​(3, '2-1-1-4', 'Hiểu cách hình thành kế hoạch tổng thể để giải quyết bài toán '),
-​​(3, '2-1-2-', 'Mô hình hóa và phân tích'),
-​​(3, '2-1-2-1', 'Có khả năng sử dụng giả thiết để đơn giản hóa bài toán'),
-​​(3, '2-1-2-2', 'Biết các loại mô hình khác nhau để mô hình hóa bài toán'),
-​​(3, '2-1-2-3', 'Có khả năng xây dựng các mô hình từ các yêu cầu của bài toán'),
-​​(3, '2-1-2-4', 'Có khả năng chọn loại mô hình phù hợp để mô hình hóa bài toán'),
-​​(3, '2-1-2-5', 'Có khả năng phân tích để làm rõ các yêu cầu bài toán'),
-​​(3, '2-1-3-', 'Suy luận & giải quyết'),
-​​(3, '2-1-3-1', 'Có kỹ năng suy luận trên bài toán'),
-​​(3, '2-1-3-2', 'Có khả năng xây dựng các bước để giải quyết bài toán'),
-​​(3, '2-1-3-3', 'Có khả năng tổng kết các bước suy luận'),
-​​(3, '2-1-3-4', 'Có khả năng phân tích và đánh giá các giải pháp/giải thuật để tìm ra \ngiải thuật thích hợp hoặc hình thành giải thuật mới cho bài toán'),
-​​(3, '2-1-3-5', 'Có khả năng hình thành giải pháp/giải thuật để giải quyết bài toán'),
-​​(3, '2-1-4-', 'Đánh giá giải pháp và đề xuất'),
-​​(3, '2-1-4-1', 'Có khả năng phân tích tính đúng đắn và độ phức tạp của giải pháp/giải thuật'),
-​​(3, '2-1-4-2', 'Có khả năng phân tích, đánh giá kết quả đầu ra '),
-​​(3, '2-1-4-3', 'Có khả năng phân tích ưu, khuyết điểm của giải pháp và đề xuất cải tiến'),
-​​(3, '2-1-4-4', 'Nhận ra được các vấn đề bất thường của kết quả và có khả năng phân tích & hiểu được lý do'),
-​​(3, '2-2--', 'Thực nghiệm, điều tra và khám phá tri thức'),
-​​(3, '2-2-1-', 'Hình thành giả thuyết'),
-​​(3, '2-2-1-1', 'Có khả năng liệt kê và lựa chọn các giả thuyết phù hợp để kiểm chứng '),
-​​(3, '2-2-1-2', 'Có khả năng đặt câu hỏi mang tính phản biện'),
-​​(3, '2-2-1-3', 'Có khả năng xác định các bên liên quan đến giả thuyết'),
-​​(3, '2-2-2-', 'Khảo sát trên tài liệu'),
-​​(3, '2-2-2-1', 'Hiểu các chiến lược và biết cách chọn chiến lược nghiên cứu tài liệu phù hợp'),
-​​(3, '2-2-2-2', 'Biết cách tra cứu tài liệu bằng công cụ tìm kiếm, trong thư viện.'),
-​​(3, '2-2-2-3', 'Biết cách tra sắp xếp và phân loại thông tin'),
-​​(3, '2-2-2-4', 'Biết cách đánh giá độ tin cậy của thông tin'),
-​​(3, '2-2-2-5', 'Có khả năng xác định các vấn đề nghiên cứu còn tồn đọng'),
-​​(3, '2-2-2-6', 'Biết cách liệt kê trích dẫn về tài liệu tham khảo'),
-​​(3, '2-2-3-', 'Khảo sát trên thực tế'),
-​​(3, '2-2-3-1', 'Hiểu các phương pháp thực hiện khảo sát thực tế'),
-​​(3, '2-2-3-2', 'Hiểu các chiến thuật để hình thành bài khảo sát'),
-​​(3, '2-2-3-3', 'Có khả năng vận dụng các công cụ máy tính để thực hiện khảo sát'),
-​​(3, '2-2-3-4', 'Có khả năng tiến hành khảo sát trên nhiều nhóm khác nhau'),
-​​(3, '2-2-4-', 'Kiểm chứng và bảo vệ giả thuyết'),
-​​(3, '2-2-4-1', 'Có khả năng đưa ra các kết luận, quyết định từ kết quả khảo sát'),
-​​(3, '2-2-4-2', 'Có khả năng xác định các ưu, khuyết điểm của cuộc khảo sát');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1--', 'Kiến thức nền tảng về Khoa học');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-1-','Khối kiến thức về Toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-1-1', 'Kiến thức về Giải tích');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-1-2', 'Kiến thức Đại số');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-1-3', 'Kiến thức về Toán rời rạc');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-1-4', 'Kiến thức về Xác suất thống kê');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-2-', 'Khối kiến thức về Vật lý');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-2-1', 'Kiến thức Vật lý đại cương');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-2-2', 'Kiến thức thực hành vật lý');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-3-', 'Khối kiến thức về điện - điện tử');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-3-1', 'Kiến thức về mạch số');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-1-', 'Khối kiến thức về lập trình ');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-1-2', 'Các kỹ thuật lập trình');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-3-', 'Khối kiến thức kiến trúc máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-3-1', 'Biết được các thành phần của máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-3-2', 'Biết được lịch sử ra đời và quá trình phát triển của máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-3-3', 'Hiểu được một số giao tiếp và tương tác giữa các thành phần chính trong máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-3-4', 'Biết được cách vận hành và hoạt động của các thành phần chính trong máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-4-', 'Khối kiến thức mạng máy tính');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-4-1', 'Hiểu được các loại kết nối khác nhau để liên kết các máy tính (có dây, không dây...)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-4-2', 'Hiểu được các phương thức giao tiếp và ưu nhược điểm của chúng');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-4-3', 'Có kiến thức về các mô hình mạng khác nhau');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-4-4', 'Có kiến thức cơ bản về các thiết bị phần cứng dành cho mạng');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-4-5', 'Có khả năng cấu hình và thiết lập một số mạng đơn giản');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-5-', 'Khối kiến thức cơ sở dữ liệu');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-5-1', 'Hiểu các mô hình cơ sở dữ liệu cơ bản');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-5-2', 'Có khả năng sử dụng một số hệ QTCSDL phổ biến để xây dựng CSDL');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-5-3', 'Có khả năng xây dựng một mô hình CSDL cho một bài toán thực tế đơn giản');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-5-4', 'Có khả năng viết được các dòng lệnh truy vấn CSDL đơn giản bằng SQL');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-6-', 'Các kiến thức nâng cao của từng chuyên ngành \n(xác định riêng cho từng ngành)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-6-1', 'Kiến thức nâng cao ngành Khoa học máy tính (KHMT+CNTT+TGMT&Robot)');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-6-2', 'Kiến thức nâng cao ngành Công nghệ phần mềm');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-6-3', 'Kiến thức nâng cao ngành Hệ thống thông tin');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '1-3-6-4', 'Kiến thức nâng cao ngành Mạng máy tính và truyền thông');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2---', 'KỸ NĂNG CÁ NHÂN VÀ NGHỀ NGHIỆP VÀ CÁC TỐ CHẤT');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1--', 'Suy luận có phân tích và giải quyết vấn đề');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-1-', 'Xác định và hình thành vấn đề');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-1-1', '   Có khả năng xác định vấn đề');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-1-2', 'Có khả năng phân tích các giả định của vấn đề');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-1-3', 'Có khả năng phát biểu bài toán dựa trên dữ liệu và quan sát');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-1-4', 'Hiểu cách hình thành kế hoạch tổng thể để giải quyết bài toán ');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-2-', 'Mô hình hóa và phân tích');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-2-1', 'Có khả năng sử dụng giả thiết để đơn giản hóa bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-2-2', 'Biết các loại mô hình khác nhau để mô hình hóa bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-2-3', 'Có khả năng xây dựng các mô hình từ các yêu cầu của bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-2-4', 'Có khả năng chọn loại mô hình phù hợp để mô hình hóa bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-2-5', 'Có khả năng phân tích để làm rõ các yêu cầu bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-3-', 'Suy luận & giải quyết');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-3-1', 'Có kỹ năng suy luận trên bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-3-2', 'Có khả năng xây dựng các bước để giải quyết bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-3-3', 'Có khả năng tổng kết các bước suy luận');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-3-4', 'Có khả năng phân tích và đánh giá các giải pháp/giải thuật để tìm ra \ngiải thuật thích hợp hoặc hình thành giải thuật mới cho bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-3-5', 'Có khả năng hình thành giải pháp/giải thuật để giải quyết bài toán');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-4-', 'Đánh giá giải pháp và đề xuất');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-4-1', 'Có khả năng phân tích tính đúng đắn và độ phức tạp của giải pháp/giải thuật');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-4-2', 'Có khả năng phân tích, đánh giá kết quả đầu ra ');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-4-3', 'Có khả năng phân tích ưu, khuyết điểm của giải pháp và đề xuất cải tiến');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-1-4-4', 'Nhận ra được các vấn đề bất thường của kết quả và có khả năng phân tích & hiểu được lý do');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2--', 'Thực nghiệm, điều tra và khám phá tri thức');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-1-', 'Hình thành giả thuyết');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-1-1', 'Có khả năng liệt kê và lựa chọn các giả thuyết phù hợp để kiểm chứng ');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-1-2', 'Có khả năng đặt câu hỏi mang tính phản biện');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-1-3', 'Có khả năng xác định các bên liên quan đến giả thuyết');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-2-', 'Khảo sát trên tài liệu');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-2-1', 'Hiểu các chiến lược và biết cách chọn chiến lược nghiên cứu tài liệu phù hợp');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-2-2', 'Biết cách tra cứu tài liệu bằng công cụ tìm kiếm, trong thư viện.');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-2-3', 'Biết cách tra sắp xếp và phân loại thông tin');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-2-4', 'Biết cách đánh giá độ tin cậy của thông tin');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-2-5', 'Có khả năng xác định các vấn đề nghiên cứu còn tồn đọng');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-2-6', 'Biết cách liệt kê trích dẫn về tài liệu tham khảo');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-3-', 'Khảo sát trên thực tế');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-3-1', 'Hiểu các phương pháp thực hiện khảo sát thực tế');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-3-2', 'Hiểu các chiến thuật để hình thành bài khảo sát');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-3-3', 'Có khả năng vận dụng các công cụ máy tính để thực hiện khảo sát');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-3-4', 'Có khả năng tiến hành khảo sát trên nhiều nhóm khác nhau');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-4-', 'Kiểm chứng và bảo vệ giả thuyết');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-4-1', 'Có khả năng đưa ra các kết luận, quyết định từ kết quả khảo sát');
+insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(3, '2-2-4-2', 'Có khả năng xác định các ưu, khuyết điểm của cuộc khảo sát');
 
 /*insert detailrevision*/
-insert into cdio.detailtRevision(IdRevision, KeyRow, NameRow) value
-(1, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT'),
-​​(1, '1-1--', 'Kiến thức nền tảng về Khoa học'),
-​​(1, '1-1-1-','Khối kiến thức về Toán'),
-​​(1, '1-1-1-1', 'Kiến thức về Giải tích'),
-(1, '1-1-1-2', 'Kiến thức Đại số'),
-(1, '1-1-1-3', 'Kiến thức về Toán rời rạc'),
-(1, '1-1-1-4', 'Kiến thức về Xác suất thống kê'),
-(1, '1-1-2-', 'Khối kiến thức về Vật lý'),
-(1, '1-1-2-1', 'Kiến thức Vật lý đại cương'),
-(1, '1-1-2-2', 'Kiến thức thực hành vật lý'),
-(1, '1-1-3-', 'Khối kiến thức về điện - điện tử'),
-(1, '1-1-3-1', 'Kiến thức về mạch số'),
-(1, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử'),
-(1, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT'),
-(1, '1-2-1-', 'Khối kiến thức về lập trình '),
-(1, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)'),
-(1, '1-2-1-2', 'Các kỹ thuật lập trình'),
-(1, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng'),
-(1, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)'),
-(1, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT'),
-(1, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT'),
-(1, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)'),
-(1, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT'),
-(1, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật'),
-(1, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)'),
-(1, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)'),
-(1, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file'),
-(1, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…'),
-(1, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán'),
-(1, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể'),
-(1, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…'),
-(1, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính'),
-(1, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành'),
-(1, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay'),
-(1, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành'),
-(1, '1-3-3-', 'Khối kiến thức kiến trúc máy tính'),
-​​(1, '1-3-3-1', 'Biết được các thành phần của máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1--', 'Kiến thức nền tảng về Khoa học');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-1-','Khối kiến thức về Toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-1-1', 'Kiến thức về Giải tích');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-1-2', 'Kiến thức Đại số');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-1-3', 'Kiến thức về Toán rời rạc');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-1-4', 'Kiến thức về Xác suất thống kê');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-2-', 'Khối kiến thức về Vật lý');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-2-1', 'Kiến thức Vật lý đại cương');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-2-2', 'Kiến thức thực hành vật lý');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-3-', 'Khối kiến thức về điện - điện tử');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-3-1', 'Kiến thức về mạch số');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-1-', 'Khối kiến thức về lập trình ');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-1-2', 'Các kỹ thuật lập trình');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-3-', 'Khối kiến thức kiến trúc máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(1, '1-3-3-1', 'Biết được các thành phần của máy tính');
 
-insert into cdio.detailtRevision(IdRevision, KeyRow, NameRow) value
-(2, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT'),
-​​(2, '1-1--', 'Kiến thức nền tảng về Khoa học'),
-​​(2, '1-1-1-','Khối kiến thức về Toán'),
-​​(2, '1-1-1-1', 'Kiến thức về Giải tích'),
-(2, '1-1-1-2', 'Kiến thức Đại số'),
-(2, '1-1-1-3', 'Kiến thức về Toán rời rạc'),
-(2, '1-1-1-4', 'Kiến thức về Xác suất thống kê'),
-(2, '1-1-2-', 'Khối kiến thức về Vật lý'),
-(2, '1-1-2-1', 'Kiến thức Vật lý đại cương'),
-(2, '1-1-2-2', 'Kiến thức thực hành vật lý'),
-(2, '1-1-3-', 'Khối kiến thức về điện - điện tử'),
-(2, '1-1-3-1', 'Kiến thức về mạch số'),
-(2, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử'),
-(2, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT'),
-(2, '1-2-1-', 'Khối kiến thức về lập trình '),
-(2, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)'),
-(2, '1-2-1-2', 'Các kỹ thuật lập trình'),
-(2, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng'),
-(2, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)'),
-(2, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT'),
-(2, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT'),
-(2, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)'),
-(2, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT'),
-(2, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật'),
-(2, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)'),
-(2, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)'),
-(2, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file'),
-(2, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…'),
-(2, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán'),
-(2, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể'),
-(2, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…'),
-(2, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính'),
-(2, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành'),
-(2, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay'),
-(2, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành'),
-(2, '1-3-3-', 'Khối kiến thức kiến trúc máy tính'),
-​​(2, '1-3-3-1', 'Biết được các thành phần của máy tính'),
-​​(2, '1-3-3-2', 'Biết được lịch sử ra đời và quá trình phát triển của máy tính'),
-​​(2, '1-3-3-3', 'Hiểu được một số giao tiếp và tương tác giữa các thành phần chính trong máy tính'),
-​​(2, '1-3-3-4', 'Biết được cách vận hành và hoạt động của các thành phần chính trong máy tính'),
-​​(2, '1-3-4-', 'Khối kiến thức mạng máy tính'),
-​​(2, '1-3-4-1', 'Hiểu được các loại kết nối khác nhau để liên kết các máy tính (có dây, không dây...)'),
-​​(2, '1-3-4-2', 'Hiểu được các phương thức giao tiếp và ưu nhược điểm của chúng'),
-​​(2, '1-3-4-3', 'Có kiến thức về các mô hình mạng khác nhau'),
-​​(2, '1-3-4-4', 'Có kiến thức cơ bản về các thiết bị phần cứng dành cho mạng'),
-​​(2, '1-3-4-5', 'Có khả năng cấu hình và thiết lập một số mạng đơn giản'),
-​​(2, '1-3-5-', 'Khối kiến thức cơ sở dữ liệu'),
-​​(2, '1-3-5-1', 'Hiểu các mô hình cơ sở dữ liệu cơ bản'),
-​​(2, '1-3-5-2', 'Có khả năng sử dụng một số hệ QTCSDL phổ biến để xây dựng CSDL'),
-​​(2, '1-3-5-3', 'Có khả năng xây dựng một mô hình CSDL cho một bài toán thực tế đơn giản'),
-​​(2, '1-3-5-4', 'Có khả năng viết được các dòng lệnh truy vấn CSDL đơn giản bằng SQL'),
-​​(2, '1-3-6-', 'Các kiến thức nâng cao của từng chuyên ngành \n(xác định riêng cho từng ngành)'),
-​​(2, '1-3-6-1', 'Kiến thức nâng cao ngành Khoa học máy tính (KHMT+CNTT+TGMT&Robot)'),
-​​(2, '1-3-6-2', 'Kiến thức nâng cao ngành Công nghệ phần mềm'),
-​​(2, '1-3-6-3', 'Kiến thức nâng cao ngành Hệ thống thông tin'),
-​​(2, '1-3-6-4', 'Kiến thức nâng cao ngành Mạng máy tính và truyền thông'),
-​​(2, '2---', 'KỸ NĂNG CÁ NHÂN VÀ NGHỀ NGHIỆP VÀ CÁC TỐ CHẤT'),
-​​(2, '2-1--', 'Suy luận có phân tích và giải quyết vấn đề'),
-​​(2, '2-1-1-', 'Xác định và hình thành vấn đề'),
-​​(2, '2-1-1-1', '   Có khả năng xác định vấn đề'),
-​​(2, '2-1-1-2', 'Có khả năng phân tích các giả định của vấn đề'),
-​​(2, '2-1-1-3', 'Có khả năng phát biểu bài toán dựa trên dữ liệu và quan sát'),
-​​(2, '2-1-1-4', 'Hiểu cách hình thành kế hoạch tổng thể để giải quyết bài toán '),
-​​(2, '2-1-2-', 'Mô hình hóa và phân tích'),
-​​(2, '2-1-2-1', 'Có khả năng sử dụng giả thiết để đơn giản hóa bài toán'),
-​​(2, '2-1-2-2', 'Biết các loại mô hình khác nhau để mô hình hóa bài toán'),
-​​(2, '2-1-2-3', 'Có khả năng xây dựng các mô hình từ các yêu cầu của bài toán'),
-​​(2, '2-1-2-4', 'Có khả năng chọn loại mô hình phù hợp để mô hình hóa bài toán'),
-​​(2, '2-1-2-5', 'Có khả năng phân tích để làm rõ các yêu cầu bài toán'),
-​​(2, '2-1-3-', 'Suy luận & giải quyết'),
-​​(2, '2-1-3-1', 'Có kỹ năng suy luận trên bài toán'),
-​​(2, '2-1-3-2', 'Có khả năng xây dựng các bước để giải quyết bài toán'),
-​​(2, '2-1-3-3', 'Có khả năng tổng kết các bước suy luận'),
-​​(2, '2-1-3-4', 'Có khả năng phân tích và đánh giá các giải pháp/giải thuật để tìm ra \ngiải thuật thích hợp hoặc hình thành giải thuật mới cho bài toán'),
-​​(2, '2-1-3-5', 'Có khả năng hình thành giải pháp/giải thuật để giải quyết bài toán'),
-​​(2, '2-1-4-', 'Đánh giá giải pháp và đề xuất'),
-​​(2, '2-1-4-1', 'Có khả năng phân tích tính đúng đắn và độ phức tạp của giải pháp/giải thuật'),
-​​(2, '2-1-4-2', 'Có khả năng phân tích, đánh giá kết quả đầu ra '),
-​​(2, '2-1-4-3', 'Có khả năng phân tích ưu, khuyết điểm của giải pháp và đề xuất cải tiến'),
-​​(2, '2-1-4-4', 'Nhận ra được các vấn đề bất thường của kết quả và có khả năng phân tích & hiểu được lý do'),
-​​(2, '2-2--', 'Thực nghiệm, điều tra và khám phá tri thức'),
-​​(2, '2-2-1-', 'Hình thành giả thuyết'),
-​​(2, '2-2-1-1', 'Có khả năng liệt kê và lựa chọn các giả thuyết phù hợp để kiểm chứng '),
-​​(2, '2-2-1-2', 'Có khả năng đặt câu hỏi mang tính phản biện'),
-​​(2, '2-2-1-3', 'Có khả năng xác định các bên liên quan đến giả thuyết'),
-​​(2, '2-2-2-', 'Khảo sát trên tài liệu'),
-​​(2, '2-2-2-1', 'Hiểu các chiến lược và biết cách chọn chiến lược nghiên cứu tài liệu phù hợp'),
-​​(2, '2-2-2-2', 'Biết cách tra cứu tài liệu bằng công cụ tìm kiếm, trong thư viện.'),
-​​(2, '2-2-2-3', 'Biết cách tra sắp xếp và phân loại thông tin'),
-​​(2, '2-2-2-4', 'Biết cách đánh giá độ tin cậy của thông tin'),
-​​(2, '2-2-2-5', 'Có khả năng xác định các vấn đề nghiên cứu còn tồn đọng'),
-​​(2, '2-2-2-6', 'Biết cách liệt kê trích dẫn về tài liệu tham khảo'),
-​​(2, '2-2-3-', 'Khảo sát trên thực tế'),
-​​(2, '2-2-3-1', 'Hiểu các phương pháp thực hiện khảo sát thực tế'),
-​​(2, '2-2-3-2', 'Hiểu các chiến thuật để hình thành bài khảo sát'),
-​​(2, '2-2-3-3', 'Có khả năng vận dụng các công cụ máy tính để thực hiện khảo sát'),
-​​(2, '2-2-3-4', 'Có khả năng tiến hành khảo sát trên nhiều nhóm khác nhau'),
-​​(2, '2-2-4-', 'Kiểm chứng và bảo vệ giả thuyết'),
-​​(2, '2-2-4-1', 'Có khả năng đưa ra các kết luận, quyết định từ kết quả khảo sát'),
-​​(2, '2-2-4-2', 'Có khả năng xác định các ưu, khuyết điểm của cuộc khảo sát');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1--', 'Kiến thức nền tảng về Khoa học');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-1-','Khối kiến thức về Toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-1-1', 'Kiến thức về Giải tích');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-1-2', 'Kiến thức Đại số');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-1-3', 'Kiến thức về Toán rời rạc');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-1-4', 'Kiến thức về Xác suất thống kê');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-2-', 'Khối kiến thức về Vật lý');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-2-1', 'Kiến thức Vật lý đại cương');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-2-2', 'Kiến thức thực hành vật lý');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-3-', 'Khối kiến thức về điện - điện tử');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-3-1', 'Kiến thức về mạch số');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-1-3-2', 'Kiến thức căn bản về Điện - Điện tử');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2--', 'Kiến thức nền tảng của lĩnh vực CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-1-', 'Khối kiến thức về lập trình ');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-1-1', 'Kiến thức cơ bản về lập trình (nhập môn)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-1-2', 'Các kỹ thuật lập trình');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-1-3', 'Kiến thức về lập trình hướng đối tượng');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-1-4', 'Kiến thức lập trình hệ thống (hợp ngữ…)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-2-', 'Kiến thức tổng quát về lĩnh vực CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-2-1', 'Kiến thức tổng quát ngành CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-2-2-2', 'Kiến thức tổng quát của mỗi lĩnh vực trong CNTT (KHMT, CNTT, CNPM, HTTT, MMT, TGMT-Robot)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3--', 'Kiến thức kỹ thuật nâng cao ngành CNTT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-', 'Khối kiến thức cấu trúc dữ liệu và giải thuật');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-1', 'Hiểu được các CTDL cơ bản (mảng, danh sách liên kết, ngăn xếp, hàng đợi…)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-2', 'Hiểu được các CTDL nâng cao (các loại cây, bảng băm...)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-3', 'Biết được 1 số cấu trúc file và xử lý được trên file');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-4', 'Hiểu được các thuật toán cơ bản: tìm kiếm, sắp xếp, đệ qui, quy hoạch động…');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-5', 'Có thể tự định nghĩa cấu trúc dữ liệu mới để phù hợp với yêu cầu của bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-6', 'Có thể phân tích ưu điểm và hạn chế để chọn ra được giải pháp tốt nhất trong một tình huống cụ thể');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-1-7', 'Biết được các giải thuật nâng cao trong lý thuyết đồ thị, trí tuệ nhân tạo…');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-2-', 'Khối kiến thức về hệ điều hành máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-2-1', 'Hiểu được các thành phần chính của hệ điều hành');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-2-2', 'Biết được các điểm khác biệt cơ bản giữa các hệ điều hành phổ biến hiện nay');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-2-3', 'Hiểu được các cơ chế hoạt động của các thành phần chính trong hệ điều hành');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-3-', 'Khối kiến thức kiến trúc máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-3-1', 'Biết được các thành phần của máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-3-2', 'Biết được lịch sử ra đời và quá trình phát triển của máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-3-3', 'Hiểu được một số giao tiếp và tương tác giữa các thành phần chính trong máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-3-4', 'Biết được cách vận hành và hoạt động của các thành phần chính trong máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-4-', 'Khối kiến thức mạng máy tính');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-4-1', 'Hiểu được các loại kết nối khác nhau để liên kết các máy tính (có dây, không dây...)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-4-2', 'Hiểu được các phương thức giao tiếp và ưu nhược điểm của chúng');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-4-3', 'Có kiến thức về các mô hình mạng khác nhau');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-4-4', 'Có kiến thức cơ bản về các thiết bị phần cứng dành cho mạng');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-4-5', 'Có khả năng cấu hình và thiết lập một số mạng đơn giản');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-5-', 'Khối kiến thức cơ sở dữ liệu');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-5-1', 'Hiểu các mô hình cơ sở dữ liệu cơ bản');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-5-2', 'Có khả năng sử dụng một số hệ QTCSDL phổ biến để xây dựng CSDL');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-5-3', 'Có khả năng xây dựng một mô hình CSDL cho một bài toán thực tế đơn giản');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-5-4', 'Có khả năng viết được các dòng lệnh truy vấn CSDL đơn giản bằng SQL');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-6-', 'Các kiến thức nâng cao của từng chuyên ngành (xác định riêng cho từng ngành)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-6-1', 'Kiến thức nâng cao ngành Khoa học máy tính (KHMT+CNTT+TGMT&Robot)');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-6-2', 'Kiến thức nâng cao ngành Công nghệ phần mềm');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-6-3', 'Kiến thức nâng cao ngành Hệ thống thông tin');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '1-3-6-4', 'Kiến thức nâng cao ngành Mạng máy tính và truyền thông');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2---', 'KỸ NĂNG CÁ NHÂN VÀ NGHỀ NGHIỆP VÀ CÁC TỐ CHẤT');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1--', 'Suy luận có phân tích và giải quyết vấn đề');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-1-', 'Xác định và hình thành vấn đề');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-1-1', '   Có khả năng xác định vấn đề');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-1-2', 'Có khả năng phân tích các giả định của vấn đề');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-1-3', 'Có khả năng phát biểu bài toán dựa trên dữ liệu và quan sát');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-1-4', 'Hiểu cách hình thành kế hoạch tổng thể để giải quyết bài toán ');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-2-', 'Mô hình hóa và phân tích');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-2-1', 'Có khả năng sử dụng giả thiết để đơn giản hóa bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-2-2', 'Biết các loại mô hình khác nhau để mô hình hóa bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-2-3', 'Có khả năng xây dựng các mô hình từ các yêu cầu của bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-2-4', 'Có khả năng chọn loại mô hình phù hợp để mô hình hóa bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-2-5', 'Có khả năng phân tích để làm rõ các yêu cầu bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-3-', 'Suy luận & giải quyết');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-3-1', 'Có kỹ năng suy luận trên bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-3-2', 'Có khả năng xây dựng các bước để giải quyết bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-3-3', 'Có khả năng tổng kết các bước suy luận');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-3-4', 'Có khả năng phân tích và đánh giá các giải pháp/giải thuật để tìm ra \ngiải thuật thích hợp hoặc hình thành giải thuật mới cho bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-3-5', 'Có khả năng hình thành giải pháp/giải thuật để giải quyết bài toán');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-4-', 'Đánh giá giải pháp và đề xuất');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-4-1', 'Có khả năng phân tích tính đúng đắn và độ phức tạp của giải pháp/giải thuật');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-4-2', 'Có khả năng phân tích, đánh giá kết quả đầu ra ');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-4-3', 'Có khả năng phân tích ưu, khuyết điểm của giải pháp và đề xuất cải tiến');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-1-4-4', 'Nhận ra được các vấn đề bất thường của kết quả và có khả năng phân tích & hiểu được lý do');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2--', 'Thực nghiệm, điều tra và khám phá tri thức');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-1-', 'Hình thành giả thuyết');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-1-1', 'Có khả năng liệt kê và lựa chọn các giả thuyết phù hợp để kiểm chứng ');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-1-2', 'Có khả năng đặt câu hỏi mang tính phản biện');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-1-3', 'Có khả năng xác định các bên liên quan đến giả thuyết');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-2-', 'Khảo sát trên tài liệu');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-2-1', 'Hiểu các chiến lược và biết cách chọn chiến lược nghiên cứu tài liệu phù hợp');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-2-2', 'Biết cách tra cứu tài liệu bằng công cụ tìm kiếm, trong thư viện.');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-2-3', 'Biết cách tra sắp xếp và phân loại thông tin');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-2-4', 'Biết cách đánh giá độ tin cậy của thông tin');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-2-5', 'Có khả năng xác định các vấn đề nghiên cứu còn tồn đọng');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-2-6', 'Biết cách liệt kê trích dẫn về tài liệu tham khảo');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-3-', 'Khảo sát trên thực tế');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-3-1', 'Hiểu các phương pháp thực hiện khảo sát thực tế');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-3-2', 'Hiểu các chiến thuật để hình thành bài khảo sát');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-3-3', 'Có khả năng vận dụng các công cụ máy tính để thực hiện khảo sát');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-3-4', 'Có khả năng tiến hành khảo sát trên nhiều nhóm khác nhau');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-4-', 'Kiểm chứng và bảo vệ giả thuyết');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-4-1', 'Có khả năng đưa ra các kết luận, quyết định từ kết quả khảo sát');
+insert into cdio.detailRevision(IdRevision, KeyRow, NameRow) values(2, '2-2-4-2', 'Có khả năng xác định các ưu, khuyết điểm của cuộc khảo sát');
