@@ -15,3 +15,17 @@ exports.getFaculty = () => {
             })
     })
 }
+exports.getFacultyInfo = () => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.faculty.findAll()
+                    .then(info=>{
+                        resolve(info);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

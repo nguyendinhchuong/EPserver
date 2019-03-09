@@ -7,3 +7,10 @@ exports.getFaculty = (req, res) => {
         res.send(JSON.stringify(response));
     });
 }
+exports.getFacultyInfo = (req, res) => {
+    faculty.getFacultyInfo().then(data => {
+        let response = {};
+        response.data = data;
+        res.send(JSON.stringify(response));
+    });
+}

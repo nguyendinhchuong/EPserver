@@ -12,6 +12,9 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         }
+    },{
+        freezeTableName: true,
+        timestamps: false
     })
     return faculty;
 }
