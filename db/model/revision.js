@@ -1,25 +1,28 @@
 var db = require('../../models/index');
 
-const revision = db.sequelize.define('revision',{
-    Id:{
-        type: db.Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    IdOutcomeStandard:{
-        type: db.Sequelize.INTEGER,
-        allowNull:false
-    },
-    IdUser:{
-        type: db.Sequelize.INTEGER,
-        allowNull:false
-    },
-    NameRevision: {
-        type: db.Sequelize.STRING,
-        allowNull:false
-    },
-    updatedAt:{
-        type: db.Sequelize.DATE
-    }
-})
+module.exports = (sequelize, Sequelize) => {
+    const revision = sequelize.define('revision', {
+        Id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        IdOutcomeStandard: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
+        IdUser: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
+        NameRevision: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        updatedAt: {
+            type: Sequelize.DATE
+        }
+    })
+    return revision;
+}

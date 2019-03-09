@@ -1,4 +1,4 @@
-const outcomeStandard = require('../db/model/outcomestandard');
+    const outcomeStandard = require('../service/outcomeStandardService');
 
 
 exports.getOutcomeStandard = (req, res) => {
@@ -9,11 +9,20 @@ exports.getOutcomeStandard = (req, res) => {
     });
 }
 exports.addOutcomeStandard = (req, res) =>{
-    let body = req.query;
-    let response = {};
-    response.data = body;
-    res.send(JSON.stringify(response));    
+    let body = req.query;    
+    console.log(body);
     // outcomeStandard.addOutcomeStandard(body).then(mess =>{
     //     res.send(mess);
-    // })
+    // // })
+    
+    let request = {};
+    request.IdFaculty = Number(body.idfaculty);
+    request.IdProgram = Number(body.idprogram);
+    request.IdUser = Number(body.iduser);
+    request.NameOutcomeStandard = body.name;
+    request.SchoolYear = body.schoolyear;
+    request.DateCreated = body.createdat;
+    request.DateUpdated = body.updatedat;
+    outcomeStandard.addOS(request).then(mess=>{res.send(JSON.stringify(mess))});
+    
 }
