@@ -21,6 +21,7 @@ CREATE TABLE `OutcomeStandard` (
 	`IdFaculty` INT NOT NULL,
 	`IdProgram` INT NOT NULL,
 	`IdUser` INT NOT NULL,
+  `ShoolYear` VARCHAR(15),
 	`DateCreated` DATETIME,
 	`DateEdited` DATETIME,
 	PRIMARY KEY (`Id`)
@@ -51,20 +52,12 @@ CREATE TABLE `DetailRevision` (
 	PRIMARY KEY (`Id`)
 );
 
-CREATE TABLE `Role` (
-	`Id` INT NOT NULL AUTO_INCREMENT,
-	`NameRole` NVARCHAR(255) NOT NULL,
-	PRIMARY KEY (`Id`)
-);
-
 CREATE TABLE `User` (
   `Id` INT NOT NULL AUTO_INCREMENT,
-  `IdRole` INT NOT NULL,
   `NameUser` NVARCHAR(127) NOT NULL,
   `Password` VARCHAR(127) NOT NULL,
   PRIMARY KEY (`Id`)
 );
-
 
 ALTER TABLE `OutcomeStandard` ADD CONSTRAINT `OutcomeStandard_fk0` FOREIGN KEY (`IdFaculty`) REFERENCES `Faculty`(`Id`);
 
@@ -79,5 +72,3 @@ ALTER TABLE `Revision` ADD CONSTRAINT `Revision_fk0` FOREIGN KEY (`IdOutcomeStan
 ALTER TABLE `Revision` ADD CONSTRAINT `Revision_fk1` FOREIGN KEY (`IdUser`) REFERENCES `User`(`Id`);
 
 ALTER TABLE `DetailRevision` ADD CONSTRAINT `DetailRevision_fk0` FOREIGN KEY (`IdRevision`) REFERENCES `Revision`(`Id`);
-
-ALTER TABLE `User` ADD CONSTRAINT `User_fk0` FOREIGN KEY (`IdRole`) REFERENCES `Role`(`Id`);
