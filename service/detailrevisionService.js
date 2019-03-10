@@ -9,20 +9,16 @@ exports.getDetailRevision = (data) => {
                 // FROM cdio.detailoutcomestandard AS dos, cdio.outcomestandard as os
                 // WHERE dos.IdOutcomeStandard=`+ data.IdOutcomeStandard;
                 // db.sequelize.query(sql,{ type: db.Sequelize.QueryTypes.SELECT})
-                db.e.findAll({
+                db.detailrevision.findAll({
                     attributes:['KeyRow', 'NameRow'],
                     where:{
-                        IdOutcomeStandard:data.IdOutcomeStandard
+                        IdRevision:data.IdRevision
                     }
                 })
                     .then(info => {
                         if (info) {
-                            info.code = 1;
-                            info.message = "success";
                             resolve(info);
                         } else {
-                            info.code = -1;
-                            info.message = "fail";
                             resolve(info);
                         }
                     })

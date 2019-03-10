@@ -6,6 +6,8 @@ exports.getRevision = (req, res)=>{
     request.IdOutcomeStandard = Number(body.idoutcome);
     revision.getRevision(request)
     .then(data=>{
-        res.send(JSON.stringify(data));
+        let response = {};
+        response.data = data;
+        res.send(JSON.stringify(response));
     })
 }
