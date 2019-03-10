@@ -35,11 +35,11 @@ exports.getOSInfo = () => {
         //   })
         db.sequelize.query(`SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram, cdio.user.NameUser 
         FROM cdio.outcomestandard as os, cdio.faculty as fa, cdio.program as pg, cdio.user
-        WHERE os.IdFaculty = fa.Id AND os.IdProgram = pg.Id AND os.IdUser = cdio.user.Id `, { type: db.Sequelize.QueryTypes.SELECT})
-          .then(info=>{
+        WHERE os.IdFaculty = fa.Id AND os.IdProgram = pg.Id AND os.IdUser = cdio.user.Id `, { type: db.Sequelize.QueryTypes.SELECT })
+          .then(info => {
             resolve(info);
           })
-          .catch(err=>{
+          .catch(err => {
             reject(err);
           })
       })
@@ -59,13 +59,14 @@ exports.addOS = (data) => {
           DateCreated: data.DateCreated,
           DateEdited: data.DateEdited
         });
-        os.save(() => {
-          console.log("save success")
-          resolve({
-            code: 1,
-            message: "Save success"
+        os.save()
+          .then(() => {      
+            let code = 1;    
+            resolve(code);
           })
-        });
+          .catch(err=>{
+            reject(err);
+          })
       })
       .catch(err => {
         reject(err);

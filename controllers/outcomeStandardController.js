@@ -20,22 +20,27 @@ exports.getOutcomeStandardInfo = (req, res) => {
 }
 exports.addOutcomeStandard = (req, res) => {
     let body = req.query;
-    console.log(body);
-    // outcomeStandard.addOutcomeStandard(body).then(mess =>{
-    //     res.send(mess);
-    // // })
-
     let request = {};
-    request.IdFaculty = Number(body.idfaculty);
-    request.IdProgram = Number(body.idprogram);
-    request.IdUser = Number(body.iduser);
-    request.NameOutcomeStandard = body.name;
-    request.SchoolYear = body.schoolyear;
-    request.DateCreated = body.createdat;
-    request.DateEdited = body.updatedat;
-    outcomeStandard.addOS(request)
-        .then(mess => {
-            res.send(JSON.stringify(mess))
-        });
+    
+    request.IdFaculty = Number(body.IdFaculty);
+    request.IdProgram = Number(body.IdProgram);
+    request.IdUser = Number(body.IdUser);
+    request.NameOutcomeStandard = body.NameOutcomeStandard;
+    request.SchoolYear = body.SchoolYear;
+    request.DateCreated = body.DateCreated;
+    request.DateEdited = body.DateEdited;
 
+    outcomeStandard.addOS(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "save success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "save fail";
+                res.send(JSON.stringify(response));
+            }
+        });
 }
