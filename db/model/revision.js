@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        updatedAt: {
+        DateUpdated: {
             type: Sequelize.DATE
         }
     },{
