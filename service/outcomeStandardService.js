@@ -20,9 +20,27 @@ exports.getOSInfo = () => {
   return new Promise((resolve, reject) => {
     db.sequelize.authenticate()
       .then(() => {
-        db.outcomestandard.findAll()
+        // db.outcomestandard.findAll({
+        //   include: [
+        //     {
+        //       model: db.faculty
+        //     }
+        //   ]
+        // })
+        //   .then(info => {
+        //     resolve(info);
+        //   })
+        //   .catch(err=>{
+        //     reject(err);
+        //   })
+        db.sequelize.query(`SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram, cdio.user.NameUser 
+        FROM cdio.outcomestandard as os, cdio.faculty as fa, cdio.program as pg, cdio.user
+        WHERE os.IdFaculty = fa.Id AND os.IdProgram = pg.Id AND os.IdUser = cdio.user.Id `, { type: db.Sequelize.QueryTypes.SELECT})
           .then(info=>{
             resolve(info);
+          })
+          .catch(err=>{
+            reject(err);
           })
       })
   })
@@ -38,8 +56,8 @@ exports.addOS = (data) => {
           IdUser: data.IdUser,
           NameOutcomeStandard: data.NameOutcomeStandard,
           SchoolYear: data.SchoolYear,
-          createdAt: data.createdAt,
-          updatedAt: data.updatedAt
+          DateCreated: data.DateCreated,
+          DateEdited: data.DateEdited
         });
         os.save(() => {
           console.log("save success")

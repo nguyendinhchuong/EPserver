@@ -30,11 +30,14 @@ module.exports = (sequelize, Sequelize) => {
         DateCreated: {
             type: Sequelize.DATE
         },
-        DateUpdated: {
+        DateEdited: {
             type: Sequelize.DATE
-        },
+        }
+        
+    },{
+        timestamps:false,
         underscore: false,
-        tableName: "outcomestandard"
+        freezeTableName: true
     })
     return outcomestandard;
 }

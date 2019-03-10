@@ -31,6 +31,8 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+
+ 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
@@ -44,9 +46,9 @@ db.program = require('../db/model/program')(sequelize, Sequelize);
 
 // // //Relations
 // db.outcomestandard.hasMany(db.detailoutcomestandard);
+db.faculty.hasMany(db.outcomestandard);
+db.outcomestandard.belongsTo(db.faculty);
 
-// db.outcomestandard.belongsTo(db.faculty);
-// db.faculty.hasMany(db.outcomestandard);
 
 // db.outcomestandard.belongsTo(db.program);
 // db.program.hasMany(db.outcomestandard);

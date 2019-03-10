@@ -23,6 +23,9 @@ module.exports = (sequelize, Sequelize) => {
         updatedAt: {
             type: Sequelize.DATE
         }
+    },{
+        freezeTableName: true,
+        timestamps: false
     })
     return revision;
 }

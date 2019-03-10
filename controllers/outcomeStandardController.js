@@ -10,7 +10,12 @@ exports.getOutcomeStandard = (req, res) => {
 }
 exports.getOutcomeStandardInfo=(req, res)=>{
     outcomeStandard.getOSInfo().then(data=>{
-        console.log(data);
+        let response = {};
+        response.data = data;
+        res.send(JSON.stringify(response));
+    })
+    .catch(err=>{
+        throw err;
     })
 }
 exports.addOutcomeStandard = (req, res) =>{
@@ -27,7 +32,7 @@ exports.addOutcomeStandard = (req, res) =>{
     request.NameOutcomeStandard = body.name;
     request.SchoolYear = body.schoolyear;
     request.DateCreated = body.createdat;
-    request.DateUpdated = body.updatedat;
+    request.DateEdited = body.updatedat;
     outcomeStandard.addOS(request).then(mess=>{res.send(JSON.stringify(mess))});
     
 }
