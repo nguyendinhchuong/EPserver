@@ -11,7 +11,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 const routesPrograms = require('./routes/programRoute');
 const routesFaculties = require('./routes/facultyRoute');
 const routesOutcomes = require('./routes/outcomeStandardRoute');
-// const routesDetailOutcomes = require('./routes/detailOutcomeStandardRoute');
+const routesDetailOutcomes = require('./routes/detailOutcomeStandardRoute');
 // const routesRevisions = require('./routes/revisionRoute');
 // const routesDetailRevisions = require('./routes/detailRevisionRoute');
 
@@ -19,7 +19,7 @@ const routesOutcomes = require('./routes/outcomeStandardRoute');
 routesPrograms(app);
 routesFaculties(app);
 routesOutcomes(app);
-// routesDetailOutcomes(app);
+routesDetailOutcomes(app);
 // routesRevisions(app);
 // routesDetailRevisions(app);
 

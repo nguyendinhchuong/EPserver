@@ -40,7 +40,7 @@ db.Sequelize = Sequelize;
 db.outcomestandard = require('../db/model/outcomestandard')(sequelize, Sequelize);
 db.faculty = require('../db/model/faculty')(sequelize, Sequelize);
 db.program = require('../db/model/program')(sequelize, Sequelize);
-// db.detailoutcomestandard = require('../db/model/detailoutcomestandard')(sequelize, Sequelize);
+db.detailoutcomestandard = require('../db/model/detailoutcomestandard')(sequelize, Sequelize);
 // db.revision = require('../db/model/revision')(sequelize, Sequelize);
 // db.detailrevision = require('../db/model/detailrevision')(sequelize, Sequelize);
 
@@ -48,6 +48,9 @@ db.program = require('../db/model/program')(sequelize, Sequelize);
 // db.outcomestandard.hasMany(db.detailoutcomestandard);
 db.faculty.hasMany(db.outcomestandard);
 db.outcomestandard.belongsTo(db.faculty);
+
+db.outcomestandard.hasMany(db.detailoutcomestandard);
+db.detailoutcomestandard.belongsTo(db.outcomestandard);
 
 
 // db.outcomestandard.belongsTo(db.program);

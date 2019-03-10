@@ -1,4 +1,4 @@
-    const outcomeStandard = require('../service/outcomeStandardService');
+const outcomeStandard = require('../service/outcomeStandardService');
 
 
 exports.getOutcomeStandard = (req, res) => {
@@ -8,23 +8,23 @@ exports.getOutcomeStandard = (req, res) => {
         res.send(JSON.stringify(response));
     });
 }
-exports.getOutcomeStandardInfo=(req, res)=>{
-    outcomeStandard.getOSInfo().then(data=>{
+exports.getOutcomeStandardInfo = (req, res) => {
+    outcomeStandard.getOSInfo().then(data => {
         let response = {};
         response.data = data;
         res.send(JSON.stringify(response));
     })
-    .catch(err=>{
-        throw err;
-    })
+        .catch(err => {
+            throw err;
+        })
 }
-exports.addOutcomeStandard = (req, res) =>{
-    let body = req.query;    
+exports.addOutcomeStandard = (req, res) => {
+    let body = req.query;
     console.log(body);
     // outcomeStandard.addOutcomeStandard(body).then(mess =>{
     //     res.send(mess);
     // // })
-    
+
     let request = {};
     request.IdFaculty = Number(body.idfaculty);
     request.IdProgram = Number(body.idprogram);
@@ -33,6 +33,9 @@ exports.addOutcomeStandard = (req, res) =>{
     request.SchoolYear = body.schoolyear;
     request.DateCreated = body.createdat;
     request.DateEdited = body.updatedat;
-    outcomeStandard.addOS(request).then(mess=>{res.send(JSON.stringify(mess))});
-    
+    outcomeStandard.addOS(request)
+        .then(mess => {
+            res.send(JSON.stringify(mess))
+        });
+
 }
