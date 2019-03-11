@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
         SchoolYear: {
-            type: Sequelize.DATE,
+            type: Sequelize.STRING,
             allowNull: false
         },
         DateCreated: {

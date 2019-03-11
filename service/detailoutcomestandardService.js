@@ -33,3 +33,23 @@ exports.getDetailOutcomeStandard = (data) => {
     })
 
 }
+
+exports.addDetailOutcomeStandard = (request)=>{
+    return new Promise((resolve, reject)=>{
+        db.sequelize.authenticate()
+        .then(()=>{
+            console.log(request.data);
+            // db.detailoutcomestandard.bulkCreate(request.data)
+            // .then(()=>{
+            //     let code = 1;
+            //     resolve(code);
+            // })
+            // .catch(err=>{
+            //     reject(err);
+            // })
+        })
+        .catch(err=>{
+            reject(err);
+        })
+    })
+}

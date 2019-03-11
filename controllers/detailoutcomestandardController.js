@@ -11,3 +11,28 @@ exports.getDetailOutcomeStandardInfo = (req, res) => {
             res.send(JSON.stringify(mess))
         });
 }
+exports.addDetailOutcomeStandard = (req, res) => {
+    let params = req.query;
+    let body = req.body;
+    let request = {};
+    let data =[];
+
+    let array = JSON.parse(body.data);
+    array.map(row=>{
+        row.IdOutcomeStandard = params.idoutcome;
+    })
+    request.data = array;
+    detailOS.addDetailOutcomeStandard(request)
+    .then(data=>{
+        let response = {};
+        if (data === 1) {
+            response.code = 1;
+            response.message = "save success";
+            res.send(JSON.stringify(response));
+        } else {
+            response.code = -1;
+            response.message = "save fail";
+            res.send(JSON.stringify(response));
+        }
+    })
+}
