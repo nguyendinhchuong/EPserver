@@ -18,9 +18,9 @@ insert into cdio.User(NameUser, Password) value ('admin', 'admin');
 insert into cdio.User(NameUser, Password) value ('giao vu', 'giaovu');
 
 /*insert outcomestandard*/
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCreated,DateEdited) values('cntt2-15',1,1,1,'2015','2019/3/2','2019/3/2');
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCreated,DateEdited) values('cntt2-16',1,2,1,'2016','2019/3/2','2019/3/2');
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,ShoolYear,DateCreated,DateEdited) values('cntt2-17',2,3,1,'2017','2019/3/2','2019/3/2');
+insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-15',1,1,1,'2015','2019/3/2','2019/3/2');
+insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-16',1,2,1,'2016','2019/3/2','2019/3/2');
+insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-17',2,3,1,'2017','2019/3/2','2019/3/2');
 
 /*insert revision*/
 insert into  cdio.Revision(NameRevision,IdUser,IdOutcomeStandard,DateUpdated) values('cntt2-15 ver 1',1,1,'2019/3/2 7:00');

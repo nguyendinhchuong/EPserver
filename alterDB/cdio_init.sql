@@ -21,7 +21,7 @@ CREATE TABLE `OutcomeStandard` (
 	`IdFaculty` INT NOT NULL,
 	`IdProgram` INT NOT NULL,
 	`IdUser` INT NOT NULL,
-  `ShoolYear` VARCHAR(15),
+  `SchoolYear` VARCHAR(15),
 	`DateCreated` DATETIME,
 	`DateEdited` DATETIME,
 	PRIMARY KEY (`Id`)
