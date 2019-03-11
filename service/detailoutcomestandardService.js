@@ -39,14 +39,14 @@ exports.addDetailOutcomeStandard = (request)=>{
         db.sequelize.authenticate()
         .then(()=>{
             console.log(request.data);
-            // db.detailoutcomestandard.bulkCreate(request.data)
-            // .then(()=>{
-            //     let code = 1;
-            //     resolve(code);
-            // })
-            // .catch(err=>{
-            //     reject(err);
-            // })
+            db.detailoutcomestandard.bulkCreate(request.data)
+            .then(()=>{
+                let code = 1;
+                resolve(code);
+            })
+            .catch(err=>{
+                reject(err);
+            })
         })
         .catch(err=>{
             reject(err);

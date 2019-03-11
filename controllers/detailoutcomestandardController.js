@@ -15,13 +15,17 @@ exports.addDetailOutcomeStandard = (req, res) => {
     let params = req.query;
     let body = req.body;
     let request = {};
-    let data =[];
-
+    let new_array = [];
     let array = JSON.parse(body.data);
     array.map(row=>{
-        row.IdOutcomeStandard = params.idoutcome;
+        let obj = {};
+        obj.IdOutcomeStandard = params.idoutcome;
+        obj.KeyRow = row.KeyRow;
+        obj.Namerow = row.NameRow;
+        new_array.push(obj);
     })
-    request.data = array;
+    
+    request.data = new_array;
     detailOS.addDetailOutcomeStandard(request)
     .then(data=>{
         let response = {};
