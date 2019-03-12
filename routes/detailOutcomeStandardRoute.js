@@ -7,4 +7,6 @@ module.exports = (app) => {
     app.route('/saveDetailOutcomeStandard/:idOutcomestandard').post();
     // add detail có idOutcomestandard (thường là add OutcomeStandard xong thì sẽ add detail)
     app.route('/adddetailoutcomestandard').post(detailOutcomeStandard.addDetailOutcomeStandard);
+
+    app.route('/deldetailoutcomestandard').post(detailOutcomeStandard.deleteDetailOutcomeStandard);
 }

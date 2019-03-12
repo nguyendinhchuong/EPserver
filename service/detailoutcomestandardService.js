@@ -10,9 +10,9 @@ exports.getDetailOutcomeStandard = (data) => {
                 // WHERE dos.IdOutcomeStandard=`+ data.IdOutcomeStandard;
                 // db.sequelize.query(sql,{ type: db.Sequelize.QueryTypes.SELECT})
                 db.detailoutcomestandard.findAll({
-                    attributes:['KeyRow', 'NameRow'],
-                    where:{
-                        IdOutcomeStandard:data.IdOutcomeStandard
+                    attributes: ['KeyRow', 'NameRow'],
+                    where: {
+                        IdOutcomeStandard: data.IdOutcomeStandard
                     }
                 })
                     .then(info => {
@@ -34,21 +34,44 @@ exports.getDetailOutcomeStandard = (data) => {
 
 }
 
-exports.addDetailOutcomeStandard = (request)=>{
-    return new Promise((resolve, reject)=>{
+exports.addDetailOutcomeStandard = (request) => {
+    return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
-        .then(()=>{
-            db.detailoutcomestandard.bulkCreate(request.data, {returning: true})
-            .then(()=>{
-                let code = 1;
-                resolve(code);
+            .then(() => {
+                db.detailoutcomestandard.bulkCreate(request.data, { returning: true })
+                    .then(() => {
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
             })
-            .catch(err=>{
+            .catch(err => {
                 reject(err);
             })
-        })
-        .catch(err=>{
-            reject(err);
-        })
+    })
+}
+
+exports.deleteDetailOutcomeStandard = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.detailoutcomestandard.destroy({
+                    where:{
+                        IdOutcomeStandard:request.IdOutcomeStandard
+                    }
+                })
+                    .then(() => {
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
     })
 }

@@ -62,5 +62,35 @@ exports.addOutcomeStandard = (req, res) => {
                 response.message = "save fail";
                 res.send(JSON.stringify(response));
             }
-        });
+        })
+        .catch(err => {
+            throw err;
+        })
+}
+
+exports.deleteOutcomeStandard = (req, res) => {
+    let params = req.query;
+    let request = {};
+
+    request.Id = params.idoutcome;
+    outcomeStandard.deleteOutcomeStandard(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "delete success";
+                res.send(JSON.stringify(response));
+            } else if (data === -2) {
+                response.code = -2;
+                response.message = "couldn't find this outcome";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "delete fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
 }

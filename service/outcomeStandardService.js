@@ -17,25 +17,25 @@ exports.getOS = () => {
   })
 }
 exports.getOSInfoById = (request) => {
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve, reject) => {
     db.sequelize.authenticate()
-    .then(()=>{
-      let sql = `SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram, cdio.user.NameUser
+      .then(() => {
+        let sql = `SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram, cdio.user.NameUser
       FROM cdio.outcomestandard AS os, cdio.faculty AS fa, cdio.program AS pg, cdio.user
-      WHERE os.Id = `+ request.Id +` and os.IdFaculty = fa.Id and os.IdProgram = pg.Id and os.IdUser = cdio.user.Id;`;
-      console.log(request.Id);
-      db.sequelize.query(sql, { type: db.Sequelize.QueryTypes.SELECT })
-      .then(data=>{
-        console.log(data);
-        resolve(data);
+      WHERE os.Id = `+ request.Id + ` and os.IdFaculty = fa.Id and os.IdProgram = pg.Id and os.IdUser = cdio.user.Id;`;
+        console.log(request.Id);
+        db.sequelize.query(sql, { type: db.Sequelize.QueryTypes.SELECT })
+          .then(data => {
+            console.log(data);
+            resolve(data);
+          })
+          .catch(err => {
+            reject(err);
+          })
       })
-      .catch(err=>{
+      .catch(err => {
         reject(err);
       })
-    })
-    .catch(err=>{
-      reject(err);
-    })
   })
 }
 exports.getOSInfo = () => {
@@ -96,4 +96,39 @@ exports.addOS = (data) => {
   })
 
 
+}
+
+exports.deleteOutcomeStandard = (request) => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.authenticate()
+      .then(() => {
+        db.outcomestandard.findById(request.Id)
+          .then(data => {
+            if (data) {
+              db.outcomestandard.destroy({
+                where: {
+                  Id: request.Id
+                }
+              })
+                .then(() => {
+                  let code = 1;
+                  resolve(code);
+                })
+                .catch(err => {
+                  reject(err);
+                })
+            }
+            else{
+              let code = -2;
+              resolve(code);
+            }
+          })
+          .catch(err => {
+            reject(err);
+          })
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
 }
