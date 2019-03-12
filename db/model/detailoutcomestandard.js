@@ -4,19 +4,18 @@ module.exports = (sequelize, Sequelize) => {
     const detailoutcomstandard = sequelize.define('detailoutcomestandard', {
         Id: {
             type: Sequelize.INTEGER,
-            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        IdOutcome: {
+        IdOutcomeStandard: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        KeyOutcomeStandard: {
+        KeyRow: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        NameOutcomeStandard: {
+        NameRow: {
             type: Sequelize.STRING,
             allowNull: false
         }
@@ -30,10 +29,3 @@ module.exports = (sequelize, Sequelize) => {
 
 
 
-// exports.getListOutcomeStandard = () => {
-//     db.sequelize.authenticate()
-//         .then(() => {
-//             db.sequelize.query("select * from listoutcomestandard", { model: listoutcomstandard })
-//                 .then(listoutcomstandard => { console.log(JSON.stringify(listoutcomstandard)) })
-//         });
-// }

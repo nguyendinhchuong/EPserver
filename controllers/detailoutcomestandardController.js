@@ -19,9 +19,9 @@ exports.addDetailOutcomeStandard = (req, res) => {
     let array = JSON.parse(body.data);
     array.map(row=>{
         let obj = {};
-        obj.IdOutcomeStandard = params.idoutcome;
+        obj.IdOutcomeStandard = Number(params.idoutcome);
         obj.KeyRow = row.KeyRow;
-        obj.Namerow = row.NameRow;
+        obj.NameRow = row.NameRow;
         new_array.push(obj);
     })
     

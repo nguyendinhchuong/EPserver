@@ -38,8 +38,7 @@ exports.addDetailOutcomeStandard = (request)=>{
     return new Promise((resolve, reject)=>{
         db.sequelize.authenticate()
         .then(()=>{
-            console.log(request.data);
-            db.detailoutcomestandard.bulkCreate(request.data)
+            db.detailoutcomestandard.bulkCreate(request.data, {returning: true})
             .then(()=>{
                 let code = 1;
                 resolve(code);
