@@ -6,5 +6,5 @@ module.exports = (app) => {
     // xóa phiên bản với id và detail của phiên bản
     app.route('/deleteRevision/:id').post();
     // thêm phiên bản cần có id của chuẩn đầu ra và tên của phiên bản (id của người thêm NẾU CẦN)
-    app.route('/addRevision/:idOutcomeStandard').post();
+    app.route('/addrevision').post(revision.addRevision);
 }

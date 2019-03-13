@@ -29,3 +29,22 @@ exports.getDetailRevision = (data) => {
     })
 
 }
+
+exports.addDetailRevision = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.detailrevision.bulkCreate(request.data, { returning: true })
+                    .then(() => {
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

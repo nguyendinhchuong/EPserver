@@ -71,7 +71,6 @@ exports.addOS = (data) => {
   return new Promise((resolve, reject) => {
     db.sequelize.authenticate()
       .then(() => {
-
         let os = db.outcomestandard.build({
           IdFaculty: data.IdFaculty,
           IdProgram: data.IdProgram,
@@ -82,17 +81,29 @@ exports.addOS = (data) => {
           DateEdited: data.DateEdited
         });
         os.save()
-          .then(() => {
-            let code = 1;
-            resolve(code);
+          .then((data) => {
+            let revision = {};
+            revision.IdOutcomeStandard = data.Id;
+            revision.IdUser = data.IdUser;
+            revision.NameRevision = data.NameOutcomeStandard;
+            revision.DateUpdated = data.DateCreated;
+
+            db.revision.create(revision)
+              .then(() => {
+                let code = 1;
+                resolve(code);
+              })
+              .catch(err=>{
+                reject(err);
+              });
           })
           .catch(err => {
             reject(err);
-          })
+          });
       })
       .catch(err => {
         reject(err);
-      })
+      });
   })
 
 
@@ -118,7 +129,7 @@ exports.deleteOutcomeStandard = (request) => {
                   reject(err);
                 })
             }
-            else{
+            else {
               let code = -2;
               resolve(code);
             }
