@@ -12,7 +12,7 @@ exports.getRevision = (req, res) => {
         })
 }
 
-
+/*
 exports.getRevisionInfo = (req, res) => {
     let body = req.query;
     let request = {};
@@ -48,7 +48,7 @@ exports.getRevisionInfoById = (req, res) => {
         })
 }
 
-
+*/
 
 
 

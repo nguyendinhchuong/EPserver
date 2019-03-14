@@ -31,6 +31,54 @@ exports.getRevision = (data) => {
     })
 }
 
+
+//linh
+
+exports.getRevisionInfoById = (request) => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.authenticate()
+      .then(() => {
+        let sql = `SELECT re.Id, os.IdOutcomeStandard, re.NameRevision, re.DateUpdated, cdio.user.NameUser
+      FROM cdio.Revision AS re, cdio.outcomestandard as os, cdio.user
+      WHERE re.Id = `+ request.Id + `and re.IdUser = cdio.user.Id;`;
+        console.log(request.Id);
+        db.sequelize.query(sql, { type: db.Sequelize.QueryTypes.SELECT })
+          .then(data => {
+            console.log(data);
+            resolve(data);
+          })
+          .catch(err => {
+            reject(err);
+          })
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
+}
+
+
+exports.getRevisionInfo = () => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.authenticate()
+      .then(() => {
+        db.sequelize.query(`SELECT re.Id, os.IdOutcomeStandard, re.NameRevision, re.DateUpdated, cdio.user.NameUser
+      FROM cdio.Revision AS re, cdio.outcomestandard as os, cdio.user
+        WHERE re.IdUser = cdio.user.Id `, { type: db.Sequelize.QueryTypes.SELECT })
+          .then(info => {
+            resolve(info);
+          })
+          .catch(err => {
+            reject(err);
+          })
+      })
+  })
+}
+
+
+//
+
+
 exports.addRevision = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
