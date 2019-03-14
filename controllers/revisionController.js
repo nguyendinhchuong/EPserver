@@ -12,6 +12,46 @@ exports.getRevision = (req, res) => {
         })
 }
 
+
+exports.getRevisionInfo = (req, res) => {
+    let body = req.query;
+    let request = {};
+    request.IdOutcomeStandard = Number(body.idoutcome);
+    revision.getRevision(request)
+        .then(data => {
+            let response = {};
+            response.data = data;
+            res.send(JSON.stringify(response));
+        })
+        .catch(err => {
+            throw err;
+        })
+}
+exports.getRevisionInfoById = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.Id = params.IdRevision;
+    revision.getRevisionInfoById(request)
+        .then(data => {
+            let response = {};
+            if (data) {
+                response.code = 1;
+                response.message = "success";
+                response.data = data;
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "fail";
+                response.data = data;
+                res.send(JSON.stringify(response));
+            }
+        })
+}
+
+
+
+
+
 exports.addRevision = (req, res) => {
     let params = req.query;
     let request = {};
