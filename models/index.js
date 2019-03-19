@@ -49,8 +49,8 @@ db.detailrevision = require('../db/model/detailrevision')(sequelize, Sequelize);
 // db.faculty.hasMany(db.outcomestandard);
 // db.outcomestandard.belongsTo(db.faculty);
 
-db.outcomestandard.hasMany(db.detailoutcomestandard);
-db.detailoutcomestandard.belongsTo(db.outcomestandard);
+// db.outcomestandard.hasMany(db.detailoutcomestandard);
+// db.detailoutcomestandard.belongsTo(db.outcomestandard);
 
 
 // db.outcomestandard.belongsTo(db.program);

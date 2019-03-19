@@ -93,7 +93,7 @@ exports.addOS = (data) => {
                 let code = 1;
                 resolve(code);
               })
-              .catch(err=>{
+              .catch(err => {
                 reject(err);
               });
           })
@@ -115,19 +115,86 @@ exports.deleteOutcomeStandard = (request) => {
       .then(() => {
         db.outcomestandard.findById(request.Id)
           .then(data => {
+            //if outcomestandard exists, find the detail in detailoutcome
             if (data) {
-              db.outcomestandard.destroy({
+              db.detailoutcomestandard.findAll({
                 where: {
-                  Id: request.Id
+                  IdOutcomeStandard: request.Id
                 }
               })
+                .then(dataDetail => {
+                  //if detail exists, delete it
+                  if (dataDetail) {
+                    db.detailoutcomestandard.destroy({
+                      where: {
+                        IdOutcomeStandard: request.Id
+                      }
+                    })
+                      .then(effectedRows => {
+                        console.log('Effected rows of Detail Outcome: ' + effectedRows);
+                      })
+                      .catch(err => {
+                        reject(err);
+                      })
+                  }
+                })
                 .then(() => {
-                  let code = 1;
-                  resolve(code);
+                  db.revision.findAll({
+                    where: {
+                      IdOutcomeStandard: request.Id
+                    }
+                  })
+                    //delete detail of revision
+                    .then(dataRevision => {
+                      dataRevision.map(revision => {
+                        db.detailrevision.destroy({
+                          where: {
+                            IdRevision: revision.dataValues.Id
+                          }
+                        })
+                          .then(effectedRows => {
+                            console.log('Effected rows of Detail Revision: ' + effectedRows);
+                          })
+                          .catch(err => {
+                            reject(err);
+                          })
+                      })
+                    })
+                    //delete revision
+                    .then(() => {
+                      db.revision.destroy({
+                        where: {
+                          IdOutcomeStandard: request.Id
+                        }
+                      })
+                        .then(effectedRows => {
+                          console.log('Effected rows of Revision: ' + effectedRows);
+                        })
+                        .catch(err => {
+                          reject(err);
+                        })
+                    })
+                    //delete outcome
+                    .then(() => {
+                      db.outcomestandard.destroy({
+                        where: {
+                          Id: request.Id
+                        }
+                      })
+                        .then(effectedRows => {
+                          console.log('Effected rows of Outcome: ' + effectedRows);
+                          let code = 1;
+                          resolve(code);
+                        })
+                        .catch(err => {
+                          reject(err);
+                        })
+                    })
+                    .catch(err => {
+                      reject(err);
+                    })
                 })
-                .catch(err => {
-                  reject(err);
-                })
+
             }
             else {
               let code = -2;

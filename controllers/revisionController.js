@@ -63,9 +63,10 @@ exports.addRevision = (req, res) => {
     revision.addRevision(request)
         .then(data => {
             let response = {};
-            if (data === 1) {
+            if (data.code === 1) {
                 response.code = 1;
                 response.message = "success";
+                response.data = data;
                 res.send(JSON.stringify(response));
             } else if (data === -2) {
                 response.code = -2;
