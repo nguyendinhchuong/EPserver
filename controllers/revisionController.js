@@ -1,5 +1,6 @@
 const revision = require('../service/revisionService');
 
+//get all revision of an outcome standard
 exports.getRevision = (req, res) => {
     let body = req.query;
     let request = {};
@@ -12,25 +13,25 @@ exports.getRevision = (req, res) => {
         })
 }
 
-/*
-exports.getRevisionInfo = (req, res) => {
-    let body = req.query;
-    let request = {};
-    request.IdOutcomeStandard = Number(body.idoutcome);
-    revision.getRevision(request)
-        .then(data => {
-            let response = {};
-            response.data = data;
-            res.send(JSON.stringify(response));
-        })
-        .catch(err => {
-            throw err;
-        })
-}
+
+// exports.getRevisionInfo = (req, res) => {
+//     let body = req.query;
+//     let request = {};
+//     request.IdOutcomeStandard = Number(body.idoutcome);
+//     revision.getRevision(request)
+//         .then(data => {
+//             let response = {};
+//             response.data = data;
+//             res.send(JSON.stringify(response));
+//         })
+//         .catch(err => {
+//             throw err;
+//         })
+// }
 exports.getRevisionInfoById = (req, res) => {
     let params = req.query;
     let request = {};
-    request.Id = params.IdRevision;
+    request.Id = Number(params.idrevision);
     revision.getRevisionInfoById(request)
         .then(data => {
             let response = {};
@@ -48,7 +49,7 @@ exports.getRevisionInfoById = (req, res) => {
         })
 }
 
-*/
+
 
 
 
@@ -71,6 +72,32 @@ exports.addRevision = (req, res) => {
             } else if (data === -2) {
                 response.code = -2;
                 response.message = "couldn't find id outcome standard";
+                res.send(JSON.stringify(response));
+            }
+            else {
+                response.code = -1;
+                response.message = "fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+}
+
+
+exports.deleteRevision = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.Id = params.idrevision;
+
+    revision.deleteRevisionById(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "success";
+                res.send(JSON.stringify(response));
+            } else if (data === -2) {
+                response.code = -2;
+                response.message = "couldn't find id revision";
                 res.send(JSON.stringify(response));
             }
             else {

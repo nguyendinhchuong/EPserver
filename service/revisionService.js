@@ -116,3 +116,51 @@ exports.addRevision = (request) => {
       })
   })
 }
+
+exports.deleteRevisionById = (request) => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.authenticate()
+      .then(() => {
+        db.revision.findById(request.Id)
+          .then(data => {
+            if (data) {
+              db.detailrevision.destroy({
+                where: {
+                  IdRevision: request.Id
+                }
+              })
+                .then(effectedRows => {
+                  console.log('Effected rows of Detail Revision: ' + effectedRows);
+                })
+                .then(() => {
+                  db.revision.destroy({
+                    where: {
+                      Id: request.Id
+                    }
+                  })
+                    .then(effectedRows => {
+                      console.log('Effected rows of Revision: ' + effectedRows);
+                      let code = 1;
+                      resolve(code);
+                    })
+                    .catch(err => {
+                      reject(err);
+                    })
+                })
+                .catch(err => {
+                  reject(err);
+                })
+            } else {
+              let code = -2;
+              resolve(code);
+            }
+          })
+          .catch(err => {
+            reject(err);
+          })
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
+}
