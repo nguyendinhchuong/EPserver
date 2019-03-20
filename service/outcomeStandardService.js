@@ -210,3 +210,41 @@ exports.deleteOutcomeStandard = (request) => {
       })
   })
 }
+
+exports.renameOutcomeStandard = (request) => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.authenticate()
+      .then(() => {
+        db.outcomestandard.findById(request.Id)
+          .then(data => {
+            if (data) {
+              db.outcomestandard.update({
+                NameOutcomeStandard: request.NameOutcomeStandard
+              },{
+                where:{
+                  Id: request.Id
+                }
+              })
+                .then(effectedRows => {
+                  console.log('Effected rows of Outcome: ' + effectedRows);
+                  let code = 1;
+                  resolve(code);
+                })
+                .catch(err => {
+                  reject(err);
+                })
+            } else {
+              let code = -2;
+              resolve(code);
+            }
+          })
+          .catch(err => {
+            reject(err);
+          })
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
+
+}

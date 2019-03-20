@@ -94,3 +94,31 @@ exports.deleteOutcomeStandard = (req, res) => {
             throw err;
         })
 }
+
+exports.renameOutcomeStandard = (req, res) => {
+    let params = req.query;
+    let request = {};
+
+    request.Id = Number(params.idoutcome);
+    request.NameOutcomeStandard = params.name;
+    outcomeStandard.renameOutcomeStandard(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "rename success";
+                res.send(JSON.stringify(response));
+            } else if (data === -2) {
+                response.code = -2;
+                response.message = "couldn't find this outcome";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "rename fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}
