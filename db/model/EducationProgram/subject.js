@@ -41,7 +41,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DATE,
             allowNull: false
         },
-        DateUpdated:{
+        DateEdited:{
             type: Sequelize.DATE,
             allowNull: false
         }
