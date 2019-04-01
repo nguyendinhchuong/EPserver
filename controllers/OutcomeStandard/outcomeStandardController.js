@@ -1,4 +1,4 @@
-const outcomeStandard = require('../service/outcomeStandardService');
+const outcomeStandard = require('../../service/OutcomeStandard/outcomeStandardService');
 
 
 exports.getOutcomeStandard = (req, res) => {

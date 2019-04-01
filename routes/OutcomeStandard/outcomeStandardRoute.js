@@ -1,4 +1,4 @@
-const outcomeStandard = require('../controllers/outcomeStandardController');
+const outcomeStandard = require('../../controllers/OutcomeStandard/outcomeStandardController');
 
 module.exports = (app) => {
 

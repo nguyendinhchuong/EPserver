@@ -58,6 +58,18 @@ CREATE TABLE `User` (
   `Password` VARCHAR(127) NOT NULL,
   PRIMARY KEY (`Id`)
 );
+CREATE TABLE `Subject`(
+	`Id` INT NOT NULL AUTO_INCREMENT,
+	`SubjectCode` VARCHAR(255) NOT NULL,
+	`SubjectName` VARCHAR(255) NOT NULL,
+	`SubjectEngName` VARCHAR(255),
+	`Credit` INT NOT NULL,
+	`TheoryPeriod` INT NOT NULL,
+	`PracticePeriod` INT NOT NULL,
+	`ExercisePeriod` INT NOT NULL,
+	`Description` VARCHAR(255)
+	PRIMARY KEY(`Id`)
+);
 
 ALTER TABLE `OutcomeStandard` ADD CONSTRAINT `OutcomeStandard_fk0` FOREIGN KEY (`IdFaculty`) REFERENCES `Faculty`(`Id`);
 

@@ -1,4 +1,4 @@
-const db = require('../models/index');
+const db = require('../../models/index');
 
 exports.getRevision = (data) => {
   return new Promise((resolve, reject) => {

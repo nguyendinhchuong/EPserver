@@ -1,4 +1,4 @@
-const revision = require('../controllers/revisionController');
+const revision = require('../../controllers/OutcomeStandard/revisionController');
 
 module.exports = (app) => {
     // lấy thông tin tất cả phiên bản thuộc chuẩn đầu ra này

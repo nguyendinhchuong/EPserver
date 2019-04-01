@@ -1,4 +1,4 @@
-const program = require('../service/programService');
+const program = require('../../service/OutcomeStandard/programService');
 
 exports.getPrograms = (req, res) => {
     program.getProgram().then(data => {

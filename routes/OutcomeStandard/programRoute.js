@@ -1,4 +1,4 @@
-const program = require('../controllers/programController');
+const program = require('../../controllers/OutcomeStandard/programController');
 
 module.exports = (app) => {
     app.route('/getprogram').get(program.getPrograms);

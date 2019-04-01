@@ -1,4 +1,4 @@
-const detailRevision = require('../service/detailrevisionService');
+const detailRevision = require('../../service/OutcomeStandard/detailrevisionService');
 
 exports.getDetailRevision = (req, res) => {
     let body = req.query;

@@ -1,4 +1,4 @@
-const faculty = require('../service/facultyService');
+const faculty = require('../../service/OutcomeStandard/facultyService');
 
 exports.getFaculty = (req, res) => {
     faculty.getFaculty().then(data => {

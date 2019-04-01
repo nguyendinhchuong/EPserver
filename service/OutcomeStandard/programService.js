@@ -1,13 +1,12 @@
-const db = require('../models/index');
+const db = require('../../models/index');
 
-
-exports.getFaculty = () => {
+exports.getProgram = () => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
             .then(() => {
-                db.sequelize.query("select * from faculty", { model: db.faculty })
-                    .then(faculty => {
-                        resolve(faculty)
+                db.sequelize.query("select * from program", { model: db.program })
+                    .then(program => {
+                        resolve(program)
                     })
             })
             .catch(err => {
@@ -15,11 +14,12 @@ exports.getFaculty = () => {
             })
     })
 }
-exports.getFacultyInfo = () => {
+
+exports.getProgramInfo = () => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
             .then(() => {
-                db.faculty.findAll()
+                db.program.findAll()
                     .then(info=>{
                         resolve(info);
                     })

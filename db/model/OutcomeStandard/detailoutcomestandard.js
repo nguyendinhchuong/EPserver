@@ -1,14 +1,13 @@
-var db = require('../../models/index');
+var db = require('../../../models/index');
 
 module.exports = (sequelize, Sequelize) => {
-    const detailrevision = sequelize.define('detailrevision', {
+    const detailoutcomstandard = sequelize.define('detailoutcomestandard', {
         Id: {
             type: Sequelize.INTEGER,
-            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        IdRevision: {
+        IdOutcomeStandard: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
@@ -24,5 +23,9 @@ module.exports = (sequelize, Sequelize) => {
         freezeTableName: true,
         timestamps: false
     })
-    return detailrevision;
+    return detailoutcomstandard;
 }
+
+
+
+

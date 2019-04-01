@@ -8,12 +8,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
 
-const routesPrograms = require('./routes/programRoute');
-const routesFaculties = require('./routes/facultyRoute');
-const routesOutcomes = require('./routes/outcomeStandardRoute');
-const routesDetailOutcomes = require('./routes/detailOutcomeStandardRoute');
-const routesRevisions = require('./routes/revisionRoute');
-const routesDetailRevisions = require('./routes/detailRevisionRoute');
+const routesPrograms = require('./routes/OutcomeStandard/programRoute');
+const routesFaculties = require('./routes/OutcomeStandard/facultyRoute');
+const routesOutcomes = require('./routes/OutcomeStandard/outcomeStandardRoute');
+const routesDetailOutcomes = require('./routes/OutcomeStandard/detailOutcomeStandardRoute');
+const routesRevisions = require('./routes/OutcomeStandard/revisionRoute');
+const routesDetailRevisions = require('./routes/OutcomeStandard/detailRevisionRoute');
 
 
 routesPrograms(app);

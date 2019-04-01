@@ -1,4 +1,4 @@
-const faculty = require('../controllers/facultyController');
+const faculty = require('../../controllers/OutcomeStandard/facultyController');
 
 module.exports = (app) => {
     app.route('/getfaculty').get(faculty.getFaculty);

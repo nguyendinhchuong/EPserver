@@ -37,12 +37,12 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 //models/tables
-db.outcomestandard = require('../db/model/outcomestandard')(sequelize, Sequelize);
-db.faculty = require('../db/model/faculty')(sequelize, Sequelize);
-db.program = require('../db/model/program')(sequelize, Sequelize);
-db.detailoutcomestandard = require('../db/model/detailoutcomestandard')(sequelize, Sequelize);
-db.revision = require('../db/model/revision')(sequelize, Sequelize);
-db.detailrevision = require('../db/model/detailrevision')(sequelize, Sequelize);
+db.outcomestandard = require('../db/model/OutcomeStandard/outcomestandard')(sequelize, Sequelize);
+db.faculty = require('../db/model/OutcomeStandard/faculty')(sequelize, Sequelize);
+db.program = require('../db/model/OutcomeStandard/program')(sequelize, Sequelize);
+db.detailoutcomestandard = require('../db/model/OutcomeStandard/detailoutcomestandard')(sequelize, Sequelize);
+db.revision = require('../db/model/OutcomeStandard/revision')(sequelize, Sequelize);
+db.detailrevision = require('../db/model/OutcomeStandard/detailrevision')(sequelize, Sequelize);
 
 // // //Relations
 // db.outcomestandard.hasMany(db.detailoutcomestandard);

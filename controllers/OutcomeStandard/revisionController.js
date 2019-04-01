@@ -1,4 +1,4 @@
-const revision = require('../service/revisionService');
+const revision = require('../../service/OutcomeStandard/revisionService');
 
 //get all revision of an outcome standard
 exports.getRevision = (req, res) => {

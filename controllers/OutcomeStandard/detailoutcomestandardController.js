@@ -1,4 +1,4 @@
-const detailOS = require('../service/detailoutcomestandardService');
+const detailOS = require('../../service/OutcomeStandard/detailoutcomestandardService');
 
 exports.getDetailOutcomeStandardInfo = (req, res) => {
     let body = req.query;
