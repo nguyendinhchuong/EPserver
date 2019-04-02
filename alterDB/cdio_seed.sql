@@ -1,30 +1,38 @@
 use cdio;
 /*insert program*/
-insert into  cdio.Program(NameProgram) values('Chính Quy');
-insert into  cdio.Program(NameProgram) values('Chất Lượng Cao');
-insert into  cdio.Program(NameProgram) values('Tiên Tiến');
-insert into  cdio.Program(NameProgram) values('Cao Đẳng');
-insert into  cdio.Program(NameProgram) values('Việt Pháp');
+insert into cdio.Program(NameProgram) values('Chính Quy');
+insert into cdio.Program(NameProgram) values('Chất Lượng Cao');
+insert into cdio.Program(NameProgram) values('Tiên Tiến');
+insert into cdio.Program(NameProgram) values('Cao Đẳng');
+insert into cdio.Program(NameProgram) values('Việt Pháp');
 
 /*insert  faculty*/
-insert into  cdio.Faculty(NameFaculty) values('Công nghệ thông tin');
-insert into  cdio.Faculty(NameFaculty) values('Vật lý');
-insert into  cdio.Faculty(NameFaculty) values('Hóa học');
-insert into  cdio.Faculty(NameFaculty) values('Công nghệ sinh học');
-insert into  cdio.Faculty(NameFaculty) values('Toán học');
+insert into cdio.Faculty(NameFaculty) values('Công nghệ thông tin');
+insert into cdio.Faculty(NameFaculty) values('Vật lý');
+insert into cdio.Faculty(NameFaculty) values('Hóa học');
+insert into cdio.Faculty(NameFaculty) values('Công nghệ sinh học');
+insert into cdio.Faculty(NameFaculty) values('Toán học');
 
 /*insert user*/
 insert into cdio.User(NameUser, Password) value ('admin', 'admin');
 insert into cdio.User(NameUser, Password) value ('giao vu', 'giaovu');
 
 /*insert outcomestandard*/
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-15',1,1,1,'2015','2019/3/2','2019/3/2');
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-16',1,2,1,'2016','2019/3/2','2019/3/2');
-insert into  cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-17',2,3,1,'2017','2019/3/2','2019/3/2');
+insert into cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-15',1,1,1,'2015','2019/3/2','2019/3/2');
+insert into cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-16',1,2,1,'2016','2019/3/2','2019/3/2');
+insert into cdio.OutComeStandard(NameOutComeStandard,IdProgram,IdFaculty,IdUser,SchoolYear,DateCreated,DateEdited) values('cntt2-17',2,3,1,'2017','2019/3/2','2019/3/2');
 
 /*insert revision*/
-insert into  cdio.Revision(NameRevision,IdUser,IdOutcomeStandard,DateUpdated) values('cntt2-15 ver 1',1,1,'2019/3/2 7:00');
-insert into  cdio.Revision(NameRevision,IdUser,IdOutcomeStandard,DateUpdated) values('cntt2-15 ver 2',2,1,'2019/3/3 7:00');
+insert into cdio.Revision(NameRevision,IdUser,IdOutcomeStandard,DateUpdated) values('cntt2-15 ver 1',1,1,'2019/3/2 7:00');
+insert into cdio.Revision(NameRevision,IdUser,IdOutcomeStandard,DateUpdated) values('cntt2-15 ver 2',2,1,'2019/3/3 7:00');
+
+/*insert subject*/
+insert into  cdio.Subject(SubjectCode,SubjectName,SubjectEngName,Credit,TheoryPeriod,PracticePeriod,ExercisePeriod,Description)
+values('MTH00003','Vi tích phân 1B','',3,45,0,0,'Môn học giúp sinh viên nắm vững kiến thức giải tích');
+insert into  cdio.Subject(SubjectCode,SubjectName,SubjectEngName,Credit,TheoryPeriod,PracticePeriod,ExercisePeriod,Description)
+values('MTH00043','Đại số tuyến tính','',4,45,0,0,'Môn học giúp sinh viên nắm vững kiến thức đại số');
+insert into  cdio.Subject(SubjectCode,SubjectName,SubjectEngName,Credit,TheoryPeriod,PracticePeriod,ExercisePeriod,Description)
+values('MTH00041','Toán rời rạc','',4,45,0,0,'Môn học giúp sinh viên nắm vững kiến thức toán rời rạc');
 
 /*insert detailoutcomestandard*/
 insert into cdio.detailOutcomeStandard(IdOutcomeStandard, KeyRow, NameRow) values(1, '1---', 'KIẾN THỨC VÀ LẬP LUẬN KỸ THUẬT');
