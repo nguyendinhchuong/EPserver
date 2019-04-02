@@ -1,40 +1,33 @@
 module.exports = (sequelize, Sequelize) => {
-    const subject = sequelize.define('subject', {
+    const eduprogram = sequelize.define('eduprogram', {
         Id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        SubjectCode: {
+        EduName: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        SubjectName: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        SubjectEngName: {
+        EduEngName: {
             type: Sequelize.STRING
         },
-        Credit:{
+        IdLevel:{
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        TheoryPeriod:{
+        IdMajor:{
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        PracticePeriod:{
+        IdProgram:{
             type: Sequelize.INTEGER,
             allowNull: false
         },
-        ExercisePeriod:{
-            type: Sequelize.INTEGER,
-            allowNull: false
-        },
-        Description: {
+        SchoolYear: {
             type: Sequelize.STRING,
+            allowNull: false
         },
         DateCreated:{
             type: Sequelize.DATE,
@@ -48,5 +41,5 @@ module.exports = (sequelize, Sequelize) => {
         freezeTableName: true,
         timestamps: false
     })
-    return subject;
+    return eduprogram;
 }

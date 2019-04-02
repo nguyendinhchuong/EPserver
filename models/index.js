@@ -45,6 +45,10 @@ db.revision = require('../db/model/OutcomeStandard/revision')(sequelize, Sequeli
 db.detailrevision = require('../db/model/OutcomeStandard/detailrevision')(sequelize, Sequelize);
 
 db.subject = require('../db/model/EducationProgram/subject')(sequelize, Sequelize);
+db.eduprogram = require('../db/model/EducationProgram/EduProgram')(sequelize, Sequelize);
+db.subjecteduprog = require('../db/model/EducationProgram/SubjectEduProg')(sequelize, Sequelize);
+db.major = require('../db/model/EducationProgram/Major')(sequelize, Sequelize);
+db.level = require('../db/model/EducationProgram/Level')(sequelize, Sequelize);
 
 // // //Relations
 // db.outcomestandard.hasMany(db.detailoutcomestandard);
