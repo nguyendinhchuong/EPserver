@@ -75,6 +75,25 @@ exports.addSubject = (request) => {
     })
 }
 
+exports.addSubjectBulk = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.subject.bulkCreate(request.data, { returning: true })
+                    .then(() => {
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
 exports.deleteSubject = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
@@ -102,7 +121,7 @@ exports.deleteSubject = (request) => {
                                             .catch(err => {
                                                 reject(err);
                                             })
-                                    }else{
+                                    } else {
                                         let code = -2;
                                         resolve(code);
                                     }

@@ -64,10 +64,29 @@ exports.addSubject = (req, res) => {
                 res.send(JSON.stringify(response));
             }
         })
-        .catch(err=>{
+        .catch(err => {
             throw err;
         })
 
+}
+
+exports.addSubjectBulk = (req, res) => {
+    let body = req.body;
+    let request = {};
+    request.data = JSON.parse(body);
+    subject.addSubjectBulk(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "save success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "save fail";
+                res.send(JSON.stringify(response));
+            }
+        })
 }
 
 exports.deleteSubject = (req, res) => {
@@ -91,7 +110,7 @@ exports.deleteSubject = (req, res) => {
                 res.send(JSON.stringify(response));
             }
         })
-        .catch(err=>{
+        .catch(err => {
             throw err;
         })
 }
