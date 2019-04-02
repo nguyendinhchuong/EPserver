@@ -35,14 +35,6 @@ module.exports = (sequelize, Sequelize) => {
         },
         Description: {
             type: Sequelize.STRING,
-        },
-        DateCreated:{
-            type: Sequelize.DATE,
-            allowNull: false
-        },
-        DateEdited:{
-            type: Sequelize.DATE,
-            allowNull: false
         }
     },{
         freezeTableName: true,
