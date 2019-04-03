@@ -73,7 +73,23 @@ exports.addSubject = (req, res) => {
 exports.addSubjectBulk = (req, res) => {
     let body = req.body;
     let request = {};
-    request.data = JSON.parse(body);
+    let array = JSON.parse(body.data);
+    let new_array = [];
+    array.data.map(subject => {
+        let obj = {};
+        obj.SubjectCode = subject.subjectcode;
+        obj.SubjectName = subject.subjectname;
+        obj.SubjectEngName = subject.subjectengname;
+        obj.Credit = Number(subject.credit);
+        obj.TheoryPeriod = Number(subject.theoryperiod);
+        obj.PracticePeriod = Number(subject.practiceperiod);
+        obj.ExercisePeriod = Number(subject.exerciseperiod);
+        obj.Description = subject.description;
+        obj.DateCreated = subject.datecreated;
+        obj.DateEdited = subject.dateedited;
+        new_array.push(obj);
+    })
+    request.data = new_array;
     subject.addSubjectBulk(request)
         .then(data => {
             let response = {};
