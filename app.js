@@ -18,6 +18,7 @@ const routesDetailRevisions = require('./routes/OutcomeStandard/detailRevisionRo
 //Education Program Route
 const routesSubject = require('./routes/EducationProgram/subjectRoute');
 const routeEduProg = require('./routes/EducationProgram/eduprogramRoute');
+const routeLevel = require('./routes/EducationProgram/levelRoute');
 
 routesPrograms(app);
 routesFaculties(app);
@@ -28,6 +29,7 @@ routesDetailRevisions(app);
 
 routesSubject(app);
 routeEduProg(app);
+routeLevel(app);
 
 app.listen(3001, () => {
     console.log('Node server running @ http://localhost:3001')

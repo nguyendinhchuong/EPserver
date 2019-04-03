@@ -68,3 +68,26 @@ exports.addEduProgram = (req, res) => {
             throw err;
         })
 }
+
+exports.deleteEduProgram = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.Id = Number(params.ideduprog);
+
+    eduprogram.deleteEduProgram(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "delete success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "delete fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}

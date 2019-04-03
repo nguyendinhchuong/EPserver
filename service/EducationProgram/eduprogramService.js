@@ -61,3 +61,90 @@ exports.addEduProgram = (request) => {
             })
     })
 }
+
+exports.deleteEduProgram = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.subjecteduprog.findAll({
+                    where: {
+                        IdEduProg: request.Id
+                    }
+                })
+                    .then(data => {
+                        if (data) {
+                            db.subjecteduprog.destroy({
+                                where: {
+                                    IdEduProg: request.Id
+                                }
+                            })
+                                .then(effectedRows => {
+                                    console.log("Effected rows of SubjectEduProg: " + effectedRows);
+                                })
+                                .then(() => {
+                                    db.eduprogram.destroy({
+                                        where: {
+                                            Id: request.Id
+                                        }
+                                    })
+                                        .then(effectedRows => {
+                                            console.log("Effected rows of EduProgram: " + effectedRows);
+                                            let code = 1;
+                                            resolve(code);
+                                        })
+                                        .catch(err => {
+                                            reject(err);
+                                        })
+
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            db.eduprogram.destroy({
+                                where: {
+                                    Id: request.Id
+                                }
+                            })
+                                .then(effectedRows => {
+                                    console.log("Effected rows of EduProgram: " + effectedRows);
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+exports.addSubjectToEduProg = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.subjecteduprog.create(request)
+                    .then(() => {
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+exports.addSubjectBulkToEduProg = (request)=>{
+    
+}

@@ -9,14 +9,6 @@ module.exports = (sequelize, Sequelize) => {
         LevelName: {
             type: Sequelize.STRING,
             allowNull: false
-        },
-        DateCreated:{
-            type: Sequelize.DATE,
-            allowNull: false
-        },
-        DateEdited:{
-            type: Sequelize.DATE,
-            allowNull: false
         }
     },{
         freezeTableName: true,
