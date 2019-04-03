@@ -15,9 +15,9 @@ const routesDetailOutcomes = require('./routes/OutcomeStandard/detailOutcomeStan
 const routesRevisions = require('./routes/OutcomeStandard/revisionRoute');
 const routesDetailRevisions = require('./routes/OutcomeStandard/detailRevisionRoute');
 
-//Subject Route
+//Education Program Route
 const routesSubject = require('./routes/EducationProgram/subjectRoute');
-
+const routeEduProg = require('./routes/EducationProgram/eduprogramRoute');
 
 routesPrograms(app);
 routesFaculties(app);
@@ -27,6 +27,7 @@ routesRevisions(app);
 routesDetailRevisions(app);
 
 routesSubject(app);
+routeEduProg(app);
 
 app.listen(3001, () => {
     console.log('Node server running @ http://localhost:3001')

@@ -39,18 +39,19 @@ exports.getSubjectById = (req, res) => {
 }
 
 exports.addSubject = (req, res) => {
-    let body = req.body;
+    let body = JSON.parse(req.body.data);    
     let request = {};
-    request.SubjectCode = body.data.subjectcode;
-    request.SubjectName = body.data.subjectname;
-    request.SubjectEngName = body.data.subjectengname;
-    request.Credit = Number(body.data.credit);
-    request.TheoryPeriod = Number(body.data.theoryperiod);
-    request.PracticePeriod = Number(body.data.practiceperiod);
-    request.ExercisePeriod = Number(body.data.exerciseperiod);
-    request.Description = body.data.description;
-    request.DateCreated = body.data.datecreated;
-    request.DateEdited = body.data.dateedited;
+    request.SubjectCode = body.subjectcode;
+    request.SubjectName = body.subjectname;
+    request.SubjectEngName = body.subjectengname;
+    request.Credit = Number(body.credit);
+    request.TheoryPeriod = Number(body.theoryperiod);
+    request.PracticePeriod = Number(body.practiceperiod);
+    request.ExercisePeriod = Number(body.exerciseperiod);
+    request.Description = body.description;
+    request.DateCreated = body.datecreated;
+    request.DateEdited = body.dateedited;
+    console.log(request);
     subject.addSubject(request)
         .then(data => {
             let response = {};
@@ -75,7 +76,7 @@ exports.addSubjectBulk = (req, res) => {
     let request = {};
     let array = JSON.parse(body.data);
     let new_array = [];
-    array.data.map(subject => {
+    array.map(subject => {
         let obj = {};
         obj.SubjectCode = subject.subjectcode;
         obj.SubjectName = subject.subjectname;
