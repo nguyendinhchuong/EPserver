@@ -1,7 +1,7 @@
-const Level = require('../../controllers/EducationProgram/LevelController');
+const Major = require('../../controllers/EducationProgram/majorController');
 
 module.exports = (app) => {
-    app.route('/level/getlist').get(Level.getLevelList);
+    app.route('/major/getlist').get(Major.getMajorList);
     // app.route('/level/getbyid').get(Level.getLevelById);
 
     // app.route('/level/add').post(Level.addLevel);

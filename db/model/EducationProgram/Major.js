@@ -20,14 +20,6 @@ module.exports = (sequelize, Sequelize) => {
         IdFaculty:{
             type: Sequelize.INTEGER,
             allowNull: false
-        },
-        DateCreated:{
-            type: Sequelize.DATE,
-            allowNull: false
-        },
-        DateEdited:{
-            type: Sequelize.DATE,
-            allowNull: false
         }
     },{
         freezeTableName: true,
