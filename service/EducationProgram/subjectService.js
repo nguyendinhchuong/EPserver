@@ -138,3 +138,26 @@ exports.deleteSubject = (request) => {
             })
     })
 }
+
+//get list of edu program which subject is added in
+exports.getEduProgsSubjectUsed = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.subjecteduprog.findOne({
+                    where: {
+                        IdSubject: request.Id
+                    }
+                })
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

@@ -51,7 +51,7 @@ exports.addSubject = (req, res) => {
     request.Description = body.description;
     request.DateCreated = body.datecreated;
     request.DateEdited = body.dateedited;
-    console.log(request);
+    
     subject.addSubject(request)
         .then(data => {
             let response = {};

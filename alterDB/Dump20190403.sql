@@ -134,8 +134,10 @@ CREATE TABLE `eduprogram` (
   `IdMajor` int(11) NOT NULL,
   `IdProgram` int(11) NOT NULL,
   `SchoolYear` varchar(4) NOT NULL,
+  `DateCreated` datetime NOT NULL,
+  `DateEdited` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +146,7 @@ CREATE TABLE `eduprogram` (
 
 LOCK TABLES `eduprogram` WRITE;
 /*!40000 ALTER TABLE `eduprogram` DISABLE KEYS */;
-INSERT INTO `eduprogram` VALUES (1,'Chương trình đào tạo ngành Kỹ thuật phần mềm',NULL,1,1,1,'2017'),(2,'Chương trình đào tạo ngành Khoa học máy tính',NULL,1,2,1,'2017'),(3,'Chương trình đào tạo ngành Hệ thống thông tin',NULL,1,3,1,'2017');
+INSERT INTO `eduprogram` VALUES (1,'Chương trình đào tạo ngành Kỹ thuật phần mềm',NULL,1,1,1,'2017','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Chương trình đào tạo ngành Khoa học máy tính',NULL,1,2,1,'2017','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Chương trình đào tạo ngành Hệ thống thông tin',NULL,1,3,1,'2017','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Chương trình đào tạo ngành Thị giác máy tính',NULL,1,4,1,'2017','2019-03-01 17:00:00','2019-03-01 17:00:00');
 /*!40000 ALTER TABLE `eduprogram` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,4 +483,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-03 19:12:40
+-- Dump completed on 2019-04-03 20:11:00
