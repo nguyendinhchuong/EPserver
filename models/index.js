@@ -51,6 +51,9 @@ db.major = require('../db/model/EducationProgram/Major')(sequelize, Sequelize);
 db.level = require('../db/model/EducationProgram/Level')(sequelize, Sequelize);
 db.detaileduprog = require('../db/model/EducationProgram/detaileduprog')(sequelize, Sequelize);
 db.edupurpose = require('../db/model/EducationProgram/edupurpose')(sequelize, Sequelize);
+db.subjectblock = require('../db/model/EducationProgram/subjectblock')(sequelize, Sequelize);
+db.detailblock = require('../db/model/EducationProgram/detailblock')(sequelize, Sequelize);
+db.eduprogcontent = require('../db/model/EducationProgram/eduprogcontent')(sequelize, Sequelize);
 
 // // //Relations
 // db.outcomestandard.hasMany(db.detailoutcomestandard);
