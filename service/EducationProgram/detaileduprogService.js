@@ -34,3 +34,33 @@ exports.getDetailEduProgram = (request) => {
             })
     })
 }
+
+exports.addDetailEduProg = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.eduprogram.findByPk(request.IdEduProgram)
+                    .then(data => {
+                        if (data) {
+                            db.detaileduprog.create(request)
+                                .then(() => {
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

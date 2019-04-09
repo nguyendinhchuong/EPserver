@@ -2,4 +2,6 @@ const detaileduprogram = require('../../controllers/EducationProgram/detailedupr
 
 module.exports = (app) => {
     app.route('/detaileduprogram/get').get(detaileduprogram.getDetailEduProg);  
+
+    app.route('/detaileduprogram/add').post(detaileduprogram.addDetailEduProg);
 }

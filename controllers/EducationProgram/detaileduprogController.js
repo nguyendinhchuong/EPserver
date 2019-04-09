@@ -20,3 +20,32 @@ exports.getDetailEduProg = (req, res) => {
             }
         })
 }
+
+exports.addDetailEduProg = (req, res) => {
+    let body = JSON.parse(req.body.data);
+    let request = {};
+    request.IdEduProgram = Number(body.ideduprogram);
+    request.EnrollmentTarget = body.enrollmenttarget;
+    request.DateCreated = body.datecreated;
+    request.EduProcess = body.eduprocess;
+    request.GraduatedCon = body.graduatedcon;
+
+    detaileduprogram.addDetailEduProg(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "success";
+                response.data = data;
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "fail";
+                response.data = data;
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}

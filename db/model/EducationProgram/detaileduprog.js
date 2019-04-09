@@ -17,7 +17,13 @@ module.exports = (sequelize, Sequelize) => {
         DateCreated:{
             type: Sequelize.DATE,
             allowNull:false
-        }        
+        },
+        EduProcess:{
+            type: Sequelize.STRING,
+        },
+        GraduatedCon:{
+            type: Sequelize.STRING,
+        }
     },{
         freezeTableName: true,
         timestamps: false
