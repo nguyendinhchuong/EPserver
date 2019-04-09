@@ -2,4 +2,6 @@ const edupurpose = require('../../controllers/EducationProgram/edupurposeControl
 
 module.exports = (app) => {
     app.route('/edupurpose/get').get(edupurpose.getEduPurpose);  
+
+    app.route('/edupurpose/add').post(edupurpose.addEduPurpose);
 }

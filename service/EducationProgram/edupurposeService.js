@@ -34,3 +34,22 @@ exports.getEduPurpose = (request) => {
             })
     })
 }
+
+exports.addEduPurpose = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.edupurpose.bulkCreate(request.data)
+                    .then(()=>{
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
