@@ -20,6 +20,8 @@ const routesSubject = require('./routes/EducationProgram/subjectRoute');
 const routeEduProg = require('./routes/EducationProgram/eduprogramRoute');
 const routeLevel = require('./routes/EducationProgram/levelRoute');
 const routeMajor = require('./routes/EducationProgram/majorRoute');
+const routeDetailEduProg = require('./routes/EducationProgram/detaileduprogRoute');
+const routeEduPurpose = require('./routes/EducationProgram/edupurposeRoute');
 
 routesPrograms(app);
 routesFaculties(app);
@@ -32,6 +34,9 @@ routesSubject(app);
 routeEduProg(app);
 routeLevel(app);
 routeMajor(app);
+routeDetailEduProg(app);
+routeEduPurpose(app);
+
 
 app.listen(3001, () => {
     console.log('Node server running @ http://localhost:3001')
