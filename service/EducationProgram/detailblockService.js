@@ -57,3 +57,5 @@ exports.addSubjectToDetailBlock = (request) => {
             })
     })
 }
+
+exports
