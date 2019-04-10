@@ -67,3 +67,42 @@ exports.addSubjectToEduProg = (req, res) => {
             }
         })
 }
+
+exports.deleteSubjectFromEduProg = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.IdEduProg = Number(params.ideduprog);
+    request.IdSubject = Number(params.idsubject);
+    subjecteduprog.deleteSubjectFromEduProg(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+}
+
+exports.deleteAllSubjectFromEduProg = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.IdEduProg = Number(params.ideduprog);
+    subjecteduprog.deleteAllSubjectFromEduProg(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+}

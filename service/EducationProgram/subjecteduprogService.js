@@ -79,3 +79,52 @@ exports.addSubjectToEduProg = (request) => {
             })
     })
 }
+
+exports.deleteSubjectFromEduProg = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.subjecteduprog.destroy({
+                    where: {
+                        IdSubject: request.IdSubject,
+                        IdEduProg: request.IdEduProg
+                    }
+                })
+                    .then(effectRows => {
+                        console.log("Effected row of subjecteduprog: " + effectRows);
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+exports.deleteAllSubjectFromEduProg = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.subjecteduprog.destroy({
+                    where: {                        
+                        IdEduProg: request.IdEduProg
+                    }
+                })
+                    .then(effectRows => {
+                        console.log("Effected row of subjecteduprog: " + effectRows);
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

@@ -43,12 +43,10 @@ exports.addEduPurpose = (req, res) => {
             if (data === 1) {
                 response.code = 1;
                 response.message = "success";
-                response.data = data;
                 res.send(JSON.stringify(response));
             } else {
                 response.code = -1;
                 response.message = "fail";
-                response.data = data;
                 res.send(JSON.stringify(response));
             }
         })
