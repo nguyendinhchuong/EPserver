@@ -58,4 +58,3 @@ exports.addSubjectToDetailBlock = (request) => {
     })
 }
 
-exports

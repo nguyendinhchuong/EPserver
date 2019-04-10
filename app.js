@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));  
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
 //Outcome Standard Route
@@ -23,6 +23,8 @@ const routeMajor = require('./routes/EducationProgram/majorRoute');
 const routeDetailEduProg = require('./routes/EducationProgram/detaileduprogRoute');
 const routeEduPurpose = require('./routes/EducationProgram/edupurposeRoute');
 const routeSubjectEduProg = require('./routes/EducationProgram/subjecteduprogRoute');
+const routeSubjectBlock = require('./routes/EducationProgram/subjectblockRoute');
+const routeDetailBlock = require('./routes/EducationProgram/detailblockRoute');
 
 routesPrograms(app);
 routesFaculties(app);
@@ -38,6 +40,8 @@ routeMajor(app);
 routeDetailEduProg(app);
 routeEduPurpose(app);
 routeSubjectEduProg(app);
+routeSubjectBlock(app);
+routeDetailBlock(app);
 
 app.listen(3001, () => {
     console.log('Node server running @ http://localhost:3001')

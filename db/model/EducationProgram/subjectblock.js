@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        IdEduProContent:{
+        IdEduProgContent:{
             type: Sequelize.INTEGER,
             allowNull: false
         },
