@@ -5,5 +5,5 @@ module.exports = (app) => {
     app.route('/eduprogram/getbyid').get(eduprogram.getEduProgByID);  
 
     app.route('/eduprogram/add').post(eduprogram.addEduProgram);
-    
+    app.route('/eduprogram/update').post(eduprogram.updateEduProgram);
 }

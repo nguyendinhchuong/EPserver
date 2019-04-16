@@ -91,3 +91,34 @@ exports.deleteEduProgram = (req, res) => {
             throw err;
         })
 }
+
+exports.updateEduProgram = (req, res) => {
+    let params = req.query;
+    let body = JSON.parse(req.body.data);
+    let request = {};
+    request.Id = Number(params.ideduprog);
+    request.EduName = body.eduname;
+    request.EduEngName = body.eduengname;
+    request.IdLevel = Number(body.idlevel);
+    request.IdMajor = Number(body.idmajor);
+    request.IdProgram = Number(body.idprogram);
+    request.SchoolYear = body.schoolyear;
+    request.DateEdited = body.dateedited;
+
+    eduprogram.updateEduProg(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "update success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "update fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}

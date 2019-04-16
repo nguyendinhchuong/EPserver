@@ -145,6 +145,43 @@ exports.addSubjectToEduProg = (request) => {
     })
 }
 
-exports.addSubjectBulkToEduProg = (request) => {
-
+exports.updateEduProg = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.eduprogram.findByPk(request.Id)
+                    .then(data => {
+                        if (data) {
+                            db.eduprogram.update({
+                                where: {
+                                    EduName: request.EduName,
+                                    EduEngName: request.EduEngName,
+                                    IdLevel: request.IdLevel,
+                                    IdMajor: request.IdMajor,
+                                    IdProgram: request.IdProgram,
+                                    SchoolYear: request.SchoolYear,
+                                    DateEdited: request.DateEdited
+                                }
+                            })
+                                .then(data => {
+                                    console.log(data);
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
 }
