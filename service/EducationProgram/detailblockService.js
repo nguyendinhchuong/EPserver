@@ -58,3 +58,120 @@ exports.addSubjectToDetailBlock = (request) => {
     })
 }
 
+exports.deleteOne = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.detailblock.findOne({
+                    where: {
+                        IdSubjectBlock: request.IdSubjectBlock,
+                        IdSubject: request.IdSubject
+                    }
+                })
+                    .then(data => {
+                        if (data) {
+                            db.detailblock.destroy({
+                                where: {
+                                    IdSubjectBlock: request.IdSubjectBlock,
+                                    IdSubject: request.IdSubject
+                                }
+                            })
+                                .then(effectRows => {
+                                    console.log("Effect  rows of DetailBlock: " + effectRows);
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+exports.deleteByIdSubject = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.detailblock.findAll({
+                    where: {
+                        IdSubject: request.IdSubject
+                    }
+                })
+                    .then(data => {
+                        if (data) {
+                            db.detailblock.destroy({
+                                where: {
+                                    IdSubject: request.IdSubject
+                                }
+                            })
+                                .then(effectRows => {
+                                    console.log("Effect rows of DetailBlock: ", effectRows);
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+exports.deleteByIdSubjectBlock = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.detailblock.findAll({
+                    where: {
+                        IdSubjectBlock: request.IdSubjectBlock
+                    }
+                })
+                    .then(data => {
+                        if (data) {
+                            db.detailblock.destroy({
+                                where: {
+                                    IdSubjectBlock: request.IdSubjectBlock
+                                }
+                            })
+                                .then(effectRows => {
+                                    console.log("Effect rows of DetailBlock: ", effectRows);
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

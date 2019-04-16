@@ -153,18 +153,23 @@ exports.updateEduProg = (request) => {
                     .then(data => {
                         if (data) {
                             db.eduprogram.update({
-                                where: {
-                                    EduName: request.EduName,
-                                    EduEngName: request.EduEngName,
-                                    IdLevel: request.IdLevel,
-                                    IdMajor: request.IdMajor,
-                                    IdProgram: request.IdProgram,
-                                    SchoolYear: request.SchoolYear,
-                                    DateEdited: request.DateEdited
-                                }
-                            })
-                                .then(data => {
-                                    console.log(data);
+                                EduName: request.EduName,
+                                EduEngName: request.EduEngName,
+                                IdLevel: request.IdLevel,
+                                IdMajor: request.IdMajor,
+                                IdProgram: request.IdProgram,
+                                SchoolYear: request.SchoolYear,
+                                DateEdited: request.DateEdited
+                            },
+                                {
+                                    returning: true,
+                                    where: {
+                                        Id: request.Id
+                                    }
+                                })
+                                .then((rowsUpdate) => {
+                                    console.log("Updated row of EduProg: " + rowsUpdate);
+                                    //console.log(updatedEduProg);
                                     let code = 1;
                                     resolve(code);
                                 })

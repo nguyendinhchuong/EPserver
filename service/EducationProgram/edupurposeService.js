@@ -40,9 +40,49 @@ exports.addEduPurpose = (request) => {
         db.sequelize.authenticate()
             .then(() => {
                 db.edupurpose.bulkCreate(request.data)
-                    .then(()=>{
+                    .then(() => {
                         let code = 1;
                         resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+exports.updateEduPurpose = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.edupurpose.findOne({
+                    where:{
+                        IdDetail: request.IdDetail
+                    }
+                })
+                    .then(data => {
+                        if (data) {
+                            db.edupurpose.update({
+                                KeyRow: request.KeyRow,
+                                NameRow: request.NameRow
+                            },
+                                {
+                                    where: { IdDetail: request.IdDetail }
+                                })
+                                .then(effectRows => {
+                                    console.log("Effected rows of EduPurpose: "+ effectRows);
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
                     })
                     .catch(err => {
                         reject(err);
