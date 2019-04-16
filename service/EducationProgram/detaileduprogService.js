@@ -64,3 +64,59 @@ exports.addDetailEduProg = (request) => {
             })
     })
 }
+exports.updateDetailEduProg = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.detaileduprog.findOne({
+                    where: {
+                        IdEduProgram: request.IdEduProgram
+                    }
+                })
+                    .then(data => {
+                        if (data) {
+                            db.detaileduprog.update({
+                                EnrollmentTarget: request.EnrollmentTarget,
+                                EduProcess: request.EduProcess,
+                                GraduatedCon: request.GraduatedCon
+                            }, {
+                                    where: {
+                                        IdEduProgram: request.IdEduProgram
+                                    }
+                                })
+                                .then(effectedRows => {
+                                    console.log("Effected row of DetailEduProg: ", effectedRows);
+                                })
+                                //update DateEdited in EduProgram table
+                                .then(() => {
+                                    db.eduprogram.update({
+                                        DateEdited: request.DateEdited
+                                    }, {
+                                            where: { Id: request.IdEduProgram }
+                                        })
+                                        .then(effectedRows => {
+                                            console.log("Effected row of DetailEduProg: ", effectedRows);
+                                            let code = 1;
+                                            resolve(code);
+                                        })
+                                        .catch(err => {
+                                            reject(err);
+                                        })
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

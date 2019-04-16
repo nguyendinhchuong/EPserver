@@ -40,6 +40,8 @@ exports.getSubjectById = (request) => {
     })
 }
 
+
+
 exports.addSubject = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
