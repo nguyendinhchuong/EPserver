@@ -51,7 +51,7 @@ exports.updateDetailEduProg = (req, res) => {
     let params = req.query;
     let body = JSON.parse(req.body.data);
     let request = {};
-    request.IdEduProgram = Number(body.ideduprogram);
+    request.IdEduProgram = Number(params.ideduprogram);
     request.EnrollmentTarget = body.enrollmenttarget;
     request.DateCreated = body.datecreated;
     request.EduProcess = body.eduprocess;
