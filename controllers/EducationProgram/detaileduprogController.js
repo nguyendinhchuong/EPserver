@@ -63,7 +63,11 @@ exports.updateDetailEduProg = (req, res) => {
             let response = {};
             if (data === 1) {
                 response.code = 1;
-                response.message = "success";
+                response.message = "update success";
+                res.send(JSON.stringify(response));
+            } else if (data === 2) {
+                response.code = 2;
+                response.message = "create success";
                 res.send(JSON.stringify(response));
             } else {
                 response.code = -1;

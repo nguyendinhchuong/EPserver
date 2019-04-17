@@ -107,8 +107,36 @@ exports.updateDetailEduProg = (request) => {
                                     reject(err);
                                 })
                         } else {
-                            let code = -1;
-                            resolve(code);
+                            let obj = {};
+                            obj.IdEduProgram = request.IdEduProgram;
+                            obj.EnrollmentTarget = request.EnrollmentTarget;
+                            obj.DateCreated = request.DateCreated;
+                            obj.EduProcess = request.EduProcess;
+                            obj.GraduatedCon = request.GraduatedCon;
+                            db.detaileduprog.create(obj)
+                                .then(() => {
+                                    let code = 2;
+                                    resolve(code);
+                                })
+                                //update DateEdited in EduProgram table
+                                .then(() => {
+                                    db.eduprogram.update({
+                                        DateEdited: request.DateEdited
+                                    }, {
+                                            where: { Id: request.IdEduProgram }
+                                        })
+                                        .then(effectedRows => {
+                                            console.log("Effected row of DetailEduProg: ", effectedRows);
+                                            let code = 1;
+                                            resolve(code);
+                                        })
+                                        .catch(err => {
+                                            reject(err);
+                                        })
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
                         }
                     })
                     .catch(err => {
