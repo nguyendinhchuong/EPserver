@@ -1,10 +1,10 @@
-const Major = require('../../controllers/EducationProgram/majorController');
+const major = require('../../controllers/EducationProgram/majorController');
 
 module.exports = (app) => {
-    app.route('/major/getlist').get(Major.getMajorList);
-    // app.route('/level/getbyid').get(Level.getLevelById);
+    app.route('/major/getlist').get(major.getMajorList);
+    app.route('/major/getbyid').get(major.getMajorById);
 
-    // app.route('/level/add').post(Level.addLevel);
-    // app.route('/level/addlist').post(Level.addLevelBulk);
-    // app.route('/level/delete').post(Level.deleteLevel);
+    app.route('/major/add').post(major.addMajor);
+    app.route('/major/addlist').post(major.addBulkMajor);
+    app.route('/major/delete').post(major.deleteMajor);
 }
