@@ -220,11 +220,11 @@ exports.renameOutcomeStandard = (request) => {
             if (data) {
               db.outcomestandard.update({
                 NameOutcomeStandard: request.NameOutcomeStandard
-              },{
-                where:{
-                  Id: request.Id
-                }
-              })
+              }, {
+                  where: {
+                    Id: request.Id
+                  }
+                })
                 .then(effectedRows => {
                   console.log('Effected rows of Outcome: ' + effectedRows);
                   let code = 1;
@@ -247,4 +247,26 @@ exports.renameOutcomeStandard = (request) => {
       })
   })
 
+}
+
+exports.getEduProgListUseOutcome = (request) => {
+  return new Promise((resolve, reject) => {
+    db.sequelize.authenticate()
+      .then(() => {
+        db.detaileduprog.findAndCountAll({
+          where: {
+            IdOutcome: request.IdOutcome
+          }
+        })
+          .then(data => {
+            resolve(data);
+          })
+          .catch(err => {
+            reject(err);
+          })
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
 }

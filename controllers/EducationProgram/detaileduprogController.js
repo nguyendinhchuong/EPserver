@@ -29,6 +29,7 @@ exports.addDetailEduProg = (req, res) => {
     request.DateCreated = body.datecreated;
     request.EduProcess = body.eduprocess;
     request.GraduatedCon = body.graduatedcon;
+    request.IdOutcome = Number(body.idoutcome);
 
     detaileduprogram.addDetailEduProg(request)
         .then(data => {
@@ -57,6 +58,7 @@ exports.updateDetailEduProg = (req, res) => {
     request.EduProcess = body.eduprocess;
     request.GraduatedCon = body.graduatedcon;
     request.DateEdited = body.dateedited;
+    request.IdOutcome = Number(body.idoutcome);
 
     detaileduprogram.updateDetailEduProg(request)
         .then(data => {

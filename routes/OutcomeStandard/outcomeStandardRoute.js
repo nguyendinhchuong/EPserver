@@ -7,6 +7,8 @@ module.exports = (app) => {
     app.route('/getoutcomestandard').get(outcomeStandard.getOutcomeStandardInfo);
     // tải thông tin chuẩn đầu ra với id
     app.route('/getoutcomestandardinfo').get(outcomeStandard.getOutcomeStandardInfoById);
+
+    app.route('/outcomestandard/geteduprog').get(outcomeStandard.getEduProgUseOutcome);
     // xóa nên làm sau cùng (vì xóa chuẩn đầu ra này là phải xóa các phiên bản của nó)
     app.route('/deleteoutcomestandard').post(outcomeStandard.deleteOutcomeStandard);
     // thêm chuẩn đầu ra cần có tên chuẩn đầu ra, idFaculty, idProgram

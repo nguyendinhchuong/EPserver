@@ -78,7 +78,8 @@ exports.updateDetailEduProg = (request) => {
                             db.detaileduprog.update({
                                 EnrollmentTarget: request.EnrollmentTarget,
                                 EduProcess: request.EduProcess,
-                                GraduatedCon: request.GraduatedCon
+                                GraduatedCon: request.GraduatedCon,
+                                IdOutcome: request.IdOutcome
                             }, {
                                     where: {
                                         IdEduProgram: request.IdEduProgram
@@ -113,6 +114,7 @@ exports.updateDetailEduProg = (request) => {
                             obj.DateCreated = request.DateCreated;
                             obj.EduProcess = request.EduProcess;
                             obj.GraduatedCon = request.GraduatedCon;
+                            obj.IdOutcome = request.IdOutcome
                             db.detaileduprog.create(obj)
                                 .then(() => {
                                     let code = 2;

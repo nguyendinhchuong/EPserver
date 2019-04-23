@@ -122,3 +122,27 @@ exports.renameOutcomeStandard = (req, res) => {
             throw err;
         })
 }
+exports.getEduProgUseOutcome = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.IdOutcome = Number(params.idoutcome);
+
+    outcomeStandard.getEduProgListUseOutcome(request)
+        .then(data => {
+            let response = {};
+            if (data.count <= 0) {
+                response.code = -2;
+                response.message = "couldn't find any eduprog";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = 1;
+                response.message = "success";
+                response.count = data.count;
+                response.data = data.rows;
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}
