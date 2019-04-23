@@ -10,6 +10,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             allowNull: false
         },
+        IdOutcome:{
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
         EnrollmentTarget: {
             type: Sequelize.STRING,
             allowNull: false
