@@ -29,3 +29,78 @@ exports.getProgramInfo = () => {
             })
     })
 }
+
+exports.addProgram = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.program.findOne({
+                    where: {
+                        NameProgram: request.NameProgram
+                    }
+                })
+                    .then(data => {
+                        if (!data) {
+                            db.program.create(request)
+                                .then(data => {
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                        } else {
+                            let code = -1;
+                            resolve(code);
+                        }
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+exports.addBulkProgram = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.program.bulkCreate(request.data, { returning: true })
+                    .then(data => {
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+exports.deleteProgram = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.program.destroy({
+                    where: {
+                        Id: request.Id
+                    }
+                })
+                    .then(effectedRows => {
+                        console.log("Effected rows of program: ", effectedRows);
+                        let code = 1;
+                        let data = {};
+                        data.code = code;
+                        data.effectedRows = effectedRows;
+                        resolve(data);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
