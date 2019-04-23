@@ -5,6 +5,6 @@ module.exports = (app) => {
     // app.route('/level/getbyid').get(Level.getLevelById);
 
     app.route('/level/add').post(Level.addLevel);
-    app.route('/level/addbulk').post(Level.addLevelBulk);
+    app.route('/level/addbulk').post(Level.addBulkLevel);
     app.route('/level/delete').post(Level.deleteLevel);
 }
