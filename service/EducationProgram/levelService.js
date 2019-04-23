@@ -77,3 +77,29 @@ exports.addLevelBulk = (request) => {
             })
     })
 }
+exports.deleteLevel = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.level.destroy({
+                    where: {
+                        Id: request.Id
+                    }
+                })
+                    .then(effectedRows => {
+                        console.log("Effected rows of level: ", effectedRows);
+                        let code = 1;
+                        let data = {};
+                        data.code = code;
+                        data.effectedRows = effectedRows;
+                        resolve(data);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

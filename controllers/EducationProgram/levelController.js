@@ -37,3 +37,80 @@ exports.getLevelById = (req, res) => {
             }
         })
 }
+exports.addLevel = (req, res) => {
+    let body = JSON.parse(req.body.data);
+    let request = {};
+    request.NameLevel = body.namelevel;
+
+    level.addLevel(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "add success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "add fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}
+exports.addBulkLevel = (req, res) => {
+    let body = JSON.parse(req.body.data);
+    let request = {};
+    let array = [];
+    body.map(row => {
+        let obj = {};
+        obj.NameLevel = row.namelevel;
+        array.push(obj);
+    })
+    request.data = array;
+    console.log(request);
+
+    level.addBulkLevel(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = 1;
+                response.message = "add success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "add fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+
+}
+exports.deleteLevel = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.Id = Number(params.idlevel);
+    level.deleteLevel(request)
+        .then(data => {
+            let response = {};
+            if (data.effectedRows > 0) {
+                response.code = 1;
+                response.message = "delete success";
+                res.send(JSON.stringify(response));
+            } else if (data.effectedRows === 0) {
+                response.code = -2;
+                response.message = "couldn't find this level";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "delete fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}
