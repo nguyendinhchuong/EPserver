@@ -82,6 +82,43 @@ exports.deleteEduProgram = (request) => {
                                     console.log("Effected rows of SubjectEduProg: " + effectedRows);
                                 })
                                 .then(() => {
+                                    db.detaileduprog.findOne({
+                                        where: {
+                                            IdEduProgram: request.Id
+                                        }
+                                    })
+                                        .then(data => {
+                                            db.edupurpose.destroy({
+                                                where: {
+                                                    IdDetail: data.dataValues.Id
+                                                }
+                                            })
+                                                .then(effectedRows => {
+                                                    console.log("Effected rows of EduPurpose: " + effectedRows);
+                                                })
+                                                .catch(err => {
+                                                    reject(err);
+                                                })
+                                        })
+                                        .catch(err => {
+                                            reject(err);
+                                        })
+                                })
+                                .then(() => {
+                                    db.detaileduprog.destroy({
+                                        where: {
+                                            IdEduProgram: request.Id
+                                        }
+                                    })
+                                        .then(effectedRows => {
+                                            console.log("Effected rows of DetailEduProg: " + effectedRows);
+                                        })
+                                        .catch(err => {
+                                            reject(err);
+                                        })
+                                })
+
+                                .then(() => {
                                     db.eduprogram.destroy({
                                         where: {
                                             Id: request.Id

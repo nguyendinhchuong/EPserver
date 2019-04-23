@@ -2,11 +2,11 @@ const detailOutcomeStandard = require('../../controllers/OutcomeStandard/detailO
 
 module.exports = (app) => {
     // load detail của chuẩn đầu ra với id
-    app.route('/getdetailoutcomestandard').get(detailOutcomeStandard.getDetailOutcomeStandardInfo);
+    app.route('/detailoutcomestandard/get').get(detailOutcomeStandard.getDetailOutcomeStandardInfo);
     // lưu lại detail của chuẩn đầu ra với id
     app.route('/saveDetailOutcomeStandard/:idOutcomestandard').post();
     // add detail có idOutcomestandard (thường là add OutcomeStandard xong thì sẽ add detail)
-    app.route('/adddetailoutcomestandard').post(detailOutcomeStandard.addDetailOutcomeStandard);
+    app.route('/detailoutcomestandard/add').post(detailOutcomeStandard.addDetailOutcomeStandard);
 
-    app.route('/deldetailoutcomestandard').post(detailOutcomeStandard.deleteDetailOutcomeStandard);
+    app.route('/detailoutcomestandard/delete').post(detailOutcomeStandard.deleteDetailOutcomeStandard);
 }
