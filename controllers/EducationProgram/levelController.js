@@ -40,7 +40,7 @@ exports.getLevelById = (req, res) => {
 exports.addLevel = (req, res) => {
     let body = JSON.parse(req.body.data);
     let request = {};
-    request.NameLevel = body.namelevel;
+    request.LevelName = body.levelname;
 
     level.addLevel(request)
         .then(data => {
@@ -65,7 +65,7 @@ exports.addBulkLevel = (req, res) => {
     let array = [];
     body.map(row => {
         let obj = {};
-        obj.NameLevel = row.namelevel;
+        obj.LevelName = row.levelname;
         array.push(obj);
     })
     request.data = array;
