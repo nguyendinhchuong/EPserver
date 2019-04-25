@@ -1,11 +1,11 @@
 const db = require('../../models/index');
 
-exports.getEduContentByEduId = (request)=>{
+exports.getEduContentByEduId = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
             .then(() => {
                 db.eduprogcontent.findAll({
-                    where:{
+                    where: {
                         IdEduProgram: request.IdEduProgram
                     }
                 })
@@ -21,11 +21,18 @@ exports.getEduContentByEduId = (request)=>{
             })
     })
 }
-exports.addEduContent = (request)=>{
+exports.addEduContent = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
             .then(() => {
-                
+                db.eduprogcontent.bulkCreate(request, { returning: true })
+                    .then(() => {
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
             })
             .catch(err => {
                 reject(err);
