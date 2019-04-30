@@ -16,22 +16,22 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        Name: {
-            type: Sequelize.STRING,
-            allowNull: true
-        },
-        IdFaculty:{
-            type: Sequelize.INTEGER,
-            allowNull:true
-        },
-        IdMajor:{
-            type: Sequelize.INTEGER,
-            allowNull:true
-        },
-        IdRole:{
-            type: Sequelize.INTEGER,
-            allowNull:true
-        },
+        // Name: {
+        //     type: Sequelize.STRING,
+        //     allowNull: true
+        // },
+        // IdFaculty:{
+        //     type: Sequelize.INTEGER,
+        //     allowNull:true
+        // },
+        // IdMajor:{
+        //     type: Sequelize.INTEGER,
+        //     allowNull:true
+        // },
+        // IdRole:{
+        //     type: Sequelize.INTEGER,
+        //     allowNull:true
+        // },
         DateCreated:{
             type: Sequelize.DATE,
             allowNull: false
