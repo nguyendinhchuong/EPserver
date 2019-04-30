@@ -55,6 +55,8 @@ db.subjectblock = require('../db/model/EducationProgram/subjectblock')(sequelize
 db.detailblock = require('../db/model/EducationProgram/detailblock')(sequelize, Sequelize);
 db.eduprogcontent = require('../db/model/EducationProgram/eduprogcontent')(sequelize, Sequelize);
 
+db.user = require('../db/model/User/user')(sequelize, Sequelize);
+
 // // //Relations
 // db.outcomestandard.hasMany(db.detailoutcomestandard);
 // db.faculty.hasMany(db.outcomestandard);

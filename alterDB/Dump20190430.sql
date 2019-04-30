@@ -464,6 +464,36 @@ INSERT INTO `subjecteduprog` VALUES (1,1,1,'2019-03-02 00:00:00'),(2,1,2,'2019-0
 UNLOCK TABLES;
 
 --
+-- Table structure for table `use`
+--
+
+DROP TABLE IF EXISTS `use`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `use` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(45) DEFAULT NULL,
+  `Password` varchar(45) DEFAULT NULL,
+  `Name` varchar(45) DEFAULT NULL,
+  `IdFaculty` int(11) DEFAULT NULL,
+  `IdMajor` int(11) DEFAULT NULL,
+  `IdRole` int(11) DEFAULT NULL,
+  `DateCreated` datetime NOT NULL,
+  `DateEdited` datetime NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `use`
+--
+
+LOCK TABLES `use` WRITE;
+/*!40000 ALTER TABLE `use` DISABLE KEYS */;
+/*!40000 ALTER TABLE `use` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -472,10 +502,12 @@ DROP TABLE IF EXISTS `user`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `user` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `NameUser` varchar(127) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `Password` varchar(127) NOT NULL,
+  `Username` varchar(127) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `DateCreated` datetime DEFAULT NULL,
+  `DateEdited` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -484,7 +516,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin'),(2,'giao vu','giaovu');
+INSERT INTO `user` VALUES (1,'admin','admin','2019-03-02 07:00:00','2019-03-02 07:00:00'),(2,'giaovu','giaovu','2019-03-02 07:00:00','2019-03-02 07:00:00'),(3,'123','chuong','2019-03-02 00:00:00','2019-03-02 00:00:00');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -497,4 +529,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-25  9:15:42
+-- Dump completed on 2019-04-30 17:15:00

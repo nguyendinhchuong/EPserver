@@ -26,6 +26,8 @@ const routeSubjectEduProg = require('./routes/EducationProgram/subjecteduprogRou
 const routeSubjectBlock = require('./routes/EducationProgram/subjectblockRoute');
 const routeDetailBlock = require('./routes/EducationProgram/detailblockRoute');
 
+const routeUser = require('./routes/User/userRoute');
+
 routesPrograms(app);
 routesFaculties(app);
 routesOutcomes(app);
@@ -43,6 +45,7 @@ routeSubjectEduProg(app);
 routeSubjectBlock(app);
 routeDetailBlock(app);
 
+routeUser(app);
 app.listen(3001, () => {
     console.log('Node server running @ http://localhost:3001')
 });
