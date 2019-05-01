@@ -30,8 +30,8 @@ exports.addEduPurpose = (req, res) => {
     body.map(row => {
         let obj = {};
         obj.IdDetail = Number(params.iddetail);
-        obj.KeyRow = row.keyrow;
-        obj.NameRow = row.namerow;
+        obj.KeyRow = row.KeyRow;
+        obj.NameRow = row.NameRow;
         obj.DateCreated = params.datecreated;
         array.push(obj);
     })
@@ -64,8 +64,8 @@ exports.updateEduPurpose = (req, res) => {
     body.map(row => {
         let obj = {};
         obj.IdDetail = Number(params.iddetail);
-        obj.KeyRow = row.keyrow;
-        obj.NameRow = row.namerow;
+        obj.KeyRow = row.KeyRow;
+        obj.NameRow = row.NameRow;
         obj.DateCreated = params.datecreated;
         array.push(obj);
     })
