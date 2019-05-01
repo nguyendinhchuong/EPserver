@@ -10,13 +10,14 @@ exports.isAuthenticated = (req, res, next) => {
         var jwtToken = req.headers.authorization.split(' ')[1];
         jwt.verify(jwtToken, config.jwtSecret, (err, payload) => {
             if (err) {
-                console.log(err)
                 response.code = -1;
                 response.message = "Unauthorized user!";
                 res.send(JSON.stringify(response));
             } else {
+                console.log("decoder: " + payload.username);
                 user.getUserByUsername(payload.username)
                     .then(data => {
+                        console.log("username: " + data);
                         req.user = data;
                         next();
                     })
@@ -26,7 +27,6 @@ exports.isAuthenticated = (req, res, next) => {
             }
         })
     } else {
-        console.log("have been here")
         response.code = -1;
         response.message = "Unauthorized user!";
         res.send(JSON.stringify(response));

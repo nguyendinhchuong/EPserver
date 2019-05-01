@@ -25,10 +25,27 @@ exports.register = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
             .then(() => {
-                db.user.create(request)
-                    .then(() => {
-                        let code = 1;
-                        resolve(code);
+                db.user.findOne({
+                    where: {
+                        Username: request.Username
+                    }
+                })
+                    .then(data => {
+                        let response = {};
+                        if (data) {
+                            response.code = -3;
+                            resolve(response);
+                        } else {
+                            db.user.create(request)
+                                .then(data => {
+                                    response.code = 1;
+                                    response.data = data;
+                                    resolve(response);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        }
                     })
                     .catch(err => {
                         reject(err);
@@ -39,12 +56,7 @@ exports.register = (request) => {
             })
     })
 }
-// exports.comparePassword = (password) => {
-//     return bscrypt.compareSync(password, this.hash_password);
-// }
-var comparePassword = (password, db_password) => {
-    return bscrypt.compareSync(password, this.hash_password);
-}
+
 exports.login = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
@@ -60,7 +72,12 @@ exports.login = (request) => {
                             response.code = -3;
                             resolve(response);
                         } else if (data && request.Password.localeCompare(data.dataValues.Password) === 0) {
-                            let payload = { username: data.Username };
+                            //set basic info in payload
+                            let payload = {
+                                username: data.Username,
+                                role: data.Role
+                            };
+                            console.log(payload);
                             let jwtToken = jwt.sign(payload, config.jwtSecret, { expiresIn: 1 * 300000 });
                             let response = {};
                             response.access_token = jwtToken;
@@ -88,11 +105,56 @@ exports.getUserByUsername = (request) => {
             .then(() => {
                 db.user.findOne({
                     where: {
-                        Username: request.Username
+                        Username: request
                     }
                 })
                     .then(data => {
                         resolve(data);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+//ADMIN Permission
+exports.getUserById = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.user.findById(request.Id)
+                    .then(data => {
+                        resolve(data);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+exports.changePass = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.user.update({
+                    Password: request.Password
+                }, {
+                        returning: true,
+                        where: {
+                            Username: request.Username
+                        }
+                    })
+                    .then(rowsUpdate => {
+                        console.log("Updated row of User: " + rowsUpdate);
+                        let code = 1;
+                        resolve(code);
                     })
                     .catch(err => {
                         reject(err);
