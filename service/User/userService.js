@@ -57,6 +57,8 @@ exports.register = (request) => {
     })
 }
 
+
+
 exports.login = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
@@ -153,6 +155,29 @@ exports.changePass = (request) => {
                     })
                     .then(rowsUpdate => {
                         console.log("Updated row of User: " + rowsUpdate);
+                        let code = 1;
+                        resolve(code);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+exports.deleteUser = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.user.destroy({
+                    where: {
+                        Username: request
+                    }
+                })
+                    .then(effectedRows => {
+                        console.log("Effected rows of User: " + effectedRows);
                         let code = 1;
                         resolve(code);
                     })

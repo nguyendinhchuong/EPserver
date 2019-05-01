@@ -28,10 +28,10 @@ module.exports = (sequelize, Sequelize) => {
         //     type: Sequelize.INTEGER,
         //     allowNull:true
         // },
-        // IdRole:{
-        //     type: Sequelize.INTEGER,
-        //     allowNull:true
-        // },
+        Role:{
+            type: Sequelize.STRING,
+            allowNull:true
+        },
         DateCreated:{
             type: Sequelize.DATE,
             allowNull: false

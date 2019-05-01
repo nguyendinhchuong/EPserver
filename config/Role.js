@@ -6,6 +6,7 @@ module.exports = {
 
     ],
     ADMIN: [
-
+        '/user/delete',
+        '/user/register'
     ]
 }

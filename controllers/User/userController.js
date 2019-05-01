@@ -5,6 +5,7 @@ exports.register = (req, res) => {
     let body = JSON.parse(req.body.data);
     let request = {};
     request.Username = body.username;
+    request.Role = body.role;
     request.DateCreated = body.datecreated;
     request.DateEdited = body.dateedited;
     request.Password = generator.generate({
@@ -115,4 +116,26 @@ exports.changePass = (req, res) => {
             })
     }
 
+}
+
+exports.deleteUser = (req, res) => {
+    let body = JSON.parse(req.body.data);
+    let request = body.username;
+
+    user.deleteUser(request)
+        .then(data => {
+            let response = {};
+            if (data) {
+                response.code = 1;
+                response.message = "delete success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "delete fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
 }
