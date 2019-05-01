@@ -48,8 +48,10 @@ exports.isAuthenticated = (req, res, next) => {
                 res.send(JSON.stringify(response));
             } else {
                 //permission: just use api url base on role defined in Role.js
-                if (role[payload.role].find(url => {
-                    return url == req.originalUrl
+                let regex = /^[^?]+/gm;
+                let baseUrl = regex.exec(req.originalUrl);
+                if (role[payload.role].find(url => {                    
+                    return url == baseUrl[0]
                 })) {
                     user.getUserByUsername(payload.username)
                         .then(data => {

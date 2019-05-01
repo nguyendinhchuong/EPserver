@@ -127,7 +127,7 @@ exports.getUserById = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
             .then(() => {
-                db.user.findById(request.Id)
+                db.user.findByPk(request.Id)
                     .then(data => {
                         resolve(data);
                     })

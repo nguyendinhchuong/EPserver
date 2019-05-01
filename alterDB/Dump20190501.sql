@@ -506,8 +506,9 @@ CREATE TABLE `user` (
   `Username` varchar(127) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `DateCreated` datetime DEFAULT NULL,
   `DateEdited` datetime DEFAULT NULL,
+  `Role` varchar(20) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -516,7 +517,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','2019-03-02 07:00:00','2019-03-02 07:00:00'),(2,'giaovu','giaovu','2019-03-02 07:00:00','2019-03-02 07:00:00'),(3,'123','chuong','2019-03-02 00:00:00','2019-03-02 00:00:00');
+INSERT INTO `user` VALUES (1,'newpass2','admin','2019-03-02 07:00:00','2019-03-02 07:00:00','ADMIN'),(2,'giaovu','giaovu','2019-03-02 07:00:00','2019-03-02 07:00:00','TEACHER'),(3,'123','chuong','2019-03-02 00:00:00','2019-03-02 00:00:00','EDITOR'),(5,'newpass2','anhvu','2019-03-02 00:00:00','2019-03-02 00:00:00','TEACHER'),(6,'ANJo82Nz','root','2019-03-02 00:00:00','2019-03-02 00:00:00','ADMIN');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -529,4 +530,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-30 17:15:00
+-- Dump completed on 2019-05-01 16:28:17

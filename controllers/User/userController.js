@@ -83,7 +83,29 @@ exports.getList = (req, res) => {
             throw err;
         })
 }
+exports.getInfo = (req, res) => {
+    let params = req.query;
+    let request = {};
+    request.Id = Number(params.iduser);
 
+    user.getUserById(request)
+        .then(data => {
+            let response = {};
+            if (data) {
+                response.code = 1;
+                response.data = data;
+                response.message = "success";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = -1;
+                response.message = "fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}
 exports.changePass = (req, res) => {
     let body = JSON.parse(req.body.data);
     console.log(req.user);
