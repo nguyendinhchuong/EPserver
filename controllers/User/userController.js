@@ -43,9 +43,10 @@ exports.login = (req, res) => {
 
     user.login(request)
         .then(data => {
+            console.log(data.data);
             let response = {};
             if (data.code === -3) {
-                response.code = data.code;
+                response.code = data.code;                
                 response.message = "user not exist";
                 res.send(JSON.stringify(response));
             } else if (data.code === -1) {
@@ -55,6 +56,7 @@ exports.login = (req, res) => {
             } else {
                 response.code = data.code;
                 response.token = data.access_token;
+                response.data = data.data;
                 response.message = "login success";
                 res.send(JSON.stringify(response));
             }

@@ -82,8 +82,18 @@ exports.login = (request) => {
                             console.log(payload);
                             let jwtToken = jwt.sign(payload, config.jwtSecret, { expiresIn: 1 * 300000 });
                             let response = {};
+
+                            let dataValues = {};
+                            dataValues.Id = data.dataValues.Id;
+                            dataValues.Username = data.dataValues.Username;
+                            dataValues.Role = data.dataValues.Role;
+                            dataValues.DateCreated = data.dataValues.DateCreated;
+                            dataValues.DateEdited = data.dataValues.DateEdited;
+
                             response.access_token = jwtToken;
                             response.code = 1;
+                            response.data = dataValues;
+                            
                             resolve(response);
                         } else {
                             let response = {};
