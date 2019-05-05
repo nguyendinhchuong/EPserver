@@ -6,21 +6,29 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        KeyRow:{
+        KeyRow: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        NameRow:{
+        NameRow: {
             type: Sequelize.STRING,
             allowNull: false
-        },        
-        DateCreated:{
+        },
+        Type: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false
+        },
+        IdEduProgram: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
+        DateCreated: {
             type: Sequelize.DATE,
             allowNull: false
         },
-    },{
-        freezeTableName: true,
-        timestamps: false
-    })
+    }, {
+            freezeTableName: true,
+            timestamps: false
+        })
     return eduprogramcontent;
 }

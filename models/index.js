@@ -43,6 +43,7 @@ db.program = require('../db/model/OutcomeStandard/program')(sequelize, Sequelize
 db.detailoutcomestandard = require('../db/model/OutcomeStandard/detailoutcomestandard')(sequelize, Sequelize);
 db.revision = require('../db/model/OutcomeStandard/revision')(sequelize, Sequelize);
 db.detailrevision = require('../db/model/OutcomeStandard/detailrevision')(sequelize, Sequelize);
+db.outcomeeduprogram = require('../db/model/OutcomeStandard/OutcomeEduProgram')(sequelize, Sequelize);
 
 db.subject = require('../db/model/EducationProgram/subject')(sequelize, Sequelize);
 db.eduprogram = require('../db/model/EducationProgram/EduProgram')(sequelize, Sequelize);
@@ -54,6 +55,7 @@ db.edupurpose = require('../db/model/EducationProgram/edupurpose')(sequelize, Se
 db.subjectblock = require('../db/model/EducationProgram/subjectblock')(sequelize, Sequelize);
 db.detailblock = require('../db/model/EducationProgram/detailblock')(sequelize, Sequelize);
 db.eduprogcontent = require('../db/model/EducationProgram/eduprogcontent')(sequelize, Sequelize);
+db.teachersubject = require('../db/model/EducationProgram/teachersubject')(sequelize, Sequelize);
 
 db.user = require('../db/model/User/user')(sequelize, Sequelize);
 
