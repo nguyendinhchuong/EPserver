@@ -20,7 +20,7 @@ exports.getOSInfoById = (request) => {
   return new Promise((resolve, reject) => {
     db.sequelize.authenticate()
       .then(() => {
-        let sql = `SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram, cdio.user.NameUser
+        let sql = `SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram
       FROM cdio.outcomestandard AS os, cdio.faculty AS fa, cdio.program AS pg, cdio.user
       WHERE os.Id = `+ request.Id + ` and os.IdFaculty = fa.Id and os.IdProgram = pg.Id and os.IdUser = cdio.user.Id;`;
         console.log(request.Id);
@@ -55,7 +55,7 @@ exports.getOSInfo = () => {
         //   .catch(err=>{
         //     reject(err);
         //   })
-        db.sequelize.query(`SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram, cdio.user.NameUser 
+        db.sequelize.query(`SELECT os.Id, os.NameOutcomeStandard, os.SchoolYear, os.DateCreated, os.DateEdited, fa.NameFaculty, pg.NameProgram 
         FROM cdio.outcomestandard as os, cdio.faculty as fa, cdio.program as pg, cdio.user
         WHERE os.IdFaculty = fa.Id AND os.IdProgram = pg.Id AND os.IdUser = cdio.user.Id `, { type: db.Sequelize.QueryTypes.SELECT })
           .then(info => {

@@ -14,6 +14,7 @@ const routesOutcomes = require('./routes/OutcomeStandard/outcomeStandardRoute');
 const routesDetailOutcomes = require('./routes/OutcomeStandard/detailOutcomeStandardRoute');
 const routesRevisions = require('./routes/OutcomeStandard/revisionRoute');
 const routesDetailRevisions = require('./routes/OutcomeStandard/detailRevisionRoute');
+const routesOutcomeEduProg = require('./routes/OutcomeStandard/outcomeeduprogRoute');
 
 //Education Program Route
 const routesSubject = require('./routes/EducationProgram/subjectRoute');
@@ -35,6 +36,7 @@ routesOutcomes(app);
 routesDetailOutcomes(app);
 routesRevisions(app);
 routesDetailRevisions(app);
+routesOutcomeEduProg(app);
 
 routesSubject(app);
 routeEduProg(app);

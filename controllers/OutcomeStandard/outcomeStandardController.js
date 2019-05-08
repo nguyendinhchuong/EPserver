@@ -21,7 +21,7 @@ exports.getOutcomeStandardInfo = (req, res) => {
 exports.getOutcomeStandardInfoById = (req, res) => {
     let params = req.query;
     let request = {};
-    request.Id = params.IdOutcome;
+    request.Id = Number(params.idoutcome);
     outcomeStandard.getOSInfoById(request)
         .then(data => {
             let response = {};
