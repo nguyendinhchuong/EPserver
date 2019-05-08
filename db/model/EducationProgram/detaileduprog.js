@@ -27,6 +27,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         GraduatedCon:{
             type: Sequelize.STRING,
+        },
+        OSUsedNode:{
+            type: Sequelize.STRING,
         }
     },{
         freezeTableName: true,

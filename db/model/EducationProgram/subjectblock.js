@@ -22,6 +22,12 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN,
             allowNull: false
         },
+        KeyRow:{
+            type: Sequelize.STRING,
+        },
+        NameBlock:{
+            type: Sequelize.STRING,
+        },
         DateCreated:{
             type: Sequelize.DATE,
             allowNull: false
