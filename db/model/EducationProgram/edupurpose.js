@@ -21,7 +21,10 @@ module.exports = (sequelize, Sequelize) => {
         DateCreated:{
             type: Sequelize.DATE,
             allowNull:false
-        }        
+        },
+        OSUsed:{
+            type:Sequelize.BOOLEAN,
+        }       
     },{
         freezeTableName: true,
         timestamps: false

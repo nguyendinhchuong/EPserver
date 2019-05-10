@@ -11,8 +11,8 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
         NameRow: {
-            type: Sequelize.STRING,
-            allowNull: false
+            type: Sequelize.STRING
+            
         },
         Type: {
             type: Sequelize.BOOLEAN,
