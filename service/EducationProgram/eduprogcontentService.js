@@ -50,7 +50,7 @@ exports.addEduContent = (request) => {
                         let obj = {};
                         obj.KeyRow = row.KeyRow;
                         obj.NameRow = row.data.name;
-                        obj.Type = row.data.isTable;
+                        obj.Type = 0;
                         obj.IdEduProgram = request.IdEduProg;
                         obj.DateCreated = row.data.DateCreated;
 

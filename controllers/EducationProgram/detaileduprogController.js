@@ -29,6 +29,7 @@ exports.addDetailEduProg = (req, res) => {
     request.DateCreated = body.datecreated;
     request.EduProcess = body.eduprocess;
     request.GraduatedCon = body.graduatedcon;
+    request.OSUsedNode = boyd.osusednode;
     request.IdOutcome = Number(body.idoutcome);
 
     detaileduprogram.addDetailEduProg(request)
