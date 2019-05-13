@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         DateCreated:{
             type: Sequelize.DATE,
-            allowNull: false
+            allowNull: true
         },
     },{
         freezeTableName: true,

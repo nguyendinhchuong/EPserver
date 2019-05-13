@@ -458,7 +458,7 @@ CREATE TABLE `subjectblock` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `IdEduProgContent` int(11) NOT NULL,
   `Credit` int(11) NOT NULL,
-  `isOptional` tinyint(1) NOT NULL,
+  -- `isOptional` tinyint(1) NOT NULL,
   `isAccumulated` tinyint(1) NOT NULL,
   `DateCreated` datetime DEFAULT NULL,
   `KeyRow` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,

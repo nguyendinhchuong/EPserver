@@ -26,23 +26,22 @@ exports.getEduProgContent = (req, res) => {
 }
 
 exports.addEduProgContent = (req, res) => {
-    let params = req.query;
-    let body = JSON.parse(req.body.data);
+    const params = req.query;
+    const body = JSON.parse(req.body.data);
     let request = {};
-    request.IdEduProg = Number(params.ideduprog);
-    request.data = body;
+    request.IdEduProg = +params.ideduprog;
+    request.data = JSON.parse(body);
+    
     eduprogcontent.addEduContent(request)
         .then(data => {
             let response = {};
             if (data) {
-                response.code = 1;
+                response.code = data;
                 response.message = "success";
-                response.data = data;
                 res.send(JSON.stringify(response));
             } else {
-                response.code = -1;
+                response.code = data;
                 response.message = "fail";
-                response.data = data;
                 res.send(JSON.stringify(response));
             }
         })

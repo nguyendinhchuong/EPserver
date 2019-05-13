@@ -132,7 +132,7 @@ CREATE TABLE `SubjectBlock` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `IdEduProgContent` INT NOT NULL,
   `Credit` INT NOT NULL,
-  `isOptional` BOOLEAN NOT NULL,
+  -- `isOptional` BOOLEAN NOT NULL,
   `isAccumulated` BOOLEAN NOT NULL,
   PRIMARY KEY (`Id`)
 );

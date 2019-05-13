@@ -43,55 +43,71 @@ exports.addEduContent = (request) => {
     return new Promise((resolve, reject) => {
         db.sequelize.authenticate()
             .then(() => {
-                let code;
-                let UnTableObj = [];
-                let TableObj = [];
+                let code = -1;
+                const contentProg = {};
                 request.data.map(row => {
-                    if (!row.Type) {
-                        let obj = {};
-                        obj.KeyRow = row.KeyRow;
-                        obj.NameRow = row.NameRow;
-                        obj.Type = 0;
-                        obj.IdEduProgram = request.IdEduProg;
-                        obj.DateCreated = row.DateCreated;
-                        db.eduprogcontent.create(obj)
+                    const isTable = row.data.isTable;
+                    if (!isTable) {
+                        contentProg.KeyRow = row.key;
+                        contentProg.NameRow = row.data.name;
+                        contentProg.Type = 0;
+                        contentProg.IdEduProgram = request.IdEduProg;
+                        contentProg.DateCreated = null;
+                        db.eduprogcontent.create(contentProg)
                             .then(data => {
-                                console.log("created");
+                                code = 201;
+                                resolve(code);
                             })
                             .catch(err => {
                                 reject(err);
                             })
                     } else {
-                        console.log("here");
-                        let obj = {};
-                        obj.KeyRow = row.KeyRow;
-                        obj.NameRow = row.NameRow;
-                        obj.Type = 1;
-                        obj.IdEduProgram = request.IdEduProg;
-                        obj.DateCreated = row.DateCreated;
+                        contentProg.KeyRow = row.key;
+                        contentProg.NameRow = "";
+                        contentProg.Type = 1;
+                        contentProg.IdEduProgram = request.IdEduProg;
+                        contentProg.DateCreated = null;
 
-                        db.eduprogcontent.create(obj)
+                        db.eduprogcontent.create(contentProg)
                             .then(data => {
-                                row.subjects.map(subject => {
-                                    let subjectblock_obj = {};
-                                    subjectblock_obj.IdEduProgContent = data.dataValues.Id;
-                                    subjectblock_obj.Credit = subject.Credits;
-                                    subjectblock_obj.isAccumulated = subject.isAccumulated;
-                                    subjectblock_obj.DateCreated = subject.DateCreated;
-                                    subjectblock_obj.KeyRow = subject.KeyRow;
-                                    subjectblock_obj.NameBlock = subject.NameBlock;
+                                const blocks = groupBy(row.data.subjects, item =>{
+                                    return item.nameBlock;
+                                  });
+                                blocks.map(subjects => {
+                                    const block = subjects[0];
+                                    const subjectBlock = {};
+                                    subjectBlock.IdEduProgContent = data.Id;
+                                    subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.optionCredit;
+                                    subjectBlock.isAccumulated = block.isAccumulation;
+                                    subjectBlock.DateCreated = block.DateCreated;
+                                    subjectBlock.KeyRow = block.parentKey;
+                                    subjectBlock.NameBlock = block.nameBlock;
 
-                                    db.subjectblock.create(subjectblock_obj)
-                                        .then(data => {
-                                            console.log(data.dataValues);
+                                    db.subjectblock.create(subjectBlock)
+                                        .then(blockCreation => {
+                                            subjects.map((subject =>{
+                                                const detailBlock = {};
+                                                detailBlock.IdSubjectBlock = blockCreation.Id;
+                                                detailBlock.IdSubject = subject.Id;
+                                                detailBlock.DateCreated = subject.DateCreated;
+                                                db.detailblock.create(detailBlock)
+                                                .then(data =>{
+                                                    code = 201;
+                                                    resolve(code);
+                                                })
+                                                .catch(err=>{
+                                                    reject(err);
+                                                })
+                                            }))
+                                            code = 201;
+                                            resolve(code);
                                         })
                                         .catch(err => {
                                             reject(err);
                                         })
                                 })
-
-
-
+                                code = 201;
+                                resolve(code);
                             })
                             .catch(err => {
                                 reject(err);
@@ -105,3 +121,16 @@ exports.addEduContent = (request) => {
             })
     })
 }
+
+
+const groupBy = (array, f) => {
+    let groups = {};
+    array.forEach(subject => {
+      let group = JSON.stringify(f(subject));
+      groups[group] = groups[group] || [];
+      groups[group].push(subject);
+    });
+    return Object.keys(groups).map(group => {
+      return groups[group];
+    });
+  };
