@@ -27,6 +27,7 @@ const routeSubjectEduProg = require('./routes/EducationProgram/subjecteduprogRou
 const routeSubjectBlock = require('./routes/EducationProgram/subjectblockRoute');
 const routeDetailBlock = require('./routes/EducationProgram/detailblockRoute');
 const routeEduProgContent = require('./routes/EducationProgram/eduprogcontentRoute');
+const routeTeachPlanBlock = require('./routes/EducationProgram/teachplanblockRoute');
 
 const routeUser = require('./routes/User/userRoute');
 
@@ -48,6 +49,7 @@ routeSubjectEduProg(app);
 routeSubjectBlock(app);
 routeDetailBlock(app);
 routeEduProgContent(app);
+routeTeachPlanBlock(app);
 
 routeUser(app);
 app.listen(3001, () => {
