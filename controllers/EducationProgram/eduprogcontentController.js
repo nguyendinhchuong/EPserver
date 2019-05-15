@@ -3,8 +3,9 @@ const eduprogcontent = require('../../service/EducationProgram/eduprogcontentSer
 exports.getEduProgContent = (req, res) => {
     let params = req.query;
     let request = {};
-    request.IdEduProg = Number(params.ideduprog);
-
+    //request.IdEduProg = Number(params.ideduprog);
+    request.IdEduProg = params.id;
+    
     eduprogcontent.getEduContentByEduId(request)
         .then(data => {
             let response = {};
@@ -28,9 +29,13 @@ exports.getEduProgContent = (req, res) => {
 exports.addEduProgContent = (req, res) => {
     const params = req.query;
     const body = JSON.parse(req.body.data);
-    let request = {};
+    const request = {};
     request.IdEduProg = +params.ideduprog;
-    request.data = JSON.parse(body);
+    request.data = body;
+
+    // for test postman
+    //request.IdEduProg = 6;
+    //request.data = req.data
     
     eduprogcontent.addEduContent(request)
         .then(data => {
