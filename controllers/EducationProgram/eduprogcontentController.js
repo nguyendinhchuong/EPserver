@@ -3,12 +3,17 @@ const eduprogcontent = require('../../service/EducationProgram/eduprogcontentSer
 exports.getEduProgContent = (req, res) => {
     let params = req.query;
     let request = {};
-    //request.IdEduProg = Number(params.ideduprog);
-    request.IdEduProg = params.id;
-    
+    let response = {};
+    if(isNaN(params.ideduprog)){
+        response.code = -1;
+        response.message = "fail";
+        res.send(JSON.stringify(response));
+    }
+    request.IdEduProg = +params.id;
     eduprogcontent.getEduContentByEduId(request)
         .then(data => {
             let response = {};
+            console.log(data);
             if (data) {
                 response.code = 1;
                 response.message = "success";

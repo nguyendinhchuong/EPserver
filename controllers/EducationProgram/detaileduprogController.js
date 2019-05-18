@@ -3,10 +3,15 @@ const detaileduprogram = require('../../service/EducationProgram/detaileduprogSe
 exports.getDetailEduProg = (req, res) => {
     let params = req.query;
     let request = {};
+    let response = {};
+    if(isNaN(params.ideduprog)){
+        response.code = -1;
+        response.message = "fail";
+        res.send(JSON.stringify(response));
+    }
     request.IdEduProgram = Number(params.ideduprog);
     detaileduprogram.getDetailEduProgram(request)
         .then(data => {
-            let response = {};
             if (data) {
                 response.code = 1;
                 response.message = "success";

@@ -17,11 +17,14 @@ exports.getDetailEduProgram = (request) => {
                                 }
                             })
                                 .then(data => {
-                                    resolve(data);
+                                    resolve(data);  
                                 })
                                 .catch(err => {
                                     reject(err);
                                 })
+                        }
+                        else{
+                            resolve(data);
                         }
                     })
                     .catch(err => {
