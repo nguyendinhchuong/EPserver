@@ -4,7 +4,7 @@ exports.getEduProgContent = (req, res) => {
     let params = req.query;
     let request = {};
     let response = {};
-    if(isNaN(params.ideduprog)){
+    if (isNaN(+params.id)) {
         response.code = -1;
         response.message = "fail";
         res.send(JSON.stringify(response));
@@ -13,13 +13,13 @@ exports.getEduProgContent = (req, res) => {
     eduprogcontent.getEduContentByEduId(request)
         .then(data => {
             let response = {};
-            console.log(data);
             if (data) {
                 response.code = 1;
                 response.message = "success";
                 response.data = data;
                 res.send(JSON.stringify(response));
-            } else {
+            }
+            else {
                 response.code = -1;
                 response.message = "fail";
                 response.data = data;
@@ -32,30 +32,36 @@ exports.getEduProgContent = (req, res) => {
 }
 
 exports.addEduProgContent = (req, res) => {
-    const params = req.query;
-    const body = JSON.parse(req.body.data);
     const request = {};
-    request.IdEduProg = +params.ideduprog;
-    request.data = body;
+    const response = {};
+    try {
+        const params = req.query;
+        const body = JSON.parse(req.body.data);
+        request.IdEduProg = +params.ideduprog;
+        request.data = body;
 
-    // for test postman
-    //request.IdEduProg = 6;
-    //request.data = req.data
-    
-    eduprogcontent.addEduContent(request)
-        .then(data => {
-            let response = {};
-            if (data) {
-                response.code = data;
-                response.message = "success";
-                res.send(JSON.stringify(response));
-            } else {
+        // for test postman
+        //request.IdEduProg = +params.ideduprog;
+        //request.data = req.body.xx;
+
+
+        eduprogcontent.addEduContent(request)
+            .then(data => {
+                if (data) {
+                    response.code = data;
+                    response.message = "success";
+                    res.send(JSON.stringify(response));
+                }
                 response.code = data;
                 response.message = "fail";
                 res.send(JSON.stringify(response));
-            }
-        })
-        .catch(err => {
-            throw err;
-        })
+            })
+            .catch(err => {
+                response.message = "fail";
+                res.send(JSON.stringify(response));
+            })
+    } catch (err) {
+        response.message = "fail";
+        res.send(JSON.stringify(response));
+    }
 }

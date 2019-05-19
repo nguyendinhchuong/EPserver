@@ -11,37 +11,37 @@ exports.getEduContentByEduId = (request) => {
                     where: {
                         IdEduProgram: request.IdEduProg,
                     },
-                }).then(contents=>{
-                    contents.map(content=>{
+                }).then(contents => {
+                    contents.map(content => {
                         eduContents.push(content);
                     });
-                    
+
                     db.subjectblock.findAll({
                         where: {
                             IdEduProgContent: {
-                                $in: eduContents.reduce((idTables, item)=>{
-                                    if(item.Type){
+                                $in: eduContents.reduce((idTables, item) => {
+                                    if (item.Type) {
                                         return idTables.concat(item.Id);
                                     }
                                     return idTables;
-                                },[])
+                                }, [])
                             }
                         },
-                    }).then(blocks =>{
-                        blocks.map(block =>{
+                    }).then(blocks => {
+                        blocks.map(block => {
                             subjectBlocks.push(block);
                         })
-                       
+
                         db.detailblock.findAll({
                             where: {
                                 IdSubjectBlock: {
-                                    $in: subjectBlocks.map(block=>{
+                                    $in: subjectBlocks.map(block => {
                                         return block.Id
                                     })
                                 }
                             },
-                        }).then(detailsOfBlock =>{
-                            detailsOfBlock.map(detail =>{
+                        }).then(detailsOfBlock => {
+                            detailsOfBlock.map(detail => {
                                 detailBlocks.push(detail)
                             })
                             resolve({
@@ -49,10 +49,9 @@ exports.getEduContentByEduId = (request) => {
                                 subjectBlocks: subjectBlocks,
                                 detailBlocks: detailBlocks
                             });
-                        })                     
+                        })
                     })
-                    
-                }).catch(err =>{
+                }).catch(err => {
                     reject(err);
                 })
             })
@@ -62,181 +61,223 @@ exports.getEduContentByEduId = (request) => {
     })
 }
 
-exports.addEduContent = (request) => {
-    return new Promise((resolve, reject) => {
-        db.sequelize.authenticate()
-            .then(() => {
-                let code = -1;
-                const contentProg = {};
-                const idEduContents = [];
-                const listIdBlock = [];
-                const detailBlocks = [];
-                //destroy
-                db.eduprogcontent.findAll({
+exports.addEduContent = async (request) => {
+    try {
+        const idEduContents = [];
+        const listIdBlock = [];
+        const detailBlocks = [];
+        await deleteContents(request.IdEduProg).then(contents => {
+            contents.map(content => {
+                idEduContents.push({
+                    Id: content.dataValues.Id,
+                    Type: content.dataValues.Type
+                });
+            });
+            if (idEduContents.length) {
+                console.log('---Destroy-- educontent');
+                db.eduprogcontent.destroy({
                     where: {
-                        IdEduProgram: request.IdEduProg,
-                    },
-                    attributes:['Id','Type']
-                }).then(contents=>{
-                    contents.map(content=>{
-                        idEduContents.push({
-                            Id:content.dataValues.Id,
-                            Type: content.dataValues.Type
-                        });
-                    });
-                    if(idEduContents.length){
-                        db.eduprogcontent.destroy({
-                            where:{
-                                Id:{
-                                    $in: idEduContents.map(item =>{
-                                        return item.Id
-                                    })
-                                }
-                            }
-                        })
-                    }
-                    
-                    db.subjectblock.findAll({
-                        where: {
-                            IdEduProgContent: {
-                                $in: idEduContents.reduce((idTables, item)=>{
-                                    if(item.Type){
-                                        return idTables.concat(item.Id);
-                                    }
-                                    return idTables;
-                                },[])
-                            }
-                        },
-                        attributes:['Id']
-                    }).then(blocks =>{
-                        blocks.map(block =>{
-                            listIdBlock.push(block.dataValues.Id);
-                        })
-                        if(listIdBlock.length){
-                            db.subjectblock.destroy({
-                                where:{
-                                    Id:{
-                                        $in: listIdBlock
-                                    }
-                                }
+                        Id: {
+                            $in: idEduContents.map(item => {
+                                return item.Id
                             })
                         }
-                       
-                        db.detailblock.findAll({
-                            where: {
-                                IdSubjectBlock: {
-                                    $in: listIdBlock
-                                }
-                            },
-                            attributes: ['Id']
-                        }).then(detailsOfBlock =>{
-                            detailsOfBlock.map(detail =>{
-                                detailBlocks.push(detail.dataValues.Id)
-                            })
-                            if(detailBlocks.length){
-                                db.detailblock.destroy({
-                                    where:{
-                                        Id:{
-                                            $in: detailBlocks
-                                        }
-                                    }
-                                })
-                            }
-                        })                     
-                    })
-                    
-                }).catch(err =>{
-                    reject(err);
-                })
-
-                request.data.map(row => {
-                    const isTable = row.data.isTable;
-                    // insert
-                    if (!isTable) {
-                        contentProg.KeyRow = row.key;
-                        contentProg.NameRow = row.data.name;
-                        contentProg.Type = 0;
-                        contentProg.IdEduProgram = request.IdEduProg;
-                        contentProg.DateCreated = null;
-                        db.eduprogcontent.create(contentProg)
-                            .then(data => {
-                                code = 201;
-                                resolve(code);
-                            })
-                            .catch(err => {
-                                reject(err);
-                            })
-                    } else {
-                        contentProg.KeyRow = row.key;
-                        contentProg.NameRow = "";
-                        contentProg.Type = 1;
-                        contentProg.IdEduProgram = request.IdEduProg;
-                        contentProg.DateCreated = null;
-
-                        const blocks = groupBy(row.data.subjects, item =>{
-                            return item.nameBlock;
-                          });
-                        db.eduprogcontent.create(contentProg)
-                            .then(data => {
-                                blocks.map(subjects => {
-                                    const block = subjects[0];
-                                    const subjectBlock = {};
-                                    subjectBlock.IdEduProgContent = data.Id;
-                                    subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.optionCredit;
-                                    subjectBlock.isAccumulated = block.isAccumulation;
-                                    subjectBlock.DateCreated = block.DateCreated;
-                                    subjectBlock.KeyRow = block.parentKey;
-                                    subjectBlock.NameBlock = block.nameBlock;
-
-                                    db.subjectblock.create(subjectBlock)
-                                        .then(blockCreation => {
-                                            subjects.map((subject =>{
-                                                const detailBlock = {};
-                                                detailBlock.IdSubjectBlock = blockCreation.Id;
-                                                detailBlock.IdSubject = subject.Id;
-                                                detailBlock.DateCreated = subject.DateCreated;
-
-                                                db.detailblock.create(detailBlock)
-                                                    .then(data =>{
-                                                    code = 201;
-                                                    resolve(code);
-                                                    })
-                                                    .catch(err=>{
-                                                        reject(err);
-                                                    }) 
-                                            }))
-                                            code = 201;
-                                            resolve(code);
-                                        })
-                                        .catch(err => {
-                                            reject(err);
-                                        })
-                                })
-                                code = 201;
-                                resolve(code);
-                            })
-                            .catch(err => {
-                                reject(err);
-                            })
                     }
-
                 })
+            }
+        }).catch(err => {
+            console.log('ERR contents');
+
+            return err;
+        })
+        if (idEduContents.length) {
+            await deleteSubjectBlocks(idEduContents).then(blocks => {
+                blocks.map(block => {
+                    listIdBlock.push(block.dataValues.Id);
+                })
+                if (listIdBlock.length) {
+                    console.log('---Destroy-- subjectBlock');
+                    db.subjectblock.destroy({
+                        where: {
+                            Id: {
+                                $in: listIdBlock
+                            }
+                        }
+                    })
+                }
+            }).catch(err => {
+                console.log('ERR subject Block');
+                return Promise.reject(err);
             })
-            .catch(err => {
-                reject(err);
+        }
+        if (listIdBlock.length) {
+            await deleteDetailBlocks(listIdBlock).then(detailsOfBlock => {
+                detailsOfBlock.map(detail => {
+                    detailBlocks.push(detail.dataValues.Id)
+                })
+                if (detailBlocks.length) {
+                    console.log('---Destroy-- detail Block');
+                    db.detailblock.destroy({
+                        where: {
+                            Id: {
+                                $in: detailBlocks
+                            }
+                        }
+                    })
+                }
+            }).catch(err => {
+                console.log('ERR Detail Block');
+                return Promise.reject(err);
             })
-    })
+        }
+        // insert
+        await insertContentsAndRelationship(request.data, request.IdEduProg);
+        return Promise.resolve("OK");
+    } catch (err) {
+        return Promise.reject(err);
+    }
 }
+
+const insertContentsAndRelationship = (data, IdEduProgram) => {
+    try {
+        let idContent;
+        data.map(async (row, index) => {
+            const isTable = row.data.isTable;
+            console.log('--insert content', index);
+
+            await insertContents(row, IdEduProgram).then(data => {
+                idContent = data.Id;
+            }).catch(err => {
+                return err;
+            })
+            if (isTable) {
+                const blocks = groupBy(row.data.subjects, item => {
+                    return item.nameBlock;
+                });
+                await insertSubjectBlocks(blocks, idContent);
+            }
+        })
+    } catch (err) {
+        return err;
+    }
+}
+
+const insertContents = (row, IdEduProgram) => {
+    try {
+        const isTable = row.data.isTable;
+        const contentProg = {};
+        contentProg.KeyRow = row.key;
+        contentProg.NameRow = "";
+        contentProg.Type = 1;
+        contentProg.IdEduProgram = IdEduProgram;
+        contentProg.DateCreated = null;
+        if (!isTable) {
+            contentProg.NameRow = row.data.name;
+            contentProg.Type = 0;
+        }
+        return db.eduprogcontent.create(contentProg);
+    } catch (err) {
+        return err;
+    }
+}
+
+const insertSubjectBlocks = (blocks, idContent) => {
+    try {
+        console.log('--insert subject block');
+        const subjectBlock = {};
+        let idBlock;
+        blocks.map(async (subjects) => {
+            const block = subjects[0];
+            subjectBlock.IdEduProgContent = idContent;
+            subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.optionCredit;
+            subjectBlock.isAccumulated = block.isAccumulation;
+            subjectBlock.DateCreated = block.DateCreated;
+            subjectBlock.KeyRow = block.parentKey;
+            subjectBlock.NameBlock = block.nameBlock;
+
+            await db.subjectblock.create(subjectBlock).then(block => {
+                idBlock = block.Id;
+            }).catch(err => {
+                return err;
+            })
+            await insertDetailBlock(subjects, idBlock);
+        })
+    } catch (err) {
+        return err;
+    }
+
+}
+
+const insertDetailBlock = (subjects, idBlock) => {
+    try {
+        console.log('insert detail block');
+
+        subjects.map(async subject => {
+            const detailBlock = {};
+            detailBlock.IdSubjectBlock = idBlock;
+            detailBlock.IdSubject = subject.Id;
+            detailBlock.DateCreated = subject.DateCreated;
+
+            await db.detailblock.create(detailBlock)
+        })
+    } catch (err) {
+        return err;
+    }
+
+}
+
+const deleteContents = (IdEduProgram) => {
+    console.log('eduprogcontent');
+
+    return db.eduprogcontent.findAll({
+        where: {
+            IdEduProgram: IdEduProgram,
+        },
+        attributes: ['Id', 'Type']
+    });
+}
+
+const deleteSubjectBlocks = (idEduContents) => {
+    console.log('subjectBlock');
+
+    return db.subjectblock.findAll({
+        where: {
+            IdEduProgContent: {
+                $in: idEduContents.reduce((idTables, item) => {
+                    if (item.Type) {
+                        return idTables.concat(item.Id);
+                    }
+                    return idTables;
+                }, [])
+            }
+        },
+        attributes: ['Id']
+    });
+}
+
+const deleteDetailBlocks = (listIdBlock) => {
+    console.log('DetailBlock');
+
+    return db.detailblock.findAll({
+        where: {
+            IdSubjectBlock: {
+                $in: listIdBlock
+            }
+        },
+        attributes: ['Id']
+    });
+}
+
 
 
 const groupBy = (array, f) => {
     let groups = {};
     array.forEach(subject => {
-      let group = JSON.stringify(f(subject));
-      groups[group] = groups[group] || [];
-      groups[group].push(subject);
+        let group = JSON.stringify(f(subject));
+        groups[group] = groups[group] || [];
+        groups[group].push(subject);
     });
     return Object.keys(groups).map(group => {
-      return groups[group];
+        return groups[group];
     });
-  };
+};
