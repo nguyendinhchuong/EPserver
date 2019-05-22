@@ -150,10 +150,15 @@ const insertContentsAndRelationship = (data, IdEduProgram) => {
             }).catch(err => {
                 return err;
             })
+            console.log('ID Content');
+            console.log(idContent);
             if (isTable) {
                 const blocks = groupBy(row.data.subjects, item => {
                     return item.nameBlock;
                 });
+                console.log('Blocks');
+                console.log(blocks);
+                
                 await insertSubjectBlocks(blocks, idContent);
             }
         })
@@ -190,6 +195,7 @@ const insertSubjectBlocks = (blocks, idContent) => {
             const block = subjects[0];
             subjectBlock.IdEduProgContent = idContent;
             subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.optionCredit;
+            subjectBlock.isOptional = block.nameBlock.startsWith("BB") ? true : false;
             subjectBlock.isAccumulated = block.isAccumulation;
             subjectBlock.DateCreated = block.DateCreated;
             subjectBlock.KeyRow = block.parentKey;
