@@ -124,8 +124,33 @@ exports.updateTeachPlanBlock = (request) => {
                 })
                     .then(data => {
                         if (!data) {
-                            let code = -2;
-                            resolve(code);
+                            request.data.map(semester => {
+                                let block_obj = {};
+                                block_obj.IdDetailEdu = request.IdDetailEdu;
+                                block_obj.Semester = semester.semester;
+                                db.teachplanblock.create(block_obj)
+                                    .then(data => {
+                                        let bulkDetail = [];
+                                        semester.subjects.map(subject => {
+                                            let detail_obj = {};
+                                            detail_obj.IdTeachPlan = data.dataValues.Id;
+                                            detail_obj.IdSubject = subject.Id;
+                                            detail_obj.Note = subject.Note;
+                                            bulkDetail.push(detail_obj);
+
+                                        });
+                                        db.detailteachplanblock.bulkCreate(bulkDetail)
+                                            .then(data => {
+                                                console.log(data.dataValues.Id);
+                                            })
+                                            .catch(err => {
+                                                reject(err);
+                                            })
+                                    })
+                                    .catch(err => {
+                                        reject(err);
+                                    })
+                            })
                         } else {
                             request.data.map(semester => {
                                 db.teachplanblock.findOne({
@@ -135,30 +160,57 @@ exports.updateTeachPlanBlock = (request) => {
                                     }
                                 })
                                     .then(data => {
-                                        db.detailteachplanblock.destroy({
-                                            where: {
-                                                IdTeachPlan: data.dataValues.Id
-                                            }
-                                        })
-                                            .then(effectedRows => {
-                                                console.log("Effected rows of Detail TeachPlanBlock: ", effectedRows);
-                                                let bulkDetail = [];
-                                                semester.subjects.map(subject => {
-                                                    let detail_obj = {};
-                                                    detail_obj.IdTeachPlan = data.dataValues.Id;
-                                                    detail_obj.IdSubject = subject.Id;
-                                                    detail_obj.Note = subject.Note;
-                                                    bulkDetail.push(detail_obj);
+                                        //teach plan block no exist, create new
+                                        if (!data) {
+                                            let block_obj = {};
+                                            block_obj.IdDetailEdu = request.IdDetailEdu;
+                                            block_obj.Semester = semester.semester;
+                                            db.teachplanblock.create(block_obj)
+                                                .then(data => {
+                                                    let bulkDetail = [];
+                                                    semester.subjects.map(subject => {
+                                                        let detail_obj = {};
+                                                        detail_obj.IdTeachPlan = data.dataValues.Id;
+                                                        detail_obj.IdSubject = subject.Id;
+                                                        detail_obj.Note = subject.Note;
+                                                        bulkDetail.push(detail_obj);
 
-                                                });
-                                                db.detailteachplanblock.bulkCreate(bulkDetail)
-                                                    .then(data => {
-                                                        console.log(data.dataValues.Id);
-                                                    })
-                                                    .catch(err => {
-                                                        reject(err);
-                                                    })
+                                                    });
+                                                    db.detailteachplanblock.bulkCreate(bulkDetail)
+                                                        .then(data => {
+                                                            console.log(data.dataValues.Id);
+                                                        })
+                                                        .catch(err => {
+                                                            reject(err);
+                                                        })
+                                                })
+                                        } else {//if exist, delete detail teach plan block records and create new
+                                            db.detailteachplanblock.destroy({
+                                                where: {
+                                                    IdTeachPlan: data.dataValues.Id
+                                                }
                                             })
+                                                .then(effectedRows => {
+                                                    console.log("Effected rows of Detail TeachPlanBlock: ", effectedRows);
+                                                    let bulkDetail = [];
+                                                    semester.subjects.map(subject => {
+                                                        let detail_obj = {};
+                                                        detail_obj.IdTeachPlan = data.dataValues.Id;
+                                                        detail_obj.IdSubject = subject.Id;
+                                                        detail_obj.Note = subject.Note;
+                                                        bulkDetail.push(detail_obj);
+
+                                                    });
+                                                    db.detailteachplanblock.bulkCreate(bulkDetail)
+                                                        .then(data => {
+                                                            console.log(data.dataValues.Id);
+                                                        })
+                                                        .catch(err => {
+                                                            reject(err);
+                                                        })
+                                                })
+                                        }
+
                                     })
                             })
                         }
@@ -166,6 +218,10 @@ exports.updateTeachPlanBlock = (request) => {
                     .catch(err => {
                         reject(err);
                     })
+            })
+            .then(() => {
+                let code = 1;
+                resolve(code);
             })
             .catch(err => {
                 reject(err);
