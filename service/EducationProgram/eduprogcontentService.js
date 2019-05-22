@@ -139,6 +139,8 @@ exports.addEduContent = async (request) => {
 }
 
 const insertContentsAndRelationship = (data, IdEduProgram) => {
+    console.log('Data');
+    console.log(data);
     try {
         let idContent;
         data.map(async (row, index) => {
@@ -156,9 +158,6 @@ const insertContentsAndRelationship = (data, IdEduProgram) => {
                 const blocks = groupBy(row.data.subjects, item => {
                     return item.nameBlock;
                 });
-                console.log('Blocks');
-                console.log(blocks);
-                
                 await insertSubjectBlocks(blocks, idContent);
             }
         })
