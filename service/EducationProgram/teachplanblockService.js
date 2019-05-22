@@ -172,3 +172,44 @@ exports.updateTeachPlanBlock = (request) => {
             })
     })
 }
+
+exports.addTeacher = (request) => {
+    return new Promise((resolve, reject) => {
+        db.sequelize.authenticate()
+            .then(() => {
+                db.detailteachplanblock.findOne({
+                    where: {
+                        IdTeachPlan: request.IdTeachPlan,
+                        IdSubject: request.IdSubject
+                    }
+                })
+                    .then(data => {
+                        if (!data) {
+                            let code = -2;
+                            resolve(code);
+                        } else {
+                            db.detailteachplanblock.update({
+                                IdTeacher: request.IdTeacher
+                            },
+                                {
+                                    where: {
+                                        IdTeachPlan: request.IdTeachPlan,
+                                        IdSubject: request.IdSubject
+                                    }
+                                })
+                                .then(effectRows => {
+                                    console.log("Effected rows of Detail TeachPlan: " + effectRows);
+                                    let code = 1;
+                                    resolve(code);
+                                })
+                                .catch(err => {
+                                    reject(err);
+                                })
+                        }
+                    })
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}

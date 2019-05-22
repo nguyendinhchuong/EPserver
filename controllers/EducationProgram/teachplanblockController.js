@@ -101,3 +101,31 @@ exports.updateTeachPlanBlock = (req, res) => {
             throw err;
         })
 }
+exports.addTeacher = (req, res) => {
+    let params = req.query;
+    const request = {};
+    request.IdTeachPlan = Number(params.idteachplan);
+    request.IdSubject = Number(params.idsubject);
+    request.IdTeacher = Number(params.idteacher);
+
+    teachplanblock.addTeacher(request)
+        .then(data => {
+            let response = {};
+            if (data === 1) {
+                response.code = data;
+                response.message = "success";
+                res.send(JSON.stringify(response));
+            } else if (data === -2) {
+                response.code = data;
+                response.message = "couldn't find subject in teach plan";
+                res.send(JSON.stringify(response));
+            } else {
+                response.code = data;
+                response.message = "fail";
+                res.send(JSON.stringify(response));
+            }
+        })
+        .catch(err => {
+            throw err;
+        })
+}

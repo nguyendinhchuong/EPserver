@@ -7,5 +7,6 @@ module.exports = (app) => {
 
     app.route('/teachplanblock/add').post(teachplanblock.addTeachPlanBlock);
     app.route('/teachplanblock/update').post(teachplanblock.updateTeachPlanBlock);
+    app.route('/teachplanblock/addteacher').post(teachplanblock.addTeacher);
     // app.route('/subject/delete').post(subject.deleteSubject);
 }
