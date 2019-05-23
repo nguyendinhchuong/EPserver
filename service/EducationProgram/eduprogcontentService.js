@@ -7,6 +7,8 @@ exports.getEduContentByEduId = (request) => {
                 const eduContents = [];
                 const subjectBlocks = [];
                 const detailBlocks = [];
+                console.log("-- select contents");
+                
                 db.eduprogcontent.findAll({
                     where: {
                         IdEduProgram: request.IdEduProg,
@@ -15,7 +17,7 @@ exports.getEduContentByEduId = (request) => {
                     contents.map(content => {
                         eduContents.push(content);
                     });
-
+                    console.log("-- select subjectBlock");
                     db.subjectblock.findAll({
                         where: {
                             IdEduProgContent: {
@@ -31,7 +33,7 @@ exports.getEduContentByEduId = (request) => {
                         blocks.map(block => {
                             subjectBlocks.push(block);
                         })
-
+                        console.log("-- select detailBlock");
                         db.detailblock.findAll({
                             where: {
                                 IdSubjectBlock: {
@@ -66,6 +68,8 @@ exports.addEduContent = async (request) => {
         const idEduContents = [];
         const listIdBlock = [];
         const detailBlocks = [];
+        console.log("delete");
+        
         await deleteContents(request.IdEduProg).then(contents => {
             contents.map(content => {
                 idEduContents.push({
@@ -139,27 +143,33 @@ exports.addEduContent = async (request) => {
 }
 
 const insertContentsAndRelationship = (data, IdEduProgram) => {
-    console.log('Data');
-    console.log(data);
     try {
         let idContent;
-        data.map(async (row, index) => {
+        data.map( (row, index) => {
             const isTable = row.data.isTable;
             console.log('--insert content', index);
 
-            await insertContents(row, IdEduProgram).then(data => {
-                idContent = data.Id;
+            insertContents(row, IdEduProgram).then(data => {
+                if(isTable){
+                    idContent = data.Id;
+                    const blocks = groupBy(row.data.subjects, item => {
+                        return item.nameBlock;
+                    });
+                    insertSubjectBlocks(blocks, idContent);
+                }
             }).catch(err => {
                 return err;
             })
-            console.log('ID Content');
-            console.log(idContent);
-            if (isTable) {
-                const blocks = groupBy(row.data.subjects, item => {
-                    return item.nameBlock;
-                });
-                await insertSubjectBlocks(blocks, idContent);
-            }
+            // if (isTable) {
+            //     console.log('Table');
+                
+            //     const blocks = groupBy(row.data.subjects, item => {
+            //         return item.nameBlock;
+            //     });
+            //     console.log(idContent);
+                
+            //     await insertSubjectBlocks(blocks, idContent);
+            // }
         })
     } catch (err) {
         return err;
@@ -187,10 +197,10 @@ const insertContents = (row, IdEduProgram) => {
 
 const insertSubjectBlocks = (blocks, idContent) => {
     try {
-        console.log('--insert subject block');
+        console.log('--insert subject block' + idContent);
         const subjectBlock = {};
         let idBlock;
-        blocks.map(async (subjects) => {
+        blocks.map(subjects => {
             const block = subjects[0];
             subjectBlock.IdEduProgContent = idContent;
             subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.optionCredit;
@@ -200,12 +210,14 @@ const insertSubjectBlocks = (blocks, idContent) => {
             subjectBlock.KeyRow = block.parentKey;
             subjectBlock.NameBlock = block.nameBlock;
 
-            await db.subjectblock.create(subjectBlock).then(block => {
+            db.subjectblock.create(subjectBlock).then(block => {
                 idBlock = block.Id;
+                insertDetailBlock(subjects, idBlock);
             }).catch(err => {
                 return err;
             })
-            await insertDetailBlock(subjects, idBlock);
+            //console.log(subjects[0]);
+            //await insertDetailBlock(subjects, idBlock);
         })
     } catch (err) {
         return err;
@@ -215,7 +227,7 @@ const insertSubjectBlocks = (blocks, idContent) => {
 
 const insertDetailBlock = (subjects, idBlock) => {
     try {
-        console.log('insert detail block');
+        console.log('insert detail block '+ idBlock);
 
         subjects.map(async subject => {
             const detailBlock = {};
