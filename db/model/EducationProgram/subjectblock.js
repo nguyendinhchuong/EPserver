@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         isOptional:{
             type: Sequelize.BOOLEAN,
-            allowNull: false
+            allowNull: true
         }, 
         isAccumulated:{
             type: Sequelize.BOOLEAN,

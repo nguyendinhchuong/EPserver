@@ -8,7 +8,7 @@ exports.getEduContentByEduId = (request) => {
                 const subjectBlocks = [];
                 const detailBlocks = [];
                 console.log("-- select contents");
-                
+
                 db.eduprogcontent.findAll({
                     where: {
                         IdEduProgram: request.IdEduProg,
@@ -69,7 +69,7 @@ exports.addEduContent = async (request) => {
         const listIdBlock = [];
         const detailBlocks = [];
         console.log("delete");
-        
+
         await deleteContents(request.IdEduProg).then(contents => {
             contents.map(content => {
                 idEduContents.push({
@@ -144,32 +144,28 @@ exports.addEduContent = async (request) => {
 
 const insertContentsAndRelationship = (data, IdEduProgram) => {
     try {
-        let idContent;
-        data.map( (row, index) => {
+        data.map((row, index) => {
             const isTable = row.data.isTable;
             console.log('--insert content', index);
 
-            insertContents(row, IdEduProgram).then(data => {
-                if(isTable){
-                    idContent = data.Id;
+            insertContents(row, IdEduProgram).then(content => {
+                if (isTable) {
                     const blocks = groupBy(row.data.subjects, item => {
                         return item.nameBlock;
                     });
-                    insertSubjectBlocks(blocks, idContent);
+                    blocks.map(subjects => {
+                        insertSubjectBlocks(subjects, content.Id).then(block =>{
+                            subjects.map(subject => {
+                                console.log('-- insert detal block ' + block.Id);
+                                insertDetailBlock(subject, block.Id);
+                            })
+                            
+                        })
+                    })
                 }
             }).catch(err => {
                 return err;
             })
-            // if (isTable) {
-            //     console.log('Table');
-                
-            //     const blocks = groupBy(row.data.subjects, item => {
-            //         return item.nameBlock;
-            //     });
-            //     console.log(idContent);
-                
-            //     await insertSubjectBlocks(blocks, idContent);
-            // }
         })
     } catch (err) {
         return err;
@@ -199,44 +195,27 @@ const insertSubjectBlocks = (blocks, idContent) => {
     try {
         console.log('--insert subject block' + idContent);
         const subjectBlock = {};
-        let idBlock;
-        blocks.map(subjects => {
-            const block = subjects[0];
-            subjectBlock.IdEduProgContent = idContent;
-            subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.optionCredit;
-            subjectBlock.isOptional = block.nameBlock.startsWith("BB") ? true : false;
-            subjectBlock.isAccumulated = block.isAccumulation;
-            subjectBlock.DateCreated = block.DateCreated;
-            subjectBlock.KeyRow = block.parentKey;
-            subjectBlock.NameBlock = block.nameBlock;
-
-            db.subjectblock.create(subjectBlock).then(block => {
-                idBlock = block.Id;
-                insertDetailBlock(subjects, idBlock);
-            }).catch(err => {
-                return err;
-            })
-            //console.log(subjects[0]);
-            //await insertDetailBlock(subjects, idBlock);
-        })
+        const block = blocks[0];
+        subjectBlock.IdEduProgContent = idContent;
+        subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.Credit;
+        subjectBlock.isOptional = block.nameBlock.startsWith("BB") ? true : false;
+        subjectBlock.isAccumulated = block.isAccumulation;
+        subjectBlock.DateCreated = block.DateCreated;
+        subjectBlock.KeyRow = block.parentKey;
+        subjectBlock.NameBlock = block.nameBlock;
+        return db.subjectblock.create(subjectBlock);
     } catch (err) {
         return err;
     }
-
 }
 
-const insertDetailBlock = (subjects, idBlock) => {
+const insertDetailBlock = (subject, idBlock) => {
     try {
-        console.log('insert detail block '+ idBlock);
-
-        subjects.map(async subject => {
             const detailBlock = {};
             detailBlock.IdSubjectBlock = idBlock;
             detailBlock.IdSubject = subject.Id;
             detailBlock.DateCreated = subject.DateCreated;
-
-            await db.detailblock.create(detailBlock)
-        })
+            return db.detailblock.create(detailBlock)
     } catch (err) {
         return err;
     }

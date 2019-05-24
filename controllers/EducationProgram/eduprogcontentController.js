@@ -39,7 +39,6 @@ exports.addEduProgContent = (req, res) => {
         const body = JSON.parse(req.body.data);
         request.IdEduProg = +params.ideduprog;
         request.data = body;
-
         // for test postman
         //request.IdEduProg = +params.ideduprog;
         //request.data = req.body;
