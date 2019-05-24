@@ -136,6 +136,7 @@ exports.updateTeachPlanBlock = (request) => {
                                             detail_obj.IdTeachPlan = data.dataValues.Id;
                                             detail_obj.IdSubject = subject.Id;
                                             detail_obj.Note = subject.Note;
+                                            detail_obj.Optional = subject.Optional;
                                             bulkDetail.push(detail_obj);
 
                                         });
@@ -173,6 +174,7 @@ exports.updateTeachPlanBlock = (request) => {
                                                         detail_obj.IdTeachPlan = data.dataValues.Id;
                                                         detail_obj.IdSubject = subject.Id;
                                                         detail_obj.Note = subject.Note;
+                                                        detail_obj.Optional = subject.Optional;
                                                         bulkDetail.push(detail_obj);
 
                                                     });
@@ -190,18 +192,19 @@ exports.updateTeachPlanBlock = (request) => {
                                                     IdTeachPlan: data.dataValues.Id
                                                 }
                                             })
-                                                .then(effectedRows => {
+                                                .then(async  effectedRows => {
                                                     console.log("Effected rows of Detail TeachPlanBlock: ", effectedRows);
                                                     let bulkDetail = [];
-                                                    semester.subjects.map(subject => {
+                                                    await  semester.subjects.map(subject => {
                                                         let detail_obj = {};
                                                         detail_obj.IdTeachPlan = data.dataValues.Id;
                                                         detail_obj.IdSubject = subject.Id;
                                                         detail_obj.Note = subject.Note;
+                                                        detail_obj.Optional = subject.Optional;
                                                         bulkDetail.push(detail_obj);
 
                                                     });
-                                                    db.detailteachplanblock.bulkCreate(bulkDetail)
+                                                    await db.detailteachplanblock.bulkCreate(bulkDetail)
                                                         .then(data => {
                                                             console.log(data.dataValues.Id);
                                                         })
