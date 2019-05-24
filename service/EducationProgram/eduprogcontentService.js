@@ -196,8 +196,9 @@ const insertSubjectBlocks = (blocks, idContent) => {
         console.log('--insert subject block' + idContent);
         const subjectBlock = {};
         const block = blocks[0];
+        
         subjectBlock.IdEduProgContent = idContent;
-        subjectBlock.Credit = block.nameBlock.startsWith("BB") ? 0 : block.Credit;
+        subjectBlock.Credit = block.nameBlock.startsWith("TC") ? block.optionCredit : 0;
         subjectBlock.isOptional = block.nameBlock.startsWith("BB") ? true : false;
         subjectBlock.isAccumulated = block.isAccumulation;
         subjectBlock.DateCreated = block.DateCreated;
